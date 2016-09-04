@@ -33,7 +33,6 @@
 	boolean[] itemsEmptyOption = StringUtil.split((String)request.getAttribute("opencps-datamgt:ddr:itemsEmptyOption"), false);
 	String renderMode = (String)request.getAttribute("opencps-datamgt:ddr:renderMode");
 	String[] emptyOptionLabels = StringUtil.split((String)request.getAttribute("opencps-datamgt:ddr:emptyOptionLabels"));
-	System.out.println(emptyOptionLabels.length);
 	String name = (String)request.getAttribute("opencps-datamgt:ddr:name");
 	String cssClass = (String)request.getAttribute("opencps-datamgt:ddr:cssClass");
 	String displayStyle = GetterUtil.getString((String)request.getAttribute("opencps-datamgt:ddr:displayStyle"), "horizontal");

@@ -46,6 +46,8 @@ public class ServiceConfigDisplayTerms extends DisplayTerms{
 	
 	public static final String SERVICE_CONFIG_SERVICELEVEL = "serviceLevel";
 	
+	public static final String SERVICE_URL = "serviceUrl";
+	
 	public ServiceConfigDisplayTerms(PortletRequest request) {
 
 	
@@ -63,6 +65,7 @@ public class ServiceConfigDisplayTerms extends DisplayTerms{
 		domainCode = ParamUtil.getString(request, SERVICE_CONFIG_DOMAINCODE);
 		administrationCode = ParamUtil.getString(request, SERVICE_ADMINISTRATION);
 		serviceInstruction = ParamUtil.getString(request, SERVICE_INSTRUCTION);
+		serviceUrl = ParamUtil.getString(request, SERVICE_URL);
 		
 		serviceLevel = ParamUtil.getInteger(request, SERVICE_CONFIG_SERVICELEVEL);
 		
@@ -285,6 +288,14 @@ public class ServiceConfigDisplayTerms extends DisplayTerms{
     
     	this.administrationCode = administrationCode;
     }
+    
+	public String getServiceUrl() {
+		return serviceUrl;
+	}
+
+	public void setServiceUrl(String serviceUrl) {
+		this.serviceUrl = serviceUrl;
+	}
 
 	protected int serviceLevel;
 	
@@ -307,4 +318,5 @@ public class ServiceConfigDisplayTerms extends DisplayTerms{
 	protected String domainCode;
 	protected String administrationCode;
 	protected String serviceInstruction;
+	protected String serviceUrl;
 }

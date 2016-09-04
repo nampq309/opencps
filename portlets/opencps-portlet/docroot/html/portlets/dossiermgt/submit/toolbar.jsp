@@ -1,5 +1,3 @@
-<%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
-<%@page import="javax.portlet.PortletURL"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -18,10 +16,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 %>
+<%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
+<%@page import="javax.portlet.PortletURL"%>
+<%@page import="org.opencps.servicemgt.search.ServiceDisplayTerms"%>
 <%@ include file="/init.jsp"%>
 <%
 	PortletURL searchURL = renderResponse.createRenderURL();
+
 	searchURL.setParameter("mvcPath", templatePath + "submitinstruction.jsp");
+	
+	String administrationCode = ParamUtil.getString(request, ServiceDisplayTerms.SERVICE_ADMINISTRATION);
+	
+	String domainCode = ParamUtil.getString(request, ServiceDisplayTerms.SERVICE_DOMAINCODE);
+	
+	request.setAttribute(ServiceDisplayTerms.SERVICE_ADMINISTRATION, administrationCode);
+	
+	request.setAttribute(ServiceDisplayTerms.SERVICE_DOMAINCODE, domainCode);
+	
 %>
 <aui:nav-bar cssClass="opencps-toolbar custom-toolbar">
 <div class="form-search">
@@ -30,12 +41,13 @@
 			<aui:col width="25" cssClass="search-col">
 				<datamgt:ddr
 					depthLevel="1" 
-					dictCollectionCode="SERVICE_ADMINISTRATION"
+					dictCollectionCode="GOVERNMENT_AGENCY"
 					itemNames="administrationCode"
 					itemsEmptyOption="true"
 					cssClass="search-input select-box"
-					emptyOptionLabels="administrationCode"
+					emptyOptionLabels="gov-code"
 					showLabel="false"
+					selectedItems="<%= administrationCode %>"
 				>
 				</datamgt:ddr>
 
@@ -49,6 +61,7 @@
 					cssClass="search-input select-box"
 					emptyOptionLabels="domainCode"
 					showLabel="false"
+					selectedItems="<%=domainCode %>"
 				>
 				</datamgt:ddr>
 

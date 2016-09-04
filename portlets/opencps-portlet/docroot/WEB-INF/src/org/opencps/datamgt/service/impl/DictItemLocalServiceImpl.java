@@ -32,6 +32,7 @@ import org.opencps.datamgt.service.base.DictItemLocalServiceBaseImpl;
 import org.opencps.util.PortletConstants;
 
 import com.liferay.counter.service.CounterLocalServiceUtil;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.StringPool;
@@ -544,6 +545,11 @@ public class DictItemLocalServiceImpl extends DictItemLocalServiceBaseImpl {
 			.setDictVersionId(dictVersionId);
 		return dictItemPersistence
 			.update(dictItem);
+	}
+	
+	public DictItem getDictItemByCode(String itemCode)
+	    throws PortalException, SystemException {
+		return dictItemPersistence.findByC_I(itemCode);
 	}
 
 }

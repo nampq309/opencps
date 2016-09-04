@@ -1,5 +1,3 @@
-<%@page import="org.opencps.dossiermgt.DuplicateServiceConfigGovCodeAndServiceInFoException"%>
-<%@page import="org.opencps.util.PortletUtil"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -48,6 +46,9 @@
 <%@page import="org.opencps.dossiermgt.InvalidServiceConfigGovCodeException"%>
 <%@page import="org.opencps.dossiermgt.OutOfLengthServiceConfigGovNameException"%>
 <%@page import="org.opencps.dossiermgt.OutOfLengthServiceConfigGovCodeException"%>
+<%@page import="org.opencps.dossiermgt.ServiceUrlHasExistedException"%>
+<%@page import="org.opencps.dossiermgt.DuplicateServiceConfigGovCodeAndServiceInFoException"%>
+<%@page import="org.opencps.util.PortletUtil"%>
 <%
 	ServiceConfig serviceConfig = (ServiceConfig) 
 		request.getAttribute(WebKeys.SERVICE_CONFIG_ENTRY);
@@ -85,10 +86,13 @@
 	if(Validator.isNotNull(serviceConfig)) {
 		//get GovAgency by GovAgenCyCode
 		govAgencyItem = PortletUtil
-			.getDictItem(PortletPropsValues.DATAMGT_MASTERDATA_SERVICE_ADMINISTRATION ,
+			.getDictItem(PortletPropsValues.DATAMGT_MASTERDATA_GOVERNMENT_AGENCY ,
 			serviceConfig.getGovAgencyCode(), scopeGroupId);
 		//get Id
-		dictItemGovAgencyId = String.valueOf(govAgencyItem.getDictItemId());
+		if(Validator.isNotNull(govAgencyItem)) {
+			dictItemGovAgencyId = String.valueOf(govAgencyItem.getDictItemId());
+		}
+		
 	}
 	
 	try {
@@ -156,6 +160,11 @@
 	message="<%= DuplicateServiceConfigGovCodeAndServiceInFoException.class.getName() %>"
 />
 
+<liferay-ui:error 
+	exception="<%= ServiceUrlHasExistedException.class%>"
+	message="<%= ServiceUrlHasExistedException.class.getName() %>"
+/>
+
 <portlet:renderURL 
 	var="renderToDictItemServiceAdmin" 
 	windowState="<%=LiferayWindowState.EXCLUSIVE.toString() %>" 
@@ -207,7 +216,7 @@
 			<datamgt:ddr
 				cssClass="input100"
 				depthLevel="1" 
-				dictCollectionCode="<%=PortletPropsValues.DATAMGT_MASTERDATA_SERVICE_ADMINISTRATION %>"
+				dictCollectionCode="<%=PortletPropsValues.DATAMGT_MASTERDATA_GOVERNMENT_AGENCY %>"
 				itemNames="<%=ServiceConfigDisplayTerms.SERVICE_CONFIG_GOVAGENCYCODE %>"
 				itemsEmptyOption="true"
 				selectedItems="<%=dictItemGovAgencyId%>"
@@ -280,6 +289,14 @@
 	<aui:row>
 		<aui:col width="100">
 			<aui:input name="<%= ServiceConfigDisplayTerms.SERVICE_INSTRUCTION%>" cssClass="input100"/>
+		</aui:col>
+	</aui:row>
+	
+	<aui:row>
+		<aui:col width="100">
+			<aui:input name="<%= ServiceConfigDisplayTerms.SERVICE_URL%>" cssClass="input100">
+				<aui:validator name="url" />
+			</aui:input>
 		</aui:col>
 	</aui:row>
 	

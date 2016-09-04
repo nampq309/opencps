@@ -123,6 +123,12 @@
 			<finder-column name="dictCollectionId" />
 			<finder-column name="itemCode" />
 		</finder>
+		
+		<finder name="C_I" return-type="DictItem"
+			where="issueStatus = 1">
+			<finder-column name="itemCode" />
+		</finder>
+		
 		<finder name="DictVersionId" return-type="Collection">
 			<finder-column name="dictVersionId" />
 		</finder>

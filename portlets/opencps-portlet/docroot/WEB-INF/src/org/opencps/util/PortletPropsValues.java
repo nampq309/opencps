@@ -61,7 +61,11 @@ public class PortletPropsValues {
 	        .getString(PortletProps
 	            .get(
 	                PortletPropsKeys.DATAMGT_MASTERDATA_SERVICE_ADMINISTRATION));
-
+	public static final String DATAMGT_MASTERDATA_GOVERNMENT_AGENCY =
+		    GetterUtil
+		        .getString(PortletProps
+		            .get(
+		                PortletPropsKeys.DATAMGT_MASTERDATA_GOVERNMENT_AGENCY));
 	public static final String DATAMGT_MASTERDATA_ADMINISTRATIVE_REGION =
 	    GetterUtil
 	        .getString(PortletProps

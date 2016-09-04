@@ -123,16 +123,15 @@ public class ServiceConfigFinderImpl extends BasePersistenceImpl<ServiceConfig>
 										StringPool.BLANK);
 				sql = StringUtil
 								.replace(sql,
-									"AND ((lower(opencps_dossiertemplate.templateName) LIKE ? [$AND_OR_NULL_CHECK$]))",
+									"AND ((lower(opencps_dossiertemplate.templateName) LIKE ? [$AND_OR_NULL_CHECK$])",
 										StringPool.BLANK);
 				sql = StringUtil
 								.replace(sql,
-									"OR ((lower(opencps_serviceinfo.serviceName) LIKE ? [$AND_OR_NULL_CHECK$]))",
+									"OR (lower(opencps_serviceinfo.serviceName) LIKE ? [$AND_OR_NULL_CHECK$]))",
 										StringPool.BLANK);
 			}
 			// remove condition query
-			if (govAgencyCode
-				.equals(StringPool.BLANK)) {
+			if (Validator.isNull( govAgencyCode)) {
 				sql = StringUtil
 					.replace(sql,
 						"AND (opencps_service_config.govAgencyCode = ?)",
@@ -510,17 +509,16 @@ public class ServiceConfigFinderImpl extends BasePersistenceImpl<ServiceConfig>
 										StringPool.BLANK);
 				sql = StringUtil
 								.replace(sql,
-									"AND ((lower(opencps_dossiertemplate.templateName) LIKE ? [$AND_OR_NULL_CHECK$]))",
+									"AND ((lower(opencps_dossiertemplate.templateName) LIKE ? [$AND_OR_NULL_CHECK$])",
 										StringPool.BLANK);
 				sql = StringUtil
 								.replace(sql,
-									"OR ((lower(opencps_serviceinfo.serviceName) LIKE ? [$AND_OR_NULL_CHECK$]))",
+									"OR (lower(opencps_serviceinfo.serviceName) LIKE ? [$AND_OR_NULL_CHECK$]))",
 										StringPool.BLANK);
 			}
 			
 			// remove condition query
-			if (govAgencyCode
-				.equals(StringPool.BLANK)) {
+			if (Validator.isNull(govAgencyCode)) {
 				sql = StringUtil
 					.replace(sql,
 						"AND (opencps_service_config.govAgencyCode = ?)",
@@ -543,7 +541,6 @@ public class ServiceConfigFinderImpl extends BasePersistenceImpl<ServiceConfig>
 				.setCacheable(false);
 			q
 				.addEntity("ServiceConfig", ServiceConfigImpl.class);
-
 			QueryPos qPos = QueryPos
 				.getInstance(q);
 
@@ -569,7 +566,6 @@ public class ServiceConfigFinderImpl extends BasePersistenceImpl<ServiceConfig>
 				qPos
 					.add(domainCode);
 			}
-
 			return (List<ServiceConfig>) QueryUtil
 				.list(q, getDialect(), start, end);
 		}

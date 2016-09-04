@@ -1,17 +1,3 @@
-<%@page import="javax.portlet.PortletRequest"%>
-<%@page import="com.liferay.portlet.PortletURLFactoryUtil"%>
-<%@page import="javax.portlet.PortletMode"%>
-<%@page import="org.opencps.datamgt.service.DictItemLocalServiceUtil"%>
-<%@page import="org.opencps.util.PortletPropsValues"%>
-<%@page import="org.opencps.datamgt.service.DictCollectionLocalServiceUtil"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="org.opencps.datamgt.model.DictItem"%>
-<%@page import="java.util.List"%>
-<%@page import="org.opencps.datamgt.model.DictCollection"%>
-<%@page import="com.liferay.portal.kernel.portlet.LiferayWindowState"%>
-<%@page import="org.opencps.servicemgt.service.ServiceInfoLocalServiceUtil"%>
-<%@page import="org.opencps.dossiermgt.service.ServiceConfigLocalServiceUtil"%>
-<%@page import="org.opencps.dossiermgt.model.ServiceConfig"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -30,6 +16,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 %>
+<%@page import="sun.print.resources.serviceui_zh_CN"%>
+<%@page import="javax.validation.Valid"%>
+<%@page import="javax.portlet.PortletRequest"%>
+<%@page import="com.liferay.portlet.PortletURLFactoryUtil"%>
+<%@page import="javax.portlet.PortletMode"%>
+<%@page import="org.opencps.datamgt.service.DictItemLocalServiceUtil"%>
+<%@page import="org.opencps.util.PortletPropsValues"%>
+<%@page import="org.opencps.datamgt.service.DictCollectionLocalServiceUtil"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.opencps.datamgt.model.DictItem"%>
+<%@page import="java.util.List"%>
+<%@page import="org.opencps.datamgt.model.DictCollection"%>
+<%@page import="com.liferay.portal.kernel.portlet.LiferayWindowState"%>
+<%@page import="org.opencps.servicemgt.service.ServiceInfoLocalServiceUtil"%>
+<%@page import="org.opencps.dossiermgt.service.ServiceConfigLocalServiceUtil"%>
+<%@page import="org.opencps.dossiermgt.model.ServiceConfig"%>
+<%@page import="org.opencps.util.PortletUtil"%>
 <%@ include file="init.jsp"%>
 <%@page import="org.opencps.util.WebKeys"%>
 <%@page import="org.opencps.servicemgt.model.ServiceInfo"%>
@@ -38,7 +41,9 @@
 	String backURL1 = ParamUtil.getString(request, "backURL");
 	String onlineURL = ParamUtil.getString(request, "onlineURL");
 	long serviceinfoId = ParamUtil.getLong(request, "serviceinfoId");
+	long serviceConfigId = ParamUtil.getLong(request, "serviceConfigId");
 	
+	DictItem dictItem = null;
 	long plidServiceDetailRes = 0;
 	
 	long directServicePlid = PortalUtil.getPlidFromPortletId(scopeGroupId, true,  WebKeys.SERVICE_MGT_DIRECTORY);
@@ -52,20 +57,46 @@
 	ServiceConfig serviceConfig = null;
 	DictCollection collection = null;
 	List<DictItem> listAdmin = new ArrayList<DictItem>();
+	List<ServiceConfig> listServiceConfig = new ArrayList<ServiceConfig>();
 	
 	try {
-		collection = DictCollectionLocalServiceUtil.getDictCollection(scopeGroupId, 
-			PortletPropsValues.DATAMGT_MASTERDATA_SERVICE_ADMINISTRATION);
-		
-		if(Validator.isNotNull(collection)) {
-			listAdmin = DictItemLocalServiceUtil.getDictItemsByDictCollectionId(collection.getDictCollectionId());
-		}
+		serviceConfig = ServiceConfigLocalServiceUtil.getServiceConfig(serviceConfigId);
 	} catch (Exception e) {
-		//nothing to do
+		_log.error(e);
+	}
+	
+	
+	long serviceInfoIdToDetail = Validator.isNotNull(serviceConfig) ? serviceConfig.getServiceInfoId() : serviceinfoId;
+	
+	try {
+		serviceInfo = ServiceInfoLocalServiceUtil.getServiceInfo(serviceInfoIdToDetail);
+	} catch (Exception e) {
+		_log.error(e);
 	}
 	
 	try {
-		serviceInfo = ServiceInfoLocalServiceUtil.getServiceInfo(serviceinfoId);
+		//Lay thong tin co quan thuc hien theo serviceConfigId tu man hinh tiep nhan ho so
+		if(Validator.isNotNull(serviceConfigId)){
+			dictItem = PortletUtil.getDictItem(PortletPropsValues.DATAMGT_MASTERDATA_GOVERNMENT_AGENCY, serviceConfig.getGovAgencyCode(), scopeGroupId);
+			if(dictItem != null){
+				listAdmin.add(dictItem);
+			}
+		}
+		//Lay thong tin co quan thuc hien tu dich vu cong END
+		
+		//Lay thong tin co quan thuc hien theo serviceinfoId tu man hinh thu tuc hanh chinh 
+		if(Validator.isNotNull(serviceinfoId)){
+			listServiceConfig = ServiceConfigLocalServiceUtil.getServiceConfigsByS_G(serviceinfoId, scopeGroupId);
+			if(Validator.isNotNull(listServiceConfig)){
+				for(ServiceConfig s: listServiceConfig){
+					dictItem = PortletUtil.getDictItem(PortletPropsValues.DATAMGT_MASTERDATA_GOVERNMENT_AGENCY, s.getGovAgencyCode(), scopeGroupId);
+					if(dictItem != null){
+						listAdmin.add(dictItem);
+					}
+				}
+			}
+		}
+		//Lay thong tin co quan thuc hien theo serviceinfoId tu man hinh thu tuc hanh chinh END
 	} catch (Exception e) {
 		//nothing to do
 	}
@@ -92,7 +123,7 @@
 		portletMode="VIEW"
 	>
 		<portlet:param name="mvcPath" value="/html/portlets/servicemgt/directory/service_detail.jsp"/>
-		<portlet:param name="serviceinfoId" value="<%= String.valueOf(serviceinfoId) %>"/>
+		<portlet:param name="serviceinfoId" value="<%= String.valueOf(serviceInfoIdToDetail) %>"/>
 </liferay-portlet:renderURL>
 <div class="ocps-submit-online">
 	<aui:row>
@@ -112,12 +143,14 @@
 		<aui:col width="50">
 			<aui:select name="administrationCode" cssClass="submit-online input100">
 				<%
-					for(DictItem dictItem : listAdmin) {
-						%>
-							<aui:option value="<%=dictItem.getItemCode() %>">
-								<%=dictItem.getItemName(themeDisplay.getLocale(),true) %>
-							</aui:option>
-						<%
+					if(listAdmin!=null && !listAdmin.isEmpty()){
+						for(DictItem d : listAdmin){
+							%>
+								<aui:option value="<%=d.getItemCode() %>">
+									<%=d.getItemName(themeDisplay.getLocale(),true) %>
+								</aui:option>
+							<%
+						}
 					}
 				%>
 			</aui:select>
@@ -128,8 +161,9 @@
 <aui:script>
 	AUI().ready(function(A) {
 		var adminCodeSel = A.one("#<portlet:namespace/>administrationCode");
-		var serviceId = '<%= serviceinfoId %>';
+		var serviceId = '<%= serviceInfoIdToDetail %>';
 		var backURL = '<%=currentURL %>';
+		var serviceConfigId = '<%= serviceConfigId %>';
 		<portlet:namespace />getOnlineURL(adminCodeSel.val(), serviceId);
 		if(adminCodeSel) {
 			adminCodeSel.on('change',function() {
@@ -148,7 +182,6 @@
 				    data:{    
 				    	"<portlet:namespace />administrationCode" : adminCode,
 				    	"<portlet:namespace />serviceinfoId" : serviceId
-				    	
 				    },   
 				    on: {
 				    	success: function(event, id, obj) {
@@ -169,3 +202,7 @@
 			);
 	},['aui-base','aui-io']);
 </aui:script>
+
+<%!
+	private Log _log = LogFactoryUtil.getLog("html.portlets.dossiermgt.submit.dossier_submit_online.jsp");
+%>

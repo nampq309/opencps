@@ -44,8 +44,6 @@
 	
 	String modalDialogId = ParamUtil.getString(request, "modalDialogId");
 	
-	//System.out.println(modalDialogId);
-	
 	String redirectURL = ParamUtil.getString(request, "redirectURL");
 %>
 

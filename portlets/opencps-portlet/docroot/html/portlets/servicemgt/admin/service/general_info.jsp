@@ -1,6 +1,3 @@
-<%@page import="org.opencps.dossiermgt.search.DossierDisplayTerms"%>
-<%@page import="org.opencps.dossiermgt.service.ServiceConfigLocalServiceUtil"%>
-<%@page import="org.opencps.dossiermgt.model.ServiceConfig"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -23,6 +20,9 @@
 <%@ include file="../../init.jsp" %>
 <%@page import="org.opencps.util.WebKeys"%>
 <%@page import="org.opencps.servicemgt.model.ServiceInfo"%>
+<%@page import="org.opencps.dossiermgt.search.DossierDisplayTerms"%>
+<%@page import="org.opencps.dossiermgt.service.ServiceConfigLocalServiceUtil"%>
+<%@page import="org.opencps.dossiermgt.model.ServiceConfig"%>
 
 <%
 	ServiceInfo serviceInfo = (ServiceInfo) request.getAttribute(WebKeys.SERVICE_ENTRY);
@@ -101,7 +101,7 @@
 	</aui:col>
 </aui:row>
 
-<aui:row>
+<%-- <aui:row>
 	<aui:col width="100">
 		<c:choose>
 			<c:when test="<%=Validator.isNotNull(serviceInfo) && Validator.isNull(serviceInfo.getOnlineUrl())%>">
@@ -112,7 +112,7 @@
 			</c:otherwise>
 		</c:choose>	
 	</aui:col>
-</aui:row>
+</aui:row> --%>
 
 <aui:row>
 	<aui:col width="100">

@@ -17,6 +17,8 @@
 
 package org.opencps.util;
 
+import java.util.Locale;
+
 import org.opencps.datamgt.model.DictItem;
 import org.opencps.datamgt.service.DictItemLocalServiceUtil;
 
@@ -105,6 +107,28 @@ public class DictItemUtil {
 		}
 
 		return dictItemCode;
+	}
+	
+	/**
+	 * Get DictItem by ItemCode 
+	 * 
+	 * @param itemCode
+	 * @param locale
+	 * @return
+	 */
+	public static String getDictItemName(String itemCode, Locale locale) {
+		String name = StringPool.BLANK;
+		
+		try {
+	        DictItem dictItem = DictItemLocalServiceUtil.getDictItemByCode(itemCode);
+	        
+	        name = dictItem.getItemName(locale);
+        }
+        catch (Exception e) {
+	        _log.error(e);
+        }
+		
+		return name;
 	}
 
 

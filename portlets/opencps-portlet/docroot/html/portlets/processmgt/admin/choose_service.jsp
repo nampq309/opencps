@@ -89,7 +89,7 @@
               form: { id: '<portlet:namespace />fm' },
               on: {
                   success: function(){
-                	  Liferay.Util.getOpener().<portlet:namespace/>closePopup('<portlet:namespace/>dialog');  
+                	  Liferay.Util.getOpener().closeDialog('<portlet:namespace/>chooseService', "15_WAR_opencpsportlet_"); 
                   }
              }
         });

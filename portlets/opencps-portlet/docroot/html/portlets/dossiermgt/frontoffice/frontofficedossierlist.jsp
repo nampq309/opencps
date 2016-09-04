@@ -1,4 +1,5 @@
 
+<%@page import="org.opencps.backend.util.DossierNoGenerator"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -43,6 +44,7 @@
 <%@page import="org.opencps.util.DateTimeUtil"%>
 <%@page import="org.opencps.util.PortletUtil"%>
 <%@page import="org.opencps.util.MessageKeys"%>
+<%@page import="org.opencps.util.DictItemUtil"%>
 
 
 <%@ include file="../init.jsp"%>
@@ -80,9 +82,6 @@
 	iteratorURL.setParameter("serviceDomainId", String.valueOf(serviceDomainId));
 	
 	List<Dossier> dossiers =  new ArrayList<Dossier>();
-	
-	
-	System.out.print("*********  " + keyword + " **** display" + displayRecentlyResultWhenSearch);
 	
 	int totalCount = 0;
 	
@@ -135,14 +134,16 @@
 					
 							<c:choose>
 								<c:when test='<%=Validator.isNotNull(displayDossierNo) && displayDossierNo %>'>
+
 									<div class="row-fluid">
 										<div class='<%= "text-align-right span1 " + cssStatusColor%>'>
 											<i class='<%="fa fa-circle sx10 " + dossier.getDossierStatus()%>'></i>
-										</div>
+										</div>										
 										<div class="span2 bold-label">
-											<liferay-ui:message key="dossier-number"/>
+											<liferay-ui:message key="dossier-no"/>
 										</div>
-										<div class="span9"><%=String.valueOf(dossier.getDossierId()) %></div>
+										
+										<div class="span9"><%= PortletUtil.intToString(dossier.getDossierId(), 15) %></div>
 									</div>
 									
 									<div class="row-fluid">
@@ -324,9 +325,10 @@
 								<i class='<%="fa fa-circle sx10 " + dossier.getDossierStatus()%>'></i>
 							</div>
 							<div class="span2 bold-label">
-								<liferay-ui:message key="dossier-number"/>
+								<liferay-ui:message key="dossier-no"/>
 							</div>
-							<div class="span9"><%=String.valueOf(dossier.getDossierId()) %></div>
+							
+							<div class="span9"><%= PortletUtil.intToString(dossier.getDossierId(), 15) %></div>
 						</div>
 						
 						<div class="row-fluid">
@@ -420,7 +422,8 @@
 					</div>
 					
 					<div class='<%="span7 " + cssStatusColor %>'>
-						<%=PortletUtil.getDossierStatusLabel(dossier.getDossierStatus(), locale) %>
+						<%-- <%=PortletUtil.getDossierStatusLabel(dossier.getDossierStatus(), locale) %> --%>
+						<%= DictItemUtil.getDictItemName(dossier.getDossierStatus(), locale) %>
 					</div>
 				</div>
 			</liferay-util:buffer>
@@ -439,26 +442,6 @@
 		
 	</liferay-ui:search-container>
 </div>
-
-<%-- <aui:script>
-	AUI().ready(function(A) {
-		var isHidden = A.one("#<portlet:namespace />is-hidden");
-		var displayRecentlyResultWhenSearch = '<%=displayRecentlyResultWhenSearch%>';
-		var inputSearch = A.one("#<portlet:namespace />keywords1");
-		alert("aaaa " + displayRecentlyResultWhenSearch);
-		inputSearch.on('keypress', function() {
-			if(displayRecentlyResultWhenSearch != '') {
-				if(inputSearch.val() != '') {
-					isHidden.hide();
-				} else {
-					isHidden.show();
-				}
-			}
-		}); 
-	
-	});
-</aui:script> --%>
-
 <%!
 	private Log _log = LogFactoryUtil.getLog("html.portlets.dossiermgt.frontoffice.frontofficedossierlist.jsp");
 %>

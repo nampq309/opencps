@@ -1,3 +1,5 @@
+<%@page import="org.opencps.util.PortletPropsValues"%>
+<%@page import="org.opencps.util.PortletUtil"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -26,6 +28,7 @@
 <%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
 <%@page import="org.opencps.servicemgt.model.ServiceInfo"%>
 <%@page import="java.util.List"%>
+<%@page import="org.opencps.datamgt.service.DictItemLocalServiceUtil"%>
 <liferay-util:include page='<%= templatePath + "toolbar.jsp"%>' servletContext="<%=application %>" />
 <%
 	String administrationCode = ParamUtil.getString(request, "administrationCode");
@@ -39,10 +42,19 @@
 	iteratorURL.setParameter("domainCode", domainCode);
 	
 	List<ServiceInfo> serviceInfos = new ArrayList<ServiceInfo>();
+	List<ServiceConfig> serviceConfigs = new ArrayList<ServiceConfig>();	
+
 	List<ServiceInfo> serviceInfoUses = new ArrayList<ServiceInfo>();
 	int totalCount = 0;
-	System.out.print("keyword" + keyword);
 	
+	DictItem dictItemGov = null;
+	
+	try {
+		dictItemGov = DictItemLocalServiceUtil.getDictItem(Long.valueOf(administrationCode));
+	} catch(Exception e) {
+		
+	}
+	String govCode = Validator.isNotNull(dictItemGov) ? dictItemGov.getItemCode() : StringPool.BLANK;	
 	List<String> headerNames = new ArrayList<String>();
 	
 	headerNames.add("col1");
@@ -51,7 +63,6 @@
 	headerNames.add("col4");
 	
 	String headers = StringUtil.merge(headerNames, StringPool.COMMA);
-	
 %>
 <div class="opencps-searchcontainer-wrapper">
 	<liferay-ui:search-container 
@@ -63,12 +74,14 @@
 		
 		<liferay-ui:search-container-results>
 			<%
-				serviceInfos = ServiceInfoLocalServiceUtil.searchService(scopeGroupId, keyword,
-					administrationCode, domainCode, 
-					searchContainer.getStart(), searchContainer.getEnd());
-				
-				totalCount = serviceInfoUses.size();
-				results = serviceInfos;
+				serviceConfigs = ServiceConfigLocalServiceUtil.searchServiceConfig(scopeGroupId, keyword, govCode, domainCode, searchContainer.getStart(), searchContainer.getEnd());
+// 				(scopeGroupId, keyword,
+// 					administrationCode, domainCode, 
+// 					searchContainer.getStart(), searchContainer.getEnd());
+				if(serviceConfigs!=null){
+				}
+				totalCount = ServiceConfigLocalServiceUtil.countServiceConfig(scopeGroupId, keyword, govCode, domainCode);
+				results = serviceConfigs;
 				total = totalCount;
 				pageContext.setAttribute("results", results);
 				pageContext.setAttribute("total", total);
@@ -76,37 +89,26 @@
 		</liferay-ui:search-container-results>
 		
 		<liferay-ui:search-container-row 
-			className="org.opencps.servicemgt.model.ServiceInfo" 
+			className="org.opencps.dossiermgt.model.ServiceConfig" 
 			modelVar="service" 
-			keyProperty="serviceinfoId"
+			keyProperty="serviceConfigId"
 		>
 			<% 
 				int level = 0;
-				String levelName = StringPool.BLANK;
-				String levelNameOutput = StringPool.BLANK;
-				ServiceConfig serviceConfig = null;
-				try {
-					serviceConfig = ServiceConfigLocalServiceUtil
-									.getServiceConfigByG_S(scopeGroupId, service.getServiceinfoId());
-					level = serviceConfig.getServiceLevel();
-					levelName = String.valueOf(level);
-					
-				} catch (Exception e) {
-					//nothing to do
+				String serviceName = StringPool.BLANK;
+				String itemName  = StringPool.BLANK;
+				ServiceInfo serviceInfo = ServiceInfoLocalServiceUtil.getServiceInfo(service.getServiceInfoId());
+				if(serviceInfo!=null){
+					serviceName = serviceInfo.getServiceName();
 				}
-				
-				if(levelName.equals(StringPool.BLANK) ) {
-					levelNameOutput = LanguageUtil.get(portletConfig ,themeDisplay.getLocale(), "have-not-config") ;
-				} else {
-					levelNameOutput = levelName;
-				}
-				
+				itemName = service.getGovAgencyName();
+			
 			%>
 			
 			<liferay-util:buffer var="boundcol1">
 				<div class="row-fluid">
 				
-					<div class="span12"><%=service.getServiceName()%></div>
+					<div class="span12"><%=serviceName%></div>
 				</div>
 			</liferay-util:buffer>
 			
@@ -124,7 +126,7 @@
 					<div class="span5 bold-label">
 						<liferay-ui:message key="service-administrator"/>
 					</div>
-					<div class="span7"><%=DictItemUtil.getNameDictItem(service.getAdministrationCode())%></div>
+					<div class="span7"><%=itemName%></div>
 				</div>
 				
 				<div class="row-fluid">
@@ -132,7 +134,7 @@
 					<div class="span5 bold-label">
 						<liferay-ui:message key="level-dvc"/>
 					</div>
-					<div class="span7"><%=levelNameOutput %> </div>
+					<div class="span7"><%=service.getServiceLevel() %> </div>
 				</div>
 			</liferay-util:buffer>
 			

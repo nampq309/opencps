@@ -189,7 +189,7 @@ public class DossierPartLocalServiceImpl
 		return dossierPartPersistence.findByParentId(parentId);
 	}
 
-	public int CountByTempalteId(long dossierTemplateId)
+	public int countByTempalteId(long dossierTemplateId)
 		throws SystemException {
 
 		return dossierPartPersistence.countByDossierTemplateId(dossierTemplateId);

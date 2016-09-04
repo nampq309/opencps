@@ -18,8 +18,6 @@
 package org.opencps.dossiermgt.util;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Stack;
@@ -29,7 +27,6 @@ import org.opencps.dossiermgt.comparator.DossierTemplateNoComparator;
 import org.opencps.dossiermgt.model.DossierPart;
 import org.opencps.dossiermgt.search.DossierTemplateDisplayTerms;
 import org.opencps.dossiermgt.service.DossierPartLocalServiceUtil;
-import org.opencps.paymentmgt.util.PaymentMgtUtil;
 
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.log.Log;

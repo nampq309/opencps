@@ -20,6 +20,9 @@ package org.opencps.datamgt.service.impl;
 import java.util.List;
 import java.util.Locale;
 
+import org.opencps.datamgt.NoSuchDictCollectionException;
+import org.opencps.datamgt.NoSuchDictItemException;
+import org.opencps.datamgt.model.DictCollection;
 import org.opencps.datamgt.model.DictItem;
 import org.opencps.datamgt.service.base.DictItemServiceBaseImpl;
 
@@ -28,7 +31,9 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
+import com.liferay.portal.kernel.util.GroupThreadLocal;
 import com.liferay.portal.security.ac.AccessControlled;
+import com.liferay.portal.service.GroupLocalServiceUtil;
 
 /**
  * The implementation of the dict item remote service. <p> All custom service
@@ -114,6 +119,43 @@ public class DictItemServiceImpl extends DictItemServiceBaseImpl {
 				.put(String
 					.valueOf(dictItem
 						.getDictItemId()),
+					dictItem
+						.getItemName(Locale
+							.getDefault()));
+		}
+		return jsonObject;
+	}
+	
+	@JSONWebService(value = "get-dictitems_itemCode_datasource")
+	@AccessControlled(guestAccessEnabled = true)
+	public JSONObject getDictItemsByItemCodeDataSource(
+		String collectionCode, String itemCode, long groupId) throws SystemException, PortalException {
+
+		JSONObject jsonObject = JSONFactoryUtil
+			.createJSONObject();
+		
+		DictCollection dictCollection = dictCollectionLocalService.getDictCollection(groupId, collectionCode);
+		
+		long parentId = 0;
+		
+		if(!itemCode.equalsIgnoreCase("0")){
+			
+			DictItem ett = dictItemLocalService
+					.getDictItemInuseByItemCode(dictCollection.getDictCollectionId(), itemCode);
+			
+			parentId = ett.getDictItemId();
+			
+		}
+		
+		List<DictItem> result = dictItemLocalService
+			.getDictItemsInUseByDictCollectionIdAndParentItemId(
+					dictCollection.getDictCollectionId(), parentId);
+		
+		for (DictItem dictItem : result) {
+			jsonObject
+				.put(String
+					.valueOf(dictItem
+						.getItemCode()),
 					dictItem
 						.getItemName(Locale
 							.getDefault()));

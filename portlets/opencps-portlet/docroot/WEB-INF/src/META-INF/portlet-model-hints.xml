@@ -626,6 +626,9 @@
 		<field name="domainCode" type="String" />
 		<field name="serviceMode" type="int" />
 		<field name="govAgencyIndex" type="String" />
+		<field name="serviceUrl" type="String">
+			<hint-collection name="TEXTAREA" />
+		</field>
 	</model>
 	<model name="org.opencps.paymentmgt.model.PaymentConfig">
 		<field name="paymentConfigId" type="long" />

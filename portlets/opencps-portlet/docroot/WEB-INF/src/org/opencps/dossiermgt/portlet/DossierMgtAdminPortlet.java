@@ -1,19 +1,19 @@
 /**
-* OpenCPS is the open source Core Public Services software
-* Copyright (C) 2016-present OpenCPS community
+ * OpenCPS is the open source Core Public Services software
+ * Copyright (C) 2016-present OpenCPS community
 
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
 
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU Affero General Public License for more details.
-* You should have received a copy of the GNU Affero General Public License
-* along with this program. If not, see <http://www.gnu.org/licenses/>
-*/
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>
+ */
 
 package org.opencps.dossiermgt.portlet;
 
@@ -46,6 +46,7 @@ import org.opencps.dossiermgt.OutOfLengthDossierTemplateNameException;
 import org.opencps.dossiermgt.OutOfLengthDossierTemplateNumberException;
 import org.opencps.dossiermgt.OutOfLengthServiceConfigGovCodeException;
 import org.opencps.dossiermgt.OutOfLengthServiceConfigGovNameException;
+import org.opencps.dossiermgt.ServiceUrlHasExistedException;
 import org.opencps.dossiermgt.model.DossierPart;
 import org.opencps.dossiermgt.model.DossierTemplate;
 import org.opencps.dossiermgt.model.ServiceConfig;
@@ -88,46 +89,39 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
 public class DossierMgtAdminPortlet extends MVCPortlet {
 
 	@Override
-	public void render(
-	    RenderRequest renderRequest, RenderResponse renderResponse)
-	    throws PortletException, IOException {
+	public void render(RenderRequest renderRequest,
+			RenderResponse renderResponse) throws PortletException, IOException {
 
-		long dossierTemplateId =
-		    ParamUtil.getLong(
-		        renderRequest,
-		        DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DOSSIERTEMPLATEID);
+		long dossierTemplateId = ParamUtil.getLong(renderRequest,
+				DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DOSSIERTEMPLATEID);
 
-		long dossierPartId =
-		    ParamUtil.getLong(
-		        renderRequest,
-		        DossierPartDisplayTerms.DOSSIERPART_DOSSIERPARTID);
+		long dossierPartId = ParamUtil.getLong(renderRequest,
+				DossierPartDisplayTerms.DOSSIERPART_DOSSIERPARTID);
 
-		long serviceConfigId =
-		    ParamUtil.getLong(
-		        renderRequest,
-		        ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICECONFIGID);
+		long serviceConfigId = ParamUtil.getLong(renderRequest,
+				ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICECONFIGID);
 
 		try {
 
 			if (dossierTemplateId > 0) {
-				DossierTemplate dossierTemplate =
-				    DossierTemplateLocalServiceUtil.fetchDossierTemplate(dossierTemplateId);
-				renderRequest.setAttribute(
-				    WebKeys.DOSSIER_TEMPLATE_ENTRY, dossierTemplate);
+				DossierTemplate dossierTemplate = DossierTemplateLocalServiceUtil
+						.fetchDossierTemplate(dossierTemplateId);
+				renderRequest.setAttribute(WebKeys.DOSSIER_TEMPLATE_ENTRY,
+						dossierTemplate);
 			}
 
 			if (dossierPartId > 0) {
-				DossierPart dossierPart =
-				    DossierPartLocalServiceUtil.fetchDossierPart(dossierPartId);
-				renderRequest.setAttribute(
-				    WebKeys.DOSSIER_PART_ENTRY, dossierPart);
+				DossierPart dossierPart = DossierPartLocalServiceUtil
+						.fetchDossierPart(dossierPartId);
+				renderRequest.setAttribute(WebKeys.DOSSIER_PART_ENTRY,
+						dossierPart);
 			}
 
 			if (serviceConfigId > 0) {
-				ServiceConfig serviceConfig =
-				    ServiceConfigLocalServiceUtil.fetchServiceConfig(serviceConfigId);
-				renderRequest.setAttribute(
-				    WebKeys.SERVICE_CONFIG_ENTRY, serviceConfig);
+				ServiceConfig serviceConfig = ServiceConfigLocalServiceUtil
+						.fetchServiceConfig(serviceConfigId);
+				renderRequest.setAttribute(WebKeys.SERVICE_CONFIG_ENTRY,
+						serviceConfig);
 			}
 
 		}
@@ -139,7 +133,6 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 		super.render(renderRequest, renderResponse);
 	}
 
-	
 	/**
 	 * @param actionRequest
 	 * @param actionResponse
@@ -147,30 +140,28 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 	 * @throws NoSuchDossierTemplateException
 	 * @throws IOException
 	 */
-	public void deleteDossierTemplate(
-	    ActionRequest actionRequest, ActionResponse actionResponse)
-	    throws SystemException, NoSuchDossierTemplateException, IOException {
+	public void deleteDossierTemplate(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws SystemException,
+			NoSuchDossierTemplateException, IOException {
 
-		long dossierTemplateId =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DOSSIERTEMPLATEID);
-		String currentURL = ParamUtil.getString(actionRequest, "CurrentURL");
+		long dossierTemplateId = ParamUtil.getLong(actionRequest,
+				DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DOSSIERTEMPLATEID);
+		String currentURL = ParamUtil.getString(actionRequest, CURRENT_URL);
 
-		int dossierPartCount =
-		    DossierPartLocalServiceUtil.CountByTempalteId(dossierTemplateId);
+		int dossierPartCount = DossierPartLocalServiceUtil
+				.countByTempalteId(dossierTemplateId);
 
 		if (dossierPartCount == 0) {
-			DossierTemplateLocalServiceUtil.deleteDossierTemplateById(dossierTemplateId);
+			DossierTemplateLocalServiceUtil
+					.deleteDossierTemplateById(dossierTemplateId);
 			if (Validator.isNotNull(currentURL)) {
 				actionResponse.sendRedirect(currentURL);
 			}
-		}
-		else {
+		} else {
 
 			if (Validator.isNotNull(currentURL)) {
-				SessionErrors.add(
-				    actionRequest, MessageKeys.DOSSIER_TEMPLATE_DELETE_ERROR);
+				SessionErrors.add(actionRequest,
+						MessageKeys.DOSSIER_TEMPLATE_DELETE_ERROR);
 				actionResponse.sendRedirect(currentURL);
 			}
 		}
@@ -181,79 +172,78 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 	 * @param actionResponse
 	 * @throws IOException
 	 */
-	public void updateDossier(
-	    ActionRequest actionRequest, ActionResponse actionResponse) throws IOException {
+	public void updateDossier(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws IOException {
 
-		long dossierTemplateId =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DOSSIERTEMPLATEID);
-		String templateNo =
-		    ParamUtil.getString(
-		        actionRequest,
-		        DossierTemplateDisplayTerms.DOSSIERTEMPLATE_TEMPLATENO);
-		String templateName =
-		    ParamUtil.getString(
-		        actionRequest,
-		        DossierTemplateDisplayTerms.DOSSIERTEMPLATE_TEMPLATENAME);
-		String description =
-		    ParamUtil.getString(
-		        actionRequest,
-		        DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DESCRIPTION);
+		long dossierTemplateId = ParamUtil.getLong(actionRequest,
+				DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DOSSIERTEMPLATEID);
+		String templateNo = ParamUtil.getString(actionRequest,
+				DossierTemplateDisplayTerms.DOSSIERTEMPLATE_TEMPLATENO);
+		String templateName = ParamUtil.getString(actionRequest,
+				DossierTemplateDisplayTerms.DOSSIERTEMPLATE_TEMPLATENAME);
+		String description = ParamUtil.getString(actionRequest,
+				DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DESCRIPTION);
 		String returnURL = ParamUtil.getString(actionRequest, "returnURL");
-		/*String backURL = ParamUtil.getString(actionRequest, "backURL");*/
+		/* String backURL = ParamUtil.getString(actionRequest, "backURL"); */
 
 		try {
-			
+
 			ServiceContext serviceContext = ServiceContextFactory
-						    .getInstance(actionRequest);
-			
+					.getInstance(actionRequest);
+
 			dossierTemplateValidate(dossierTemplateId, templateNo, templateName);
-			
-			
-			
+
 			if (dossierTemplateId == 0) {
-				DossierTemplateLocalServiceUtil.addDossierTemplate(
-				    templateNo, templateName, description, serviceContext.getUserId(),
-				    serviceContext);
-								
-				DossierTemplate dossierTemplate = DossierTemplateLocalServiceUtil.getDossierTemplate(templateNo);
-				
-				ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
-				String portletName = (String)actionRequest.getAttribute(WebKeys.PORTLET_ID);
-				PortletURL redirectURL = PortletURLFactoryUtil.create(PortalUtil.getHttpServletRequest(actionRequest),
-					portletName,
-					themeDisplay.getLayout().getPlid(), PortletRequest.RENDER_PHASE);
-					redirectURL.setParameter(DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DOSSIERTEMPLATEID, String.valueOf(dossierTemplate.getDossierTemplateId()));
-					redirectURL.setParameter("mvcPath", "/html/portlets/dossiermgt/admin/edit_dossier.jsp");
-					actionResponse.sendRedirect(redirectURL.toString());
-			
-			}
-			else {
-				DossierTemplateLocalServiceUtil.updateDossierTemplate(
-				    dossierTemplateId, templateNo, templateName, description,
-				    serviceContext.getUserId(),
-				    serviceContext);
-				if(Validator.isNotNull(returnURL)) {
+				DossierTemplateLocalServiceUtil.addDossierTemplate(templateNo,
+						templateName, description, serviceContext.getUserId(),
+						serviceContext);
+
+				DossierTemplate dossierTemplate = DossierTemplateLocalServiceUtil
+						.getDossierTemplate(templateNo);
+
+				ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest
+						.getAttribute(WebKeys.THEME_DISPLAY);
+				String portletName = (String) actionRequest
+						.getAttribute(WebKeys.PORTLET_ID);
+				PortletURL redirectURL = PortletURLFactoryUtil.create(
+						PortalUtil.getHttpServletRequest(actionRequest),
+						portletName, themeDisplay.getLayout().getPlid(),
+						PortletRequest.RENDER_PHASE);
+				redirectURL
+						.setParameter(
+								DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DOSSIERTEMPLATEID,
+								String.valueOf(dossierTemplate
+										.getDossierTemplateId()));
+				redirectURL.setParameter("mvcPath",
+						"/html/portlets/dossiermgt/admin/edit_dossier.jsp");
+				actionResponse.sendRedirect(redirectURL.toString());
+
+			} else {
+				DossierTemplateLocalServiceUtil
+						.updateDossierTemplate(dossierTemplateId, templateNo,
+								templateName, description,
+								serviceContext.getUserId(), serviceContext);
+				if (Validator.isNotNull(returnURL)) {
 					actionResponse.sendRedirect(returnURL);
 				}
 			}
-			
-		}
-		catch (Exception e) {
+
+		} catch (Exception e) {
 			if (e instanceof OutOfLengthDossierTemplateNameException) {
-				SessionErrors.add(actionRequest, OutOfLengthDossierTemplateNameException.class);
-			} 
-			else if(e instanceof OutOfLengthDossierTemplateNumberException) {
-				SessionErrors.add(actionRequest, OutOfLengthDossierTemplateNumberException.class);
-			} 
-			else if(e instanceof DuplicateDossierTemplateNumberException) {
-				SessionErrors.add(actionRequest, DuplicateDossierTemplateNumberException.class);
+				SessionErrors.add(actionRequest,
+						OutOfLengthDossierTemplateNameException.class);
+			} else if (e instanceof OutOfLengthDossierTemplateNumberException) {
+				SessionErrors.add(actionRequest,
+						OutOfLengthDossierTemplateNumberException.class);
+			} else if (e instanceof DuplicateDossierTemplateNumberException) {
+				SessionErrors.add(actionRequest,
+						DuplicateDossierTemplateNumberException.class);
 			} else {
-				SessionErrors.add(actionRequest, MessageKeys.DOSSIER_SYSTEM_EXCEPTION_OCCURRED);
+				SessionErrors.add(actionRequest,
+						MessageKeys.DOSSIER_SYSTEM_EXCEPTION_OCCURRED);
 			}
-			
-			if(Validator.isNotNull(returnURL)) {
+
+			if (Validator.isNotNull(returnURL)) {
 				actionResponse.sendRedirect(returnURL);
 			}
 		}
@@ -266,28 +256,25 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 	 * @throws SystemException
 	 * @throws IOException
 	 */
-	public void deleteDossierPart(
-	    ActionRequest actionRequest, ActionResponse actionResponse)
-	    throws NoSuchDossierPartException, SystemException, IOException {
+	public void deleteDossierPart(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws NoSuchDossierPartException,
+			SystemException, IOException {
 
-		long dossierPartId =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        DossierPartDisplayTerms.DOSSIERPART_DOSSIERPARTID);
+		long dossierPartId = ParamUtil.getLong(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_DOSSIERPARTID);
 		String currentURL = ParamUtil.getString(actionRequest, "CurrentURL");
-		int dossierPartParentCount =
-		    DossierPartLocalServiceUtil.CountByParentId(dossierPartId);
+		int dossierPartParentCount = DossierPartLocalServiceUtil
+				.CountByParentId(dossierPartId);
 
 		if (dossierPartParentCount == 0) {
 			DossierPartLocalServiceUtil.deleteDossierPartById(dossierPartId);
 			if (Validator.isNotNull(currentURL)) {
 				actionResponse.sendRedirect(currentURL);
 			}
-		}
-		else {
+		} else {
 			if (Validator.isNotNull(currentURL)) {
-				SessionErrors.add(
-				    actionRequest, MessageKeys.DOSSIER_PART_DELETE_ERROR);
+				SessionErrors.add(actionRequest,
+						MessageKeys.DOSSIER_PART_DELETE_ERROR);
 				actionResponse.sendRedirect(currentURL);
 			}
 		}
@@ -301,120 +288,104 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 	 * @throws PortalException
 	 * @throws SystemException
 	 */
-	public void updateDossierPart(
-	    ActionRequest actionRequest, ActionResponse actionResponse) throws IOException, PortalException, SystemException {
+	public void updateDossierPart(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws IOException, PortalException,
+			SystemException {
 
-		long dossierPartId =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        DossierPartDisplayTerms.DOSSIERPART_DOSSIERPARTID);
-		long parentId =
-		    ParamUtil.getLong(
-		        actionRequest, DossierPartDisplayTerms.DOSSIERPART_PARENTID);
-		long dossierTemplateId =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        DossierPartDisplayTerms.DOSSIERPART_DOSSIERTEMPLATEID);
-		String partNo =
-		    ParamUtil.getString(
-		        actionRequest, DossierPartDisplayTerms.DOSSIERPART_PARTNO);
-		String partName =
-		    ParamUtil.getString(
-		        actionRequest, DossierPartDisplayTerms.DOSSIERPART_PARTNAME);
-		String partTip =
-		    ParamUtil.getString(
-		        actionRequest, DossierPartDisplayTerms.DOSSIERPART_PARTTIP);
-		String formScript =
-		    ParamUtil.getString(
-		        actionRequest, DossierPartDisplayTerms.DOSSIERPART_FORMSCRIPT);
-		String sampleData =
-		    ParamUtil.getString(
-		        actionRequest, DossierPartDisplayTerms.DOSSIERPART_SAMPLEDATA);
-		String templateFileNo =
-		    ParamUtil.getString(
-		        actionRequest,
-		        DossierPartDisplayTerms.DOSSIERPART_TEMPLATEFILENO);
-		String formReport =
-					    ParamUtil.getString(
-					        actionRequest,
-					        DossierPartDisplayTerms.DOSSIERPART_FORMREPORT);
-		
+		long dossierPartId = ParamUtil.getLong(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_DOSSIERPARTID);
+		long parentId = ParamUtil.getLong(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_PARENTID);
+		long dossierTemplateId = ParamUtil.getLong(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_DOSSIERTEMPLATEID);
+		String partNo = ParamUtil.getString(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_PARTNO);
+		String partName = ParamUtil.getString(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_PARTNAME);
+		String partTip = ParamUtil.getString(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_PARTTIP);
+		String formScript = ParamUtil.getString(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_FORMSCRIPT);
+		String sampleData = ParamUtil.getString(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_SAMPLEDATA);
+		String templateFileNo = ParamUtil.getString(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_TEMPLATEFILENO);
+		String formReport = ParamUtil.getString(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_FORMREPORT);
+
 		String currentURL = ParamUtil.getString(actionRequest, "currentURL");
 		String backURL = ParamUtil.getString(actionRequest, "backURL");
-		
+
 		String isAddChilds = ParamUtil.getString(actionRequest, "isAddChilds");
-		
-		int partType =
-		    ParamUtil.getInteger(
-		        actionRequest, DossierPartDisplayTerms.DOSSIERPART_PARTTYPE);
-		double sibling =
-		    ParamUtil.getDouble(
-		        actionRequest, DossierPartDisplayTerms.DOSSIERPART_SIBLING);
-		boolean required =
-		    ParamUtil.getBoolean(
-		        actionRequest, DossierPartDisplayTerms.DOSSIERPART_REQUIRED);
+
+		int partType = ParamUtil.getInteger(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_PARTTYPE);
+		double sibling = ParamUtil.getDouble(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_SIBLING);
+		boolean required = ParamUtil.getBoolean(actionRequest,
+				DossierPartDisplayTerms.DOSSIERPART_REQUIRED);
 		try {
-			
+
 			ServiceContext serviceContext = ServiceContextFactory
-						    .getInstance(actionRequest);
-			
-			dossierPartValidate(dossierTemplateId,dossierPartId, partName, partNo, sibling, templateFileNo);
+					.getInstance(actionRequest);
+
+			dossierPartValidate(dossierTemplateId, dossierPartId, partName,
+					partNo, sibling, templateFileNo);
 			if (dossierPartId == 0) {
-				DossierPartLocalServiceUtil.addDossierPart(
-				    dossierTemplateId, partNo, partName, partTip, partType,
-				    parentId, sibling, formScript,formReport, sampleData, required,
-				    templateFileNo, serviceContext.getUserId(), serviceContext);
-			}
-			else {
+				DossierPartLocalServiceUtil.addDossierPart(dossierTemplateId,
+						partNo, partName, partTip, partType, parentId, sibling,
+						formScript, formReport, sampleData, required,
+						templateFileNo, serviceContext.getUserId(),
+						serviceContext);
+			} else {
 
 				if (Validator.isNotNull(isAddChilds)) {
 					DossierPartLocalServiceUtil.addDossierPart(
-					    dossierTemplateId, partNo, partName, partTip, partType,
-					    parentId, sibling, formScript,formReport, sampleData, required,
-					    templateFileNo, serviceContext.getUserId(), serviceContext);
-				}
-				else {
+							dossierTemplateId, partNo, partName, partTip,
+							partType, parentId, sibling, formScript,
+							formReport, sampleData, required, templateFileNo,
+							serviceContext.getUserId(), serviceContext);
+				} else {
 					DossierPartLocalServiceUtil.updateDossierPart(
-					    dossierPartId, dossierTemplateId, partNo, partName,
-					    partTip, partType, parentId, sibling, formScript,formReport,
-					    sampleData, required, templateFileNo, 
-					    serviceContext.getUserId(), serviceContext);
+							dossierPartId, dossierTemplateId, partNo, partName,
+							partTip, partType, parentId, sibling, formScript,
+							formReport, sampleData, required, templateFileNo,
+							serviceContext.getUserId(), serviceContext);
 				}
 
 			}
-			
-			if(Validator.isNotNull(backURL)) {
-				actionResponse.sendRedirect(backURL + "#_12_WAR_opencpsportlet_tab=_12_WAR_opencpsportlet_dossierpartlist");
+
+			if (Validator.isNotNull(backURL)) {
+				actionResponse
+						.sendRedirect(backURL
+								+ "#_12_WAR_opencpsportlet_tab=_12_WAR_opencpsportlet_dossierpartlist");
 			}
-		}
-		catch (Exception e) {
-			if(e instanceof OutOfLengthDossierPartNameException) {
-				SessionErrors
-				.add(actionRequest, OutOfLengthDossierPartNameException.class);
-			} 
-			else if(e instanceof OutOfLengthDossierPartNumberException) {
-				SessionErrors
-				.add(actionRequest, OutOfLengthDossierPartNumberException.class);
+		} catch (Exception e) {
+			if (e instanceof OutOfLengthDossierPartNameException) {
+				SessionErrors.add(actionRequest,
+						OutOfLengthDossierPartNameException.class);
+			} else if (e instanceof OutOfLengthDossierPartNumberException) {
+				SessionErrors.add(actionRequest,
+						OutOfLengthDossierPartNumberException.class);
+			} else if (e instanceof OutOfLengthDossierTemplateFileNumberException) {
+				SessionErrors.add(actionRequest,
+						OutOfLengthDossierTemplateFileNumberException.class);
+			} else if (e instanceof DuplicateDossierPartNumberException) {
+				SessionErrors.add(actionRequest,
+						DuplicateDossierPartNumberException.class);
 			}
-			else if(e instanceof OutOfLengthDossierTemplateFileNumberException) {
-				SessionErrors
-				.add(actionRequest, OutOfLengthDossierTemplateFileNumberException.class);
+
+			else if (e instanceof DuplicateDossierPartSiblingException) {
+				SessionErrors.add(actionRequest,
+						DuplicateDossierPartSiblingException.class);
 			}
-			else if(e instanceof DuplicateDossierPartNumberException) {
-				SessionErrors
-				.add(actionRequest, DuplicateDossierPartNumberException.class);
-			}
-			
-			else if(e instanceof DuplicateDossierPartSiblingException) {
-				SessionErrors
-				.add(actionRequest, DuplicateDossierPartSiblingException.class);
-			} 
-			
+
 			else {
-				SessionErrors.add(actionRequest, MessageKeys.DOSSIER_SYSTEM_EXCEPTION_OCCURRED);
+				SessionErrors.add(actionRequest,
+						MessageKeys.DOSSIER_SYSTEM_EXCEPTION_OCCURRED);
 			}
-			
-			if(Validator.isNotNull(currentURL)) {
+
+			if (Validator.isNotNull(currentURL)) {
 				actionResponse.sendRedirect(currentURL);
 			}
 		}
@@ -427,154 +398,153 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 	 * @throws PortalException
 	 * @throws SystemException
 	 */
-	public void deleteServiceConfig(ActionRequest actionRequest, ActionResponse actionResponse) 
-					throws PortalException, SystemException {
-		long serviceConfigId = ParamUtil.getLong(actionRequest, 
-			ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICECONFIGID);
+	public void deleteServiceConfig(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws PortalException,
+			SystemException {
+		long serviceConfigId = ParamUtil.getLong(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICECONFIGID);
 		ServiceConfigLocalServiceUtil.deleteServiceConfig(serviceConfigId);
 	}
-	
-	public void updateServiceConfig(
-	    ActionRequest actionRequest, ActionResponse actionResponse) throws IOException {
 
-		long serviceConfigId =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICECONFIGID);
-		long serviceInfoId =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICEINFOID);
-		long dossierTemplateId =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        ServiceConfigDisplayTerms.SERVICE_CONFIG_DOSSIERTEMPLATEID);
-		long domainCode =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        ServiceConfigDisplayTerms.SERVICE_CONFIG_DOMAINCODE);
-		long govAgencyCodeId =
-		    ParamUtil.getLong(
-		        actionRequest,
-		        ServiceConfigDisplayTerms.SERVICE_CONFIG_GOVAGENCYCODE);
-		
+	public void updateServiceConfig(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws IOException {
+
+		long serviceConfigId = ParamUtil.getLong(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICECONFIGID);
+		long serviceInfoId = ParamUtil.getLong(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICEINFOID);
+		long dossierTemplateId = ParamUtil.getLong(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_CONFIG_DOSSIERTEMPLATEID);
+		long domainCode = ParamUtil.getLong(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_CONFIG_DOMAINCODE);
+		long govAgencyCodeId = ParamUtil.getLong(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_CONFIG_GOVAGENCYCODE);
+
 		String returnURL = ParamUtil.getString(actionRequest, "returnURL");
 		String backURL = ParamUtil.getString(actionRequest, "backURL");
-		String serviceInstruction = ParamUtil.getString(actionRequest, 
-			ServiceConfigDisplayTerms.SERVICE_INSTRUCTION);
-		
-		int serviceLevel =
-		    ParamUtil.getInteger(
-		        actionRequest,
-		        ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICELEVEL);
-		
-		boolean servicePortal = ParamUtil.getBoolean(actionRequest, 
-			ServiceConfigDisplayTerms.SERVICE_PORTAL);
-		boolean serviceOnegate = ParamUtil.getBoolean(actionRequest, 
-			ServiceConfigDisplayTerms.SERVICE_ONEGATE);
-		boolean serviceBackoffice = ParamUtil.getBoolean(actionRequest,
-			ServiceConfigDisplayTerms.SERVICE_BACKOFFICE);
-		boolean serviceCitizen = ParamUtil.getBoolean(actionRequest,
-			ServiceConfigDisplayTerms.SERVICE_CITIZEN);
-		boolean serviceBusinees = ParamUtil.getBoolean(actionRequest,
-			ServiceConfigDisplayTerms.SERVICE_BUSINEES);
-		
-		
+		String serviceInstruction = ParamUtil.getString(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_INSTRUCTION);
 
+		int serviceLevel = ParamUtil.getInteger(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_CONFIG_SERVICELEVEL);
+
+		boolean servicePortal = ParamUtil.getBoolean(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_PORTAL);
+		boolean serviceOnegate = ParamUtil.getBoolean(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_ONEGATE);
+		boolean serviceBackoffice = ParamUtil.getBoolean(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_BACKOFFICE);
+		boolean serviceCitizen = ParamUtil.getBoolean(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_CITIZEN);
+		boolean serviceBusinees = ParamUtil.getBoolean(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_BUSINEES);
+		String serviceUrl = ParamUtil.getString(actionRequest,
+				ServiceConfigDisplayTerms.SERVICE_URL);
+		
 		String serviceDomainIndex = StringPool.BLANK;
 		String serviceAdministrationIndex = StringPool.BLANK;
 		String govAgencyCode = StringPool.BLANK;
 		String govAgencyIndex = StringPool.BLANK;
 		String govAgencyName = StringPool.BLANK;
-		
+
 		ServiceInfo serviceInfo = null;
 		DictItem dictItemGov = null;
-		
-		ServiceContext serviceContext= null;
-		
+
+		ServiceContext serviceContext = null;
+
 		try {
-			serviceContext = ServiceContextFactory
-						    .getInstance(actionRequest);
-		}
-		catch (Exception e) {
+			serviceContext = ServiceContextFactory.getInstance(actionRequest);
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		try {
-			serviceInfo = ServiceInfoLocalServiceUtil.getServiceInfo(serviceInfoId);
+			serviceInfo = ServiceInfoLocalServiceUtil
+					.getServiceInfo(serviceInfoId);
 			serviceAdministrationIndex = serviceInfo.getAdministrationIndex();
 			serviceDomainIndex = serviceInfo.getDomainIndex();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		try {
 			dictItemGov = DictItemLocalServiceUtil.getDictItem(govAgencyCodeId);
 			govAgencyCode = dictItemGov.getItemCode();
-			govAgencyName = dictItemGov.getItemName(serviceContext.getLocale(), true);
+			govAgencyName = dictItemGov.getItemName(serviceContext.getLocale(),
+					true);
 			govAgencyIndex = dictItemGov.getTreeIndex();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
 		try {
 			serviceConfigValidate(serviceConfigId, govAgencyCode,
-				govAgencyName, domainCode, serviceContext, serviceBackoffice, serviceInfoId);
-			
+					govAgencyName, domainCode, serviceContext,
+					serviceBackoffice, serviceInfoId, servicePortal, serviceUrl);
+
 			if (serviceConfigId == 0) {
-				ServiceConfigLocalServiceUtil.addServiceConfig(serviceInfoId, 
-					serviceAdministrationIndex, serviceDomainIndex, 
-					dossierTemplateId, govAgencyCode, govAgencyName, 
-					serviceLevel, String.valueOf(domainCode), serviceContext.getUserId(), serviceInstruction, 
-					servicePortal, serviceOnegate, serviceBackoffice, 
-					serviceCitizen, serviceBusinees,govAgencyIndex, serviceContext);
+				ServiceConfigLocalServiceUtil.addServiceConfig(serviceInfoId,
+						serviceAdministrationIndex, serviceDomainIndex,
+						dossierTemplateId, govAgencyCode, govAgencyName,
+						serviceLevel, String.valueOf(domainCode),
+						serviceContext.getUserId(), serviceInstruction,
+						servicePortal, serviceOnegate, serviceBackoffice,
+						serviceCitizen, serviceBusinees, govAgencyIndex,
+						serviceUrl, serviceContext);
+			} else {
+				ServiceConfigLocalServiceUtil.updateServiceConfig(
+						serviceConfigId, serviceInfoId,
+						serviceAdministrationIndex, serviceDomainIndex,
+						dossierTemplateId, govAgencyCode, govAgencyName,
+						serviceLevel, String.valueOf(domainCode),
+						serviceContext.getUserId(), serviceInstruction,
+						servicePortal, serviceOnegate, serviceBackoffice,
+						serviceCitizen, serviceBusinees, govAgencyIndex,
+						serviceUrl, serviceContext);
+
+				if (Validator.isNotNull(backURL)) {
+					actionResponse.sendRedirect(backURL);
+				}
 			}
-			else {
-				ServiceConfigLocalServiceUtil.updateServiceConfig(serviceConfigId, 
-					serviceInfoId, serviceAdministrationIndex, serviceDomainIndex,
-					dossierTemplateId, govAgencyCode, govAgencyName, serviceLevel,
-					String.valueOf(domainCode), serviceContext.getUserId(), serviceInstruction, servicePortal, 
-					serviceOnegate, serviceBackoffice, serviceCitizen,
-					serviceBusinees, govAgencyIndex, serviceContext);
+		} catch (Exception e) {
+			if (e instanceof OutOfLengthServiceConfigGovCodeException) {
+				SessionErrors.add(actionRequest,
+						OutOfLengthServiceConfigGovCodeException.class);
+			} else if (e instanceof OutOfLengthServiceConfigGovNameException) {
+				SessionErrors.add(actionRequest,
+						OutOfLengthServiceConfigGovNameException.class);
+			} else if (e instanceof InvalidServiceConfigGovCodeException) {
+				SessionErrors.add(actionRequest,
+						InvalidServiceConfigGovCodeException.class);
+			} else if (e instanceof InvalidServiceConfigGovNameException) {
+				SessionErrors.add(actionRequest,
+						InvalidServiceConfigGovNameException.class);
+			} else if (e instanceof InvalidServiceDomainException) {
+				SessionErrors.add(actionRequest,
+						InvalidServiceDomainException.class);
+			} else if (e instanceof InvalidInWorkingUnitException) {
+				SessionErrors.add(actionRequest,
+						InvalidInWorkingUnitException.class);
+			} else if (e instanceof DuplicateServiceConfigGovCodeAndServiceInFoException) {
+				SessionErrors
+						.add(actionRequest,
+								DuplicateServiceConfigGovCodeAndServiceInFoException.class);
+			} else if (e instanceof ServiceUrlHasExistedException){
+				SessionErrors
+				.add(actionRequest,
+						ServiceUrlHasExistedException.class);
+			} else {
+				SessionErrors.add(actionRequest,
+						MessageKeys.DOSSIER_SYSTEM_EXCEPTION_OCCURRED);
+				_log.error(e);
+			}
 			
-			if(Validator.isNotNull(backURL)) {
-				actionResponse.sendRedirect(backURL);
-			}
-		}
-	} catch (Exception e) {
-			if(e instanceof OutOfLengthServiceConfigGovCodeException) {
-				SessionErrors.add(actionRequest, OutOfLengthServiceConfigGovCodeException.class);
-			} 
-			else if(e instanceof OutOfLengthServiceConfigGovNameException) {
-				SessionErrors.add(actionRequest, OutOfLengthServiceConfigGovNameException.class);
-			} 
-			else if(e instanceof InvalidServiceConfigGovCodeException) {
-				SessionErrors.add(actionRequest, InvalidServiceConfigGovCodeException.class);
-			} 
-			else if(e instanceof InvalidServiceConfigGovNameException) {
-				SessionErrors.add(actionRequest, InvalidServiceConfigGovNameException.class);
-			} 
-			else if(e instanceof InvalidServiceDomainException) {
-				SessionErrors.add(actionRequest, InvalidServiceDomainException.class);
-			} 
-			else if(e instanceof InvalidInWorkingUnitException) {
-				SessionErrors.add(actionRequest, InvalidInWorkingUnitException.class);
-			} 
-			else if (e instanceof DuplicateServiceConfigGovCodeAndServiceInFoException) {
-				SessionErrors.add(actionRequest, DuplicateServiceConfigGovCodeAndServiceInFoException.class);
-			}
-			else {
-				SessionErrors.add(actionRequest, MessageKeys.DOSSIER_SYSTEM_EXCEPTION_OCCURRED);
-			}
-			
-			if(Validator.isNotNull(returnURL)) {
+			if (Validator.isNotNull(returnURL)) {
 				actionResponse.sendRedirect(returnURL);
 			}
 		}
 
 	}
-	
+
 	/**
 	 * @param serviceConfigId
 	 * @param govAgencyCode
@@ -588,74 +558,79 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 	 * @throws InvalidServiceConfigGovNameException
 	 * @throws InvalidServiceDomainException
 	 * @throws InvalidInWorkingUnitException
-	 * @throws DuplicateServiceConfigGovCodeAndServiceInFoException 
+	 * @throws DuplicateServiceConfigGovCodeAndServiceInFoException
 	 */
-	protected void serviceConfigValidate(long serviceConfigId, String govAgencyCode,
-		String govAgencyName, long domainCode, ServiceContext serviceContext,
-		boolean serviceBackOffice, long serviceInfoId) 
-						throws OutOfLengthServiceConfigGovCodeException,
-						OutOfLengthServiceConfigGovNameException,
-						InvalidServiceConfigGovCodeException,
-						InvalidServiceConfigGovNameException,
-						InvalidServiceDomainException, InvalidInWorkingUnitException,
-						DuplicateServiceConfigGovCodeAndServiceInFoException {
-		
+	protected void serviceConfigValidate(long serviceConfigId,
+			String govAgencyCode, String govAgencyName, long domainCode,
+			ServiceContext serviceContext, boolean serviceBackOffice,
+			long serviceInfoId, boolean isServicePortal, String serviceUrl)
+			throws OutOfLengthServiceConfigGovCodeException,
+			OutOfLengthServiceConfigGovNameException,
+			InvalidServiceConfigGovCodeException,
+			InvalidServiceConfigGovNameException,
+			InvalidServiceDomainException, InvalidInWorkingUnitException,
+			DuplicateServiceConfigGovCodeAndServiceInFoException,
+			ServiceUrlHasExistedException {
+
 		WorkingUnit workingUnit = null;
 		ServiceConfig serviceConfig = null;
 		try {
 			serviceConfig = ServiceConfigLocalServiceUtil
-							.getServiceConfigByG_S_G(serviceContext.getScopeGroupId(),
-								serviceInfoId, govAgencyCode);
-		}
-		catch (Exception e) {
+					.getServiceConfigByG_S_G(serviceContext.getScopeGroupId(),
+							serviceInfoId, govAgencyCode);
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		try {
-	        workingUnit = WorkingUnitLocalServiceUtil
-	        				.getWorkingUnit(serviceContext.getScopeGroupId(), govAgencyCode);
-        }
-        catch (Exception e) {
-	        // nothing to do
-        }
-		
-		if(govAgencyCode.length() > PortletPropsValues.DOSSIERMGT_SERVICE_CONFIG_GOVCODE_LENGTH) {
-			throw new OutOfLengthServiceConfigGovCodeException();
+			workingUnit = WorkingUnitLocalServiceUtil.getWorkingUnit(
+					serviceContext.getScopeGroupId(), govAgencyCode);
+		} catch (Exception e) {
+			// nothing to do
 		}
-		else if(govAgencyName.length() > PortletPropsValues.DOSSIERMGT_SERVICE_CONFIG_GOVNAME_LENGTH) {
+
+		if (govAgencyCode.length() > PortletPropsValues.DOSSIERMGT_SERVICE_CONFIG_GOVCODE_LENGTH) {
+			throw new OutOfLengthServiceConfigGovCodeException();
+		} 
+		
+		else if (govAgencyName.length() > PortletPropsValues.DOSSIERMGT_SERVICE_CONFIG_GOVNAME_LENGTH) {
 			throw new OutOfLengthServiceConfigGovNameException();
 		}
-		
-		else if(Validator.equals(govAgencyCode, StringPool.BLANK)) {
+
+		else if (Validator.equals(govAgencyCode, StringPool.BLANK)) {
 			throw new InvalidServiceConfigGovCodeException();
 		}
 
-		else if(Validator.equals(govAgencyName, StringPool.BLANK)) {
+		else if (Validator.equals(govAgencyName, StringPool.BLANK)) {
 			throw new InvalidServiceConfigGovNameException();
 		}
-		
-		else if(domainCode == 0) {
+
+		else if (domainCode == 0) {
 			throw new InvalidServiceDomainException();
 		}
-		//add new
-		else if(serviceConfigId==0 && Validator.isNotNull(serviceConfig)) {
+		// add new
+		else if (serviceConfigId == 0 && Validator.isNotNull(serviceConfig)) {
 			_log.info("go here add");
 			throw new DuplicateServiceConfigGovCodeAndServiceInFoException();
-		} 
-		//update
-		else if(serviceConfigId != 0 && Validator.isNotNull(serviceConfig) &&
-						serviceConfigId != serviceConfig.getServiceConfigId()) {
-			throw new DuplicateServiceConfigGovCodeAndServiceInFoException();
 		}
-		else if(serviceBackOffice) {
-			if(workingUnit == null) {
+		// update
+		else if (serviceConfigId != 0 && Validator.isNotNull(serviceConfig)
+				&& serviceConfigId != serviceConfig.getServiceConfigId()) {
+			throw new DuplicateServiceConfigGovCodeAndServiceInFoException();
+		} 
+		
+		else if (serviceBackOffice) {
+			if (workingUnit == null) {
 				throw new InvalidInWorkingUnitException();
 			}
 		} 
 		
-		
+		if (isServicePortal && Validator.isNotNull(serviceUrl)){
+			throw new ServiceUrlHasExistedException();
+		}
+
 	}
-	
+
 	/**
 	 * @param dossierPartId
 	 * @param partName
@@ -668,60 +643,60 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 	 * @throws DuplicateDossierPartNumberException
 	 * @throws DuplicateDossierPartSiblingException
 	 */
-	protected void dossierPartValidate(long dossierTemplateId , long dossierPartId ,String partName, String partNo, double sibling,
-		String templateFileNo) throws OutOfLengthDossierPartNameException, 
-		OutOfLengthDossierPartNumberException, OutOfLengthDossierTemplateFileNumberException,
-		DuplicateDossierPartNumberException, DuplicateDossierPartSiblingException {
+	protected void dossierPartValidate(long dossierTemplateId,
+			long dossierPartId, String partName, String partNo, double sibling,
+			String templateFileNo) throws OutOfLengthDossierPartNameException,
+			OutOfLengthDossierPartNumberException,
+			OutOfLengthDossierTemplateFileNumberException,
+			DuplicateDossierPartNumberException,
+			DuplicateDossierPartSiblingException {
 		DossierPart dossierPartNo = null;
 		DossierPart dossierPartSibling = null;
-		
+
 		try {
-	        dossierPartNo = DossierPartLocalServiceUtil
-	        				.getDossierPartByT_PN(dossierTemplateId, partNo);
+			dossierPartNo = DossierPartLocalServiceUtil.getDossierPartByT_PN(
+					dossierTemplateId, partNo);
+		} catch (Exception e) {
+			// nothing to do
 		}
-        catch (Exception e) {
-	        // nothing to do
-        }
-		
+
 		try {
-			 dossierPartSibling = DossierPartLocalServiceUtil
-		        				.getDossierPartByT_S(dossierTemplateId, sibling);
-        }
-        catch (Exception e) {
-	        // TODO: handle exception
-        }
-		
-		if(partName.length() > PortletPropsValues.DOSSIERMGT_PART_NAME_LENGTH) {
+			dossierPartSibling = DossierPartLocalServiceUtil
+					.getDossierPartByT_S(dossierTemplateId, sibling);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		if (partName.length() > PortletPropsValues.DOSSIERMGT_PART_NAME_LENGTH) {
 			throw new OutOfLengthDossierPartNameException();
-		}
-		else if(partNo.length() > PortletPropsValues.DOSSIERMGT_PART_NUMBER_LENGTH) {
+		} else if (partNo.length() > PortletPropsValues.DOSSIERMGT_PART_NUMBER_LENGTH) {
 			throw new OutOfLengthDossierPartNumberException();
-		}
-		else if(templateFileNo.length() > PortletPropsValues.DOSSIERMGT_PART_TEMPLATE_FILE_NUMBER_LENGTH){
+		} else if (templateFileNo.length() > PortletPropsValues.DOSSIERMGT_PART_TEMPLATE_FILE_NUMBER_LENGTH) {
 			throw new OutOfLengthDossierTemplateFileNumberException();
-		} 
-		//add dossier
-		else if(dossierPartId == 0 && Validator.isNotNull(dossierPartNo)) {
+		}
+		// add dossier
+		else if (dossierPartId == 0 && Validator.isNotNull(dossierPartNo)) {
 			throw new DuplicateDossierPartNumberException();
 		}
-		//update dossier
-		else if(dossierPartId > 0 && Validator.isNotNull(dossierPartNo) 
-						&& !Validator.equals(dossierPartNo.getDossierpartId(), dossierPartId)) {
+		// update dossier
+		else if (dossierPartId > 0
+				&& Validator.isNotNull(dossierPartNo)
+				&& !Validator.equals(dossierPartNo.getDossierpartId(),
+						dossierPartId)) {
 			throw new DuplicateDossierPartNumberException();
 		}
-		
-		else if(dossierPartId == 0 && dossierPartSibling != null) {
+
+		else if (dossierPartId == 0 && dossierPartSibling != null) {
 			throw new DuplicateDossierPartSiblingException();
 		}
-		
-		else if (dossierPartId > 0 && Validator.isNotNull(dossierPartSibling) 
-						&& dossierPartSibling.getDossierpartId() != dossierPartId) {
+
+		else if (dossierPartId > 0 && Validator.isNotNull(dossierPartSibling)
+				&& dossierPartSibling.getDossierpartId() != dossierPartId) {
 			throw new DuplicateDossierPartSiblingException();
 		}
-			
-		
+
 	}
-	
+
 	/**
 	 * @param dossierTemplateId
 	 * @param templateNo
@@ -730,19 +705,18 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 	 * @throws OutOfLengthDossierTemplateNumberException
 	 * @throws DuplicateDossierTemplateNumberException
 	 */
-	protected void dossierTemplateValidate(
-	    long dossierTemplateId, String templateNo, String templateName)
-	    throws OutOfLengthDossierTemplateNameException,
-	    OutOfLengthDossierTemplateNumberException,
-	    DuplicateDossierTemplateNumberException {
+	protected void dossierTemplateValidate(long dossierTemplateId,
+			String templateNo, String templateName)
+			throws OutOfLengthDossierTemplateNameException,
+			OutOfLengthDossierTemplateNumberException,
+			DuplicateDossierTemplateNumberException {
 
 		DossierTemplate dossierTemplate = null;
 
 		try {
-			dossierTemplate =
-			    DossierTemplateLocalServiceUtil.getDossierTemplate(templateNo);
-		}
-		catch (Exception e) {
+			dossierTemplate = DossierTemplateLocalServiceUtil
+					.getDossierTemplate(templateNo);
+		} catch (Exception e) {
 			// nothing to do
 		}
 
@@ -758,13 +732,15 @@ public class DossierMgtAdminPortlet extends MVCPortlet {
 			throw new DuplicateDossierTemplateNumberException();
 		}
 		// update dossier template
-		else if (dossierTemplateId > 0 &&
-		    dossierTemplate != null &&
-		    !Validator.equals(
-		        dossierTemplate.getDossierTemplateId(), dossierTemplateId)) {
+		else if (dossierTemplateId > 0
+				&& dossierTemplate != null
+				&& !Validator.equals(dossierTemplate.getDossierTemplateId(),
+						dossierTemplateId)) {
 			throw new DuplicateDossierTemplateNumberException();
 		}
 	}
-	private Log _log =
-	    LogFactoryUtil.getLog(DossierMgtAdminPortlet.class.getName());
+	
+	private static final String CURRENT_URL = "CurrentURL";
+	private Log _log = LogFactoryUtil.getLog(DossierMgtAdminPortlet.class
+			.getName());
 }

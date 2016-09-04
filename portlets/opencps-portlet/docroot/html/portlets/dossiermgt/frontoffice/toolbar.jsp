@@ -63,11 +63,11 @@
 	<c:choose>
 		<c:when test="<%=isListServiceConfig%>">
 			<div class="pd_t20">
-				<aui:nav id="toolbarContainer" cssClass="nav-display-style-buttons pull-left font-pull" >
-					<h5>
-						<liferay-ui:message key="list-service-config"/>
-					</h5>
-				</aui:nav>
+<%-- 				<aui:nav id="toolbarContainer" cssClass="nav-display-style-buttons pull-left font-pull" > --%>
+<!-- 					<h5> -->
+<%-- 						<liferay-ui:message key="list-service-config"/> --%>
+<!-- 					</h5> -->
+<%-- 				</aui:nav> --%>
 			</div>
 		</c:when>
 		<c:otherwise>
@@ -94,7 +94,7 @@
 		</c:otherwise>
 	</c:choose>
 
-	<aui:nav-bar-search cssClass="pull-right front-custom-select-search">
+	<aui:nav-bar-search cssClass="pull-right front-custom-select-search" style="width: 70%;">
 		<div class="form-search">
 			<aui:form 
 				action="<%= searchURL %>" method="post"

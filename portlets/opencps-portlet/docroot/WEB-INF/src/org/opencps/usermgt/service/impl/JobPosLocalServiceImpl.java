@@ -265,6 +265,11 @@ public class JobPosLocalServiceImpl extends JobPosLocalServiceBaseImpl {
 		return jobPosPersistence.findByTitle(groupId, title);
 	}
 	
+	public List<JobPos> getJobPosByG_T_W(long groupId, String title,
+			long workingUnitId) throws SystemException {
+		return jobPosPersistence.findByG_T_W(groupId, title, workingUnitId); 
+	}
+	
 	private WorkingUnit getDirectWorkingUnitId(long parentWorkingUnitId)
 			throws NoSuchWorkingUnitException, SystemException {
 		WorkingUnit workingUnit = workingUnitPersistence

@@ -35,6 +35,7 @@
 <%@page import="org.opencps.servicemgt.model.ServiceInfo"%>
 <%@page import="org.opencps.servicemgt.service.ServiceInfoLocalServiceUtil"%>
 <%@page import="org.opencps.util.ActionKeys"%>
+<%@page import="org.opencps.servicemgt.search.ServiceDisplayTerms"%>
 
 <%@ include file="../init.jsp"%>
 
@@ -45,9 +46,11 @@
 </c:if>
 
 <%
+	long domainCode = ParamUtil.getLong(request, ServiceDisplayTerms.SERVICE_DOMAINCODE);
 	PortletURL iteratorURL = renderResponse.createRenderURL();
 	iteratorURL.setParameter("mvcPath", templatePath + "serviceconfiglist.jsp");
 	iteratorURL.setParameter("tabs1", DossierMgtUtil.TOP_TABS_SERVICE_CONFIG);
+	iteratorURL.setParameter(ServiceDisplayTerms.SERVICE_DOMAINCODE, String.valueOf(domainCode));
 	
 	List<ServiceConfig> serviceConfigs = new ArrayList<ServiceConfig>();
 	List<String> headerNames = new ArrayList<String>();

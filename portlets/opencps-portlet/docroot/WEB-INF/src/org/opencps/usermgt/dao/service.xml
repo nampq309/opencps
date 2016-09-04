@@ -133,6 +133,12 @@
 		<finder-column name="groupId" />
 			<finder-column name="title" />
 		</finder>
+		
+		<finder name="G_T_W" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="title" />
+			<finder-column name="workingUnitId" />
+		</finder>
 	</entity>
 
 

@@ -60,6 +60,7 @@ public class PortletPropsKeys {
 	public static final String DATAMGT_MASTERDATA_SERVICE_ADMINISTRATION = "opencps.datamgt.masterdata.service.administration";
 	public static final String DATAMGT_MASTERDATA_ADMINISTRATION_REGION = "opencps.datamgt.masterdata.administration.region";
 	public static final String DATAMGT_MASTERDATA_ADMINISTRATIVE_REGION = "opencps.datamgt.masterdata.administrative.region";
+	public static final String DATAMGT_MASTERDATA_GOVERNMENT_AGENCY = "opencps.datamgt.masterdata.goverment.agency";
 	// validate file
 	public static final String ACCOUNTMGT_FILE_TYPE = "opencps.accountmgt.file.type";
 	public static final String ACCOUNTMGT_FILE_SIZE ="opencps.accountmgt.file.size";

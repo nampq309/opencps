@@ -95,6 +95,8 @@
 			long serviceId = 0;
 			
 			DictItem dictItem = null;
+			
+			DictItem adminAction = PortletUtil.getDictItem(PortletPropsValues.DATAMGT_MASTERDATA_GOVERNMENT_AGENCY, serviceConfig.getGovAgencyCode(), scopeGroupId);
 			String administrationName = StringPool.BLANK;
 			try {
 				service = ServiceInfoLocalServiceUtil.getServiceInfo(serviceConfig.getServiceInfoId());
@@ -129,7 +131,7 @@
 			/>
 		<liferay-ui:search-container-column-text 
 				name="service-administration-action" 
-				value="<%=PortletUtil.getDictItem(PortletPropsValues.DATAMGT_MASTERDATA_SERVICE_ADMINISTRATION, serviceConfig.getGovAgencyCode(), scopeGroupId).getItemName(locale,true) %>"
+				value="<%=Validator.isNotNull(adminAction) ? adminAction.getItemName(locale,true) : StringPool.BLANK %>"
 			/>
 		<%
 			 final String hrefFix = "location.href='" + deteleRelaSeInfoAndProcessURL .toString()+"'";

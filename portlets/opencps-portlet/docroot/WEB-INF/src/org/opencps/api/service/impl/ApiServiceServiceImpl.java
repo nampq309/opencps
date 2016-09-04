@@ -58,7 +58,9 @@ import com.liferay.portal.kernel.messaging.Message;
 import com.liferay.portal.kernel.messaging.MessageBusUtil;
 import com.liferay.portal.kernel.repository.model.FileEntry;
 import com.liferay.portal.kernel.util.GetterUtil;
+import com.liferay.portal.kernel.util.MimeTypesUtil;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.Company;
 import com.liferay.portal.model.User;
@@ -341,14 +343,17 @@ public class ApiServiceServiceImpl extends ApiServiceServiceBaseImpl {
 					URL fileURL = new URL(dossierFileURL);
 					InputStream is = fileURL.openStream();
 					long size = is.available();
-					String mimeType = StringPool.BLANK;
+					//String mimeType = StringPool.BLANK;
 					
-					try {
-						mimeType = URLConnection.guessContentTypeFromStream(is);
-					}
-					catch (IOException ioe) {
-						_log.error(ioe);
-					}
+					//try {
+					String extension = dossierFileURL.substring(dossierFileURL.lastIndexOf("."));
+					extension = StringUtil.replace(extension, "/", "");
+					
+					String mimeType = MimeTypesUtil.getContentType(is, "A".concat(extension));
+					//}
+					//catch (IOException ioe) {
+					//	_log.error(ioe);
+					//}
 					
 					serviceContext.setUserId(dossier.getUserId());
 					
@@ -417,13 +422,17 @@ public class ApiServiceServiceImpl extends ApiServiceServiceBaseImpl {
 					URL fileURL = new URL(dossierFileURL);
 					InputStream is = fileURL.openStream();
 					long size = is.available();
-					String mimeType = StringPool.BLANK;
-					try {
-						mimeType = URLConnection.guessContentTypeFromStream(is);
-					}
-					catch (IOException ioe) {
-						_log.error(ioe);
-					}
+					//String mimeType = StringPool.BLANK;
+					
+					//try {
+					String extension = dossierFileURL.substring(dossierFileURL.lastIndexOf("."));
+					extension = StringUtil.replace(extension, "/", "");
+					
+					String mimeType = MimeTypesUtil.getContentType(is, "A".concat(extension));
+					//}
+					//catch (IOException ioe) {
+					//	_log.error(ioe);
+					//}
 
 					serviceContext.setScopeGroupId(dossier.getGroupId());
 					serviceContext.setCompanyId(dossier.getCompanyId());

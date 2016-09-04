@@ -2,7 +2,7 @@
 apps/
 build-common-ivy.xml
 build-common-osgi-plugin.xml
-build-common-plugin.xml
+#build-common-plugin.xml
 build-common-plugins-inspector.xml
 build-common-plugins.xml
 build-common.xml
@@ -279,4 +279,5 @@ themes/opencps-ux-theme/docroot/WEB-INF/liferay-look-and-feel.xml
 portlets/portal-vbpq-portlet/
 
 portlets/opencps-portlet/ivy.xml.MD5
+portlets/opencps-portlet/docroot/WEB-INF/lib/jasperreports-fonts-6.2.2.jar
 

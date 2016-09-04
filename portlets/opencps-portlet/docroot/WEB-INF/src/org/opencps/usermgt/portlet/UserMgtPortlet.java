@@ -677,15 +677,15 @@ public class UserMgtPortlet extends MVCPortlet {
 			// Check duplicate jobpos
 			boolean duplicate = false;
 			for (JobPos jobPos : jobPoses) {
-				JobPos pos = null;
+				List<JobPos> pos = new ArrayList<JobPos>();
 				try {
 					pos = JobPosLocalServiceUtil
-							.getJobPosByTitle(serviceContext.getScopeGroupId(),
-									jobPos.getTitle());
+							.getJobPosByG_T_W(serviceContext.getScopeGroupId(), 
+									jobPos.getTitle(), workingUnitId);
 				} catch (Exception e) {
 					//
 				}
-				if (Validator.isNotNull(pos)) {
+				if (!pos.isEmpty()) {
 					duplicate = true;
 					break;
 				}

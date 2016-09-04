@@ -290,60 +290,35 @@
 						
 						<c:when test="<%=partType == PortletConstants.DOSSIER_PART_TYPE_MULTIPLE_RESULT %>">
 							<%
-									List<DossierPart> dossierParts6 = DossierMgtUtil.getTreeDossierPart(dossierPartLevel1.getDossierpartId());
-									for(DossierPart dossierPart : dossierParts6){
-										boolean isDynamicForm = false;
-										
-										if(Validator.isNotNull(dossierPart.getFormReport()) && Validator.isNotNull(dossierPart.getFormScript())){
-											isDynamicForm = true;
-										}
-										
+								
 										//Toi uu thuat toan tim kiem sau
-										boolean hasProcecssOrderResult1 = false;
+
+										boolean hasProcecssOrderResult = false;
+
 										if(workflowOutputs != null){
 											for(WorkflowOutput workflowOutput : workflowOutputs){
-												if(workflowOutput.getDossierPartId() == dossierPart.getDossierpartId()){
-													hasProcecssOrderResult1 = true;
+												if(workflowOutput.getDossierPartId() == dossierPartLevel1.getDossierpartId()){
+													hasProcecssOrderResult = true;
 													break;
 												}
 											}
 										}
-										if(hasProcecssOrderResult1){
-											int level = 1;
+										if(hasProcecssOrderResult){
 											
-											String treeIndex = dossierPart.getTreeIndex();
-											
-											if(Validator.isNotNull(treeIndex)){
-												level = StringUtil.count(treeIndex, StringPool.PERIOD);
-											}
-											
-											DossierFile dossierFile = null;
-											
-											if(dossier != null){
-												try{
-													dossierFile = DossierFileLocalServiceUtil.getDossierFileInUse(dossier.getDossierId(), 
-															dossierPart.getDossierpartId());
-												}catch(Exception e){}
-											}
-											
+		
 											%>
 												<div 
-													id='<%=renderResponse.getNamespace() + "row-" + dossierPart.getDossierpartId() + StringPool.DASH + index %>' 
+													id='<%=renderResponse.getNamespace() + "row-" + dossierPartLevel1.getDossierpartId() + StringPool.DASH + index %>' 
 													index="<%=index %>"
-													dossier-part="<%=dossierPart.getDossierpartId() %>"
+													dossier-part="<%=dossierPartLevel1.getDossierpartId() %>"
 													class="opencps dossiermgt dossier-part-row"
 												>
-													<span class='<%="level-" + level + " opencps dossiermgt dossier-part"%>'>
+													<span class='<%="level-0 opencps dossiermgt dossier-part"%>'>
 														<span class="row-icon">
-															<i 
-																id='<%="rowcheck" + dossierPart.getDossierpartId() + StringPool.DASH + index %>' 
-																class='<%=dossierFile != null ? "fa fa-check-square-o" : "fa fa-square-o" %>' 
-																aria-hidden="true"
-															>
-															</i>
+															<i class="fa fa-circle" aria-hidden="true"></i>
 														</span>
 														<span class="opencps dossiermgt dossier-part-name">
-															<%=dossierPart.getPartName() %>
+															<%=dossierPartLevel1.getPartName() %>
 														</span>
 													</span>
 												
@@ -358,25 +333,20 @@
 															/>
 															
 															<portlet:param 
-																name="isDynamicForm" 
-																value="<%=String.valueOf(isDynamicForm) %>"
-															/>
-															
-															<portlet:param 
 																name="<%=DossierFileDisplayTerms.DOSSIER_PART_ID %>" 
-																value="<%=String.valueOf(dossierPart.getDossierpartId()) %>"
+																value="<%=String.valueOf(dossierPartLevel1.getDossierpartId()) %>"
 															/>
 															<portlet:param 
 																name="<%=DossierFileDisplayTerms.FILE_ENTRY_ID %>" 
-																value="<%=String.valueOf(dossierFile != null ? dossierFile.getFileEntryId() : 0) %>"
+																value="<%=String.valueOf(0) %>"
 															/>
 															<portlet:param 
 																name="<%=DossierFileDisplayTerms.DOSSIER_FILE_ID %>" 
-																value="<%=String.valueOf(dossierFile != null ? dossierFile.getDossierFileId() : 0) %>"
+																value="<%=String.valueOf(0) %>"
 															/>
 															<portlet:param 
 																name="<%=DossierFileDisplayTerms.LEVEL %>" 
-																value="<%=String.valueOf(level) %>"
+																value="<%=String.valueOf(0) %>"
 															/>
 															<portlet:param 
 																name="<%=DossierFileDisplayTerms.GROUP_NAME %>" 
@@ -384,7 +354,7 @@
 															/>
 															<portlet:param 
 																name="<%=DossierFileDisplayTerms.PART_TYPE %>" 
-																value="<%=String.valueOf(dossierPart.getPartType()) %>"
+																value="<%=String.valueOf(dossierPartLevel1.getPartType()) %>"
 															/>
 															<portlet:param 
 																name="isEditDossier" 
@@ -394,21 +364,7 @@
 													</span>
 												</div>
 											<%
-											index++;
-										}
-									}
-									boolean hasProcecssOrderResult = true;
-									if(workflowOutputs != null){
-										for(WorkflowOutput workflowOutput : workflowOutputs){
-											if(workflowOutput.getDossierPartId() == dossierPartLevel1.getDossierpartId()){
-												hasProcecssOrderResult = true;
-												break;
-											}
-										}
-									}
-																		
-									if(hasProcecssOrderResult){
-										List<DossierFile> dossierFiles = DossierFileLocalServiceUtil.
+											List<DossierFile> dossierFiles = DossierFileLocalServiceUtil.
 											getDossierFileByD_DP(dossier.getDossierId(), dossierPartLevel1.getDossierpartId());
 												
 										if(dossierFiles != null){
@@ -529,8 +485,10 @@
 					postProcessWorkflow.getPreCondition() : StringPool.BLANK;
 					
 					boolean showButton = true;
-
-					showButton = BackendUtils.checkPreCondition(preCondition, dossier.getDossierId());
+					/* showButton = BackendUtils.checkPreCondition(preCondition, dossier.getDossierId()); */
+					
+					//Kiem tra neu co su kien auto event thi khong hien thi nut
+					showButton = Validator.isNotNull(postProcessWorkflow.getAutoEvent()) ? false : true;
 					
 					//Kiem tra neu co su kien auto event thi khong hien thi nut
 					showButton = Validator.isNotNull(postProcessWorkflow.getAutoEvent()) ? false : true;

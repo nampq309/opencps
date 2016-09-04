@@ -88,7 +88,8 @@
 	<c:when test="<%=DossierPermission.contains(permissionChecker, scopeGroupId, ActionKeys.UPDATE) && Validator.isNotNull(accountType) &&
 				(accountType.equals(PortletPropsValues.USERMGT_USERGROUP_NAME_CITIZEN) ||
 				accountType.equals(PortletPropsValues.USERMGT_USERGROUP_NAME_BUSINESS)) %>">
-		 <liferay-ui:header
+		
+		<liferay-ui:header
 			backURL="<%= backURL %>"
 			title='<%= (dossier == null) ? "add-dossier" : (cmd.equals(Constants.VIEW) ? "view-dossier" : "update-dossier") %>'
 		/>
@@ -107,9 +108,9 @@
 		</liferay-util:buffer>
 		
 		<liferay-util:buffer var="htmlBottom">
-			
-		 	<c:choose>
-		 		<c:when test="<%=Validator.isNotNull(dossier)%>">
+		
+			<c:if test="<%= cmd.equals(Constants.VIEW) ? false : true %>">
+		 		<c:if test="<%=Validator.isNotNull(dossier)%>">
 					<c:if test="<%=DossierPermission.contains(permissionChecker, scopeGroupId, ActionKeys.UPDATE) %>">	
 						<c:if test="<%=dossier.getDossierStatus().equals(PortletConstants.DOSSIER_STATUS_NEW) || 
 				 			dossier.getDossierStatus().equals(PortletConstants.DOSSIER_STATUS_WAITING)%>">
@@ -142,20 +143,17 @@
 						 		/> 
 					 		</c:if>
 					 	</c:if>
-					 	<c:if test="<%=DossierPermission.contains(permissionChecker, scopeGroupId, ActionKeys.DELETE) && dossier.getDossierStatus().equals(PortletConstants.DOSSIER_STATUS_NEW) %>">
-					 		<portlet:actionURL var="deleteDossierURL" name="deleteDossier" >
-								<portlet:param name="<%=DossierDisplayTerms.DOSSIER_ID %>" value="<%=String.valueOf(dossier.getDossierId()) %>"/>
-								<portlet:param name="redirectURL" value="<%=currentURL %>"/>
-								<portlet:param name="dossierStatus" value="<%=dossier.getDossierStatus() %>"/>
-							</portlet:actionURL> 
-							<liferay-ui:icon-delete 
-								image="delete"
-								cssClass="search-container-action fa delete"
-								confirmation="are-you-sure-delete-entry" 
-								message="delete"  
-								url="<%=deleteDossierURL.toString() %>" 
-							/>
-					 	</c:if>
+					 	
+					 	<liferay-portlet:renderURL var="backDossierList">
+					 		<portlet:param name="mvcPath" value="/html/portlets/dossiermgt/frontoffice/frontofficedossierlist.jsp"/>
+					 	</liferay-portlet:renderURL>
+					 	
+					 	<liferay-ui:icon
+								image="back"
+								cssClass="search-container-action fa forward"
+								message="back-dossier-list"  
+								url="<%= backDossierList.toString() %>" 
+						/>
 			 		</c:if>
 			  		<c:if test="<%= (dossier.getDossierStatus().equals(PortletConstants.DOSSIER_STATUS_PROCESSING) && workFlow != null) %>">
 					 		<portlet:actionURL var="cancelDossierURL" name="cancelDossier" >
@@ -169,34 +167,35 @@
 								message="cancel"  
 								url="<%=cancelDossierURL.toString() %>" 
 							/>
-					</c:if>  		
+					</c:if>
 			  		
-		 		</c:when>		
-		 	</c:choose>
+			  		<c:if test="<%=DossierPermission.contains(permissionChecker, scopeGroupId, ActionKeys.DELETE) && dossier.getDossierStatus().equals(PortletConstants.DOSSIER_STATUS_NEW) %>">
+				 		<portlet:actionURL var="deleteDossierURL" name="deleteDossier" >
+							<portlet:param name="<%=DossierDisplayTerms.DOSSIER_ID %>" value="<%=String.valueOf(dossier.getDossierId()) %>"/>
+							<portlet:param name="redirectURL" value="<%=currentURL %>"/>
+							<portlet:param name="dossierStatus" value="<%=dossier.getDossierStatus() %>"/>
+						</portlet:actionURL> 
+						<liferay-ui:icon-delete 
+							image="delete"
+							cssClass="search-container-action fa delete"
+							confirmation="are-you-sure-delete-entry" 
+							message="delete"  
+							url="<%=deleteDossierURL.toString() %>" 
+						/>
+			 		</c:if>
+			  		
+		 		</c:if>
 		 	
-		 	<%
-		 	 boolean checlShowBtnSubmitAndCacel = true;
-		 	 if(cmd.equals(Constants.VIEW)) {
-		 		checlShowBtnSubmitAndCacel = false;
-		 	 }
-		 	 
-		 	%>
-		 	<c:if test= "<%=checlShowBtnSubmitAndCacel %>">
 			 	<div>	
 			 		<aui:button 
-			 			type="submit" 
-			 			cssClass="button-add" 
-			 			icon="icon-plus"
+			 			type="submit"
+			 			cssClass="btn des-sub-button radius20" 
+			 			icon="add"
 			 			value="edit-dossier-btn"
 			 		/>	
-			 		<%-- <aui:button 
-	 					href="<%=backURLFromList.toString() %>" 
-	 					cssClass="button-del" 
-	 					value="canceled-dossier-btn"
-			 			icon="icon-remove"
-			 		/> --%>
 			 	</div>
-		 	</c:if>
+			</c:if>
+			
 		</liferay-util:buffer>
 	
 		<aui:form name="fm" action="<%=updateDossierURL %>" method="post">

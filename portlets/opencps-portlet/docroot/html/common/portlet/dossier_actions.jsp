@@ -1,4 +1,5 @@
 
+<%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -153,7 +154,7 @@
 				
 				<td width="10%" align="right">
 					<span class="dossier-version-counter">
-						<span class="counter-value" title="version">
+						<span class="counter-value" title='<%=LanguageUtil.get(pageContext, "version") %>'>
 							<aui:a 
 								id="<%=String.valueOf(dossierPartId) %>"
 								dossier="<%=String.valueOf(dossierId) %>"
@@ -254,7 +255,7 @@
 				
 				<td width="10%" align="right">
 					<span class="dossier-version-counter">
-						<span class="counter-value" title="version">
+						<span class="counter-value" title='<%=LanguageUtil.get(pageContext, "version") %>'>
 							<aui:a 
 								id="<%=String.valueOf(dossierPartId) %>"
 								dossier="<%=String.valueOf(dossierId) %>"
@@ -371,7 +372,7 @@
 				
 				<td width="10%" align="right">
 					<span class="dossier-version-counter">
-						<span class="counter-value" title="version">
+						<span class="counter-value" title='<%=LanguageUtil.get(pageContext, "version") %>'>
 							<aui:a 
 								id="<%=String.valueOf(dossierPartId) %>"
 								dossier="<%=String.valueOf(dossierId) %>"
@@ -482,7 +483,7 @@
 				</td>
 				<td width="10%" align="right">
 					<span class="dossier-version-counter">
-						<span class="counter-value" title="version">
+						<span class="counter-value" title='<%=LanguageUtil.get(pageContext, "version") %>'>
 							<aui:a 
 								id="<%=String.valueOf(dossierPartId) %>"
 								dossier="<%=String.valueOf(dossierId) %>"

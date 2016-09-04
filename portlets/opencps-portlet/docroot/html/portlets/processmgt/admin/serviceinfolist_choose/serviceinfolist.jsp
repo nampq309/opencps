@@ -1,4 +1,5 @@
 
+<%@page import="org.opencps.datamgt.model.DictItem"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -74,6 +75,8 @@
 			ServiceInfo service = null;
 			long serviceId = 0;
 			
+			DictItem adminAction = PortletUtil.getDictItem(PortletPropsValues.DATAMGT_MASTERDATA_GOVERNMENT_AGENCY, serviceConfig.getGovAgencyCode(), scopeGroupId);
+			
 			try {
 				service = ServiceInfoLocalServiceUtil.getServiceInfo(serviceConfig.getServiceInfoId());
 				serviceId = service.getServiceinfoId();
@@ -95,7 +98,7 @@
 			/>
 		<liferay-ui:search-container-column-text 
 				name="service-administration-action" 
-				value="<%=PortletUtil.getDictItem(PortletPropsValues.DATAMGT_MASTERDATA_SERVICE_ADMINISTRATION, serviceConfig.getGovAgencyCode(), scopeGroupId).getItemName(locale,true) %>"
+				value="<%=Validator.isNotNull(adminAction)? adminAction.getItemName(locale,true) : StringPool.BLANK %>"
 			/>
 	</liferay-ui:search-container-row>
 <liferay-ui:search-iterator paginate="false"/>

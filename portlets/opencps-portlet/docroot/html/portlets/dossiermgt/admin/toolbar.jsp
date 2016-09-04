@@ -44,13 +44,15 @@
 	String tabs1 = ParamUtil.getString(request, "tabs1", DossierMgtUtil.TOP_TABS_DOSSIER_TEMPLATE);
 	PortletURL searchURL = renderResponse.createRenderURL();
 	
+	long domainCode = ParamUtil.getLong(request, ServiceDisplayTerms.SERVICE_DOMAINCODE);
+	
 	/* Long dossierTemplateId = (Long) session.getAttribute(DossierTemplateDisplayTerms.DOSSIERTEMPLATE_DOSSIERTEMPLATEID); */
 	DictCollection dictCollectionServiceAdmin = null;
 	List<DictItem> dictItemsServiceAdmin = new ArrayList<DictItem>();
 	String currURL = ParamUtil.getString(request, "currURL");
 	try {
 		dictCollectionServiceAdmin = DictCollectionLocalServiceUtil
-	                    .getDictCollection(scopeGroupId, PortletPropsValues.DATAMGT_MASTERDATA_SERVICE_ADMINISTRATION);
+	                    .getDictCollection(scopeGroupId, PortletPropsValues.DATAMGT_MASTERDATA_GOVERNMENT_AGENCY);
 		if(Validator.isNotNull(dictCollectionServiceAdmin)) {
 			dictItemsServiceAdmin = DictItemLocalServiceUtil
 							.getDictItemsByDictCollectionId(dictCollectionServiceAdmin.getDictCollectionId());
@@ -59,9 +61,6 @@
 	}catch (Exception e) {
 		//no thing to do
 	}
-	
-	DictCollectionLocalServiceUtil
-					.getDictCollection(scopeGroupId, PortletPropsValues.DATAMGT_MASTERDATA_SERVICE_ADMINISTRATION);
 %>
 <aui:nav-bar cssClass="opencps-toolbar custom-toolbar">
 	<aui:nav id="toolbarContainer" cssClass="nav-display-style-buttons pull-left" >
@@ -205,8 +204,11 @@
 											itemNames="<%= ServiceDisplayTerms.SERVICE_DOMAINCODE %>"
 											itemsEmptyOption="false"
 											emptyOptionLabels="fill-domain-code"	
+											showLabel="false"
+											selectedItems="<%=domainCode%>"
 										>
 										</datamgt:ddr>
+										
 
 									</aui:col>
 									<aui:col width="30" cssClass="search-col">

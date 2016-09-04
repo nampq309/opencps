@@ -59,7 +59,7 @@
 	long dossierTemplateId = dossierTemplate != null ? dossierTemplate.getDossierTemplateId() : 0L;
 	
 	try {
-		totalCount = DossierPartLocalServiceUtil.CountByTempalteId(dossierTemplateId);
+		totalCount = DossierPartLocalServiceUtil.countByTempalteId(dossierTemplateId);
 	} catch (Exception e) {}
 	
 	if (isPermission) {

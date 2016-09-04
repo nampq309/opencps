@@ -1,4 +1,6 @@
 
+<%@page import="org.opencps.backend.util.DossierNoGenerator"%>
+<%@page import="org.opencps.processmgt.util.ProcessMgtUtil"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -65,9 +67,17 @@
 	long serviceProcessId = ParamUtil.getLong(request, ProcessOrderDisplayTerms.SERVICE_PROCESS_ID);
 	long processStepId = ParamUtil.getLong(request, ProcessOrderDisplayTerms.PROCESS_STEP_ID);
 	
+	ProcessWorkflow workflow = ProcessMgtUtil.getProcessWorkflow(processWorkflowId);
+	
 	String actionNote = ParamUtil.getString(request, ProcessOrderDisplayTerms.ACTION_NOTE);
 	String event = ParamUtil.getString(request, ProcessOrderDisplayTerms.EVENT);
 	String receptionNo = ParamUtil.getString(request, ProcessOrderDisplayTerms.RECEPTION_NO);
+	
+	System.out.println(Validator.isNotNull(workflow) ? workflow.getProcessWorkflowId() : "NULLLLLLLLLLLL");
+	
+	if (Validator.isNull(receptionNo) && Validator.isNotNull(workflow) && workflow.getGenerateReceptionNo()) {
+		receptionNo = DossierNoGenerator.genaratorNoReception(workflow.getReceptionNoPattern(), dossierId);
+	}
 	
 	String strReceiveDate = ParamUtil.getString(request, "receiveDate");
 	
@@ -105,6 +115,8 @@
 	}
 	
 	boolean esign = false;
+	
+	long assigerToUserId = ProcessMgtUtil.getAssignUser(processWorkflowId);
 	
 %>
 
@@ -185,60 +197,70 @@
 		value="<%=backURL %>" 
 		type="hidden"
 	/>
-	<aui:select 
-		name="<%=ProcessOrderDisplayTerms.ASSIGN_TO_USER_ID %>" 
-		label="assign-to-next-user" 
-		showEmptyOption="true"
-	>
-		<%
-			List<User> assignUsers = ProcessUtils.getAssignUsers(processStepId, 0);
-			for (User userSel : assignUsers) {
-		%>	
-			<aui:option value="<%= userSel.getUserId() %>"><%= userSel.getFullName() %></aui:option>
-		<%
-			}
-		%>
-	</aui:select>
-	
-	<c:if test="<%=processWorkflow != null &&  processWorkflow.isRequestPayment()%>">
-		<aui:input 
-			name="<%=ProcessOrderDisplayTerms.PAYMENTVALUE %>" 
-			label="requirement-to-pay-charges" 
-			type="text"
-			value="<%=Validator.isNotNull(processWorkflow.getPaymentFee()) ? PaymentRequestGenerator.getTotalPayment(processWorkflow.getPaymentFee(), dossierId) : StringPool.BLANK %>"
-		/>
-	</c:if>
-	
-	<aui:input 
-		name="<%=ProcessOrderDisplayTerms.RECEPTION_NO %>" 
-		label="reception-no" 
-		value="<%=receptionNo %>"
-		type="text"
-	/>
-	
-	<label class="control-label custom-lebel" 
-		for='<portlet:namespace/><%="deadline" %>'
-	>
-		<liferay-ui:message key="return-date"/>
-	</label>
-	
-	<liferay-ui:input-date
-		dayParam="<%=ProcessOrderDisplayTerms.ESTIMATE_DATETIME_DAY %>"
-		disabled="<%= false %>"
-		monthParam="<%=ProcessOrderDisplayTerms.ESTIMATE_DATETIME_MONTH %>"
-		name="<%=ProcessOrderDisplayTerms.ESTIMATE_DATETIME %>"
-		yearParam="<%=ProcessOrderDisplayTerms.ESTIMATE_DATETIME_YEAR %>"
-		formName="fm"
-		autoFocus="<%=true %>"
-		dayValue="<%=spd != null ? spd.getDayOfMoth() : 0 %>"
-		monthValue="<%=spd != null ? spd.getMonth() : 0 %>"
-		yearValue="<%=spd != null ? spd.getYear() : 0 %>"
-		nullable="<%=spd == null ? true: false %>"
-	/>
-	
-	
-	
-	<aui:input name="<%=ProcessOrderDisplayTerms.ACTION_NOTE %>" label="action-note" type="textarea"/>
+	<div class="row-fluid">
+		<div class="span3">
+			<aui:select 
+				name="<%=ProcessOrderDisplayTerms.ASSIGN_TO_USER_ID %>" 
+				label="assign-to-next-user" 
+				showEmptyOption="true"
+			>
+				<%
+					List<User> assignUsers = ProcessUtils.getAssignUsers(processStepId, 0);
+					
+					for (User userSel : assignUsers) {
+				%>	
+					<aui:option selected="<%= assigerToUserId == userSel.getUserId() ? true : false  %>" value="<%= userSel.getUserId() %>"><%= userSel.getFullName() %></aui:option>
+				<%
+					}
+				%>
+			</aui:select>
+		</div>
+		<div class="span3">
+			<c:if test="<%=processWorkflow != null &&  processWorkflow.isRequestPayment()%>">
+				<aui:input 
+					name="<%=ProcessOrderDisplayTerms.PAYMENTVALUE %>" 
+					label="requirement-to-pay-charges" 
+					type="text"
+					value="<%=Validator.isNotNull(processWorkflow.getPaymentFee()) ? PaymentRequestGenerator.getTotalPayment(processWorkflow.getPaymentFee(), dossierId) : StringPool.BLANK %>"
+				/>
+			</c:if>
+		
+		</div>
+		<div class="span3">
+			<aui:input 
+				name="<%=ProcessOrderDisplayTerms.RECEPTION_NO %>" 
+				label="reception-no" 
+				value="<%=receptionNo %>"
+				type="text"
+			/>
+		</div>
+		
+		<div class="span3">
+			<label class="control-label custom-lebel"  for='<portlet:namespace/><%="deadline" %>'>
+				<liferay-ui:message key="return-date"/>
+			</label>
+		
+			<liferay-ui:input-date
+				dayParam="<%=ProcessOrderDisplayTerms.ESTIMATE_DATETIME_DAY %>"
+				disabled="<%= false %>"
+				monthParam="<%=ProcessOrderDisplayTerms.ESTIMATE_DATETIME_MONTH %>"
+				name="<%=ProcessOrderDisplayTerms.ESTIMATE_DATETIME %>"
+				yearParam="<%=ProcessOrderDisplayTerms.ESTIMATE_DATETIME_YEAR %>"
+				formName="fm"
+				autoFocus="<%=true %>"
+				dayValue="<%=spd != null ? spd.getDayOfMoth() : 0 %>"
+				monthValue="<%=spd != null ? spd.getMonth() : 0 %>"
+				yearValue="<%=spd != null ? spd.getYear() : 0 %>"
+				nullable="<%=spd == null ? true: false %>"
+			/>
+			
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<aui:input name="<%=ProcessOrderDisplayTerms.ACTION_NOTE %>" label="action-note" type="textarea"/>
+		</div>
+	</div>
 	
 	<c:if test="<%=workflowOutputs != null && !workflowOutputs.isEmpty() %>">
 	

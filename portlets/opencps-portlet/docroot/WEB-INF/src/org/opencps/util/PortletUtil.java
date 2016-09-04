@@ -891,6 +891,21 @@ public class PortletUtil {
 
 		return properties;
 	}
+	
+	
+	public static String intToString(long number, int stringLength) {
+
+		int numberOfDigits = String.valueOf(number).length();
+		int numberOfLeadingZeroes = stringLength - numberOfDigits;
+		StringBuilder sb = new StringBuilder();
+		if (numberOfLeadingZeroes > 0) {
+			for (int i = 0; i < numberOfLeadingZeroes; i++) {
+				sb.append("0");
+			}
+		}
+		sb.append(number);
+		return sb.toString();
+	}
 
 	private static Log _log =
 		LogFactoryUtil.getLog(PortletUtil.class.getName());
