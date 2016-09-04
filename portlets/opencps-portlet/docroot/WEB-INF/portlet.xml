@@ -23,7 +23,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_1</resource-bundle>
+		<resource-bundle>content.Language_1_vi</resource-bundle>
 		<portlet-info>
 			<title>Data Management</title>
 			<short-title>Data Management</short-title>
@@ -68,7 +68,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_2</resource-bundle>
+		<resource-bundle>content.Language_2_vi</resource-bundle>
 		<portlet-info>
 			<title>User Management</title>
 			<short-title>User Management</short-title>
@@ -106,7 +106,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_3</resource-bundle>
+		<resource-bundle>content.Language_3_vi</resource-bundle>
 		<portlet-info>
 			<title>User Profie</title>
 			<short-title>User Profie</short-title>
@@ -144,7 +144,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_4</resource-bundle>
+		<resource-bundle>content.Language_4_vi</resource-bundle>
 		<portlet-info>
 			<title>User Profie</title>
 			<short-title>User Profie</short-title>
@@ -186,7 +186,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_5</resource-bundle>
+		<resource-bundle>content.Language_5_vi</resource-bundle>
 		<portlet-info>
 			<title>Account Registration</title>
 			<short-title>Account Registration</short-title>
@@ -224,7 +224,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_6</resource-bundle>
+		<resource-bundle>content.Language_6_vi</resource-bundle>
 		<portlet-info>
 			<title>Account Profile</title>
 			<short-title>Account Profile</short-title>
@@ -262,7 +262,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_8</resource-bundle>
+		<resource-bundle>content.Language_8_vi</resource-bundle>
 		<portlet-info>
 			<title>Account Management</title>
 			<short-title>Account Management</short-title>
@@ -300,7 +300,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_9</resource-bundle>
+		<resource-bundle>content.Language_9_vi</resource-bundle>
 		<portlet-info>
 			<title>Service Management</title>
 			<short-title>Service Management</short-title>
@@ -338,7 +338,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_10</resource-bundle>
+		<resource-bundle>content.Language_10_vi</resource-bundle>
 		<portlet-info>
 			<title>Service Directory</title>
 			<short-title>Service Directory</short-title>
@@ -376,7 +376,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_11</resource-bundle>
+		<resource-bundle>content.Language_11_vi</resource-bundle>
 		<portlet-info>
 			<title>Service Menu</title>
 			<short-title>Service Menu</short-title>
@@ -414,7 +414,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_15</resource-bundle>
+		<resource-bundle>content.Language_15_vi</resource-bundle>
 		<portlet-info>
 			<title>Process Admin Management</title>
 			<short-title>Process Admin Management</short-title>
@@ -460,7 +460,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_16</resource-bundle>
+		<resource-bundle>content.Language_16_vi</resource-bundle>
 		<portlet-info>
 			<title>Dossier Process Order Management</title>
 			<short-title>Dossier Process Order Management</short-title>
@@ -501,7 +501,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_17</resource-bundle>
+		<resource-bundle>content.Language_17_vi</resource-bundle>
 		<portlet-info>
 			<title>Process Order Menu</title>
 			<short-title>Process Order Menu</short-title>
@@ -542,7 +542,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_18</resource-bundle>
+		<resource-bundle>content.Language_18_vi</resource-bundle>
 		<portlet-info>
 			<title>Dossier BackOffice Management</title>
 			<short-title>Dossier BackOffice Management</short-title>
@@ -580,7 +580,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_12</resource-bundle>
+		<resource-bundle>content.Language_12_vi</resource-bundle>
 		<portlet-info>
 			<title>Dossier Admin Management</title>
 			<short-title>Dossier Admin Management</short-title>
@@ -626,7 +626,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_13</resource-bundle>
+		<resource-bundle>content.Language_13_vi</resource-bundle>
 		<portlet-info>
 			<title>Dossier FrontOffice Management</title>
 			<short-title>Dossier FrontOffice Management</short-title>
@@ -664,7 +664,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_14</resource-bundle>
+		<resource-bundle>content.Language_14_vi</resource-bundle>
 		<portlet-info>
 			<title>Dossier State Menu</title>
 			<short-title>Dossier State Menu</short-title>
@@ -708,7 +708,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_19</resource-bundle>
+		<resource-bundle>content.Language_19_vi</resource-bundle>
 		<portlet-info>
 			<title>Dossier FrontOffice Monitoring</title>
 			<short-title>Dossier FrontOffice Monitoring</short-title>
@@ -747,7 +747,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_20</resource-bundle>
+		<resource-bundle>content.Language_20_vi</resource-bundle>
 		<portlet-info>
 			<title>Payment FrontOffice</title>
 			<short-title>Payment FrontOffice</short-title>
@@ -786,7 +786,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_21</resource-bundle>
+		<resource-bundle>content.Language_21_vi</resource-bundle>
 		<portlet-info>
 			<title>Payment Config</title>
 			<short-title>Payment Config</short-title>
@@ -825,7 +825,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content.Language_22</resource-bundle>
+		<resource-bundle>content.Language_22_vi</resource-bundle>
 		<portlet-info>
 			<title>Payment Backoffice</title>
 			<short-title>Payment Backoffice</short-title>
@@ -863,7 +863,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-		<resource-bundle>content.Language_24</resource-bundle>
+		<resource-bundle>content.Language_24_vi</resource-bundle>
 		<portlet-info>
 			<title>Log Mornitoring</title>
 			<short-title>Log Mornitoring</short-title>
@@ -901,7 +901,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-		<resource-bundle>content.Language_25</resource-bundle>
+		<resource-bundle>content.Language_25_vi</resource-bundle>
 		<portlet-info>
 			<title>Dossier Top List</title>
 			<short-title>Dossier Top List</short-title>
@@ -939,7 +939,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-		<resource-bundle>content.Language_26</resource-bundle>
+		<resource-bundle>content.Language_26_vi</resource-bundle>
 		<portlet-info>
 			<title>submit-instruction</title>
 			<short-title>26</short-title>
