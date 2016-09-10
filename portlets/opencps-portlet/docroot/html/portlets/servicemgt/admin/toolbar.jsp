@@ -96,8 +96,13 @@
 				</portlet:renderURL>
 							
 				<c:if test="<%= ServiceTemplatePermission.contains(permissionChecker, scopeGroupId, ActionKeys.ADD_TEMPLATE) %>">
-					
-					<aui:button 
+					<aui:nav-item 
+                                id="addServiceDomain" 
+                                label="add-domain" 
+                                iconCssClass="icon-plus"  
+                                href="<%= \"javascript:\" + renderResponse.getNamespace() + \"showPopup('\" + editDomainURL +\"');\" %>"
+                    />
+					<%-- <aui:button 
 						icon="icon-plus" 
 						href="<%=
 								\"javascript:\" +  \"openDialog('\" + 
@@ -108,7 +113,7 @@
 							%>"
 						cssClass="action-button" 
 						value="add-domain"
-					/>
+					/> --%>
 				</c:if>
 			</c:when>
 			
@@ -120,8 +125,13 @@
 				</portlet:renderURL>
 							
 				<c:if test="<%= ServiceTemplatePermission.contains(permissionChecker, scopeGroupId, ActionKeys.ADD_TEMPLATE) %>">
-				
-					<aui:button 
+				    <aui:nav-item 
+                                id="addServiceAdmin" 
+                                label="add-administration" 
+                                iconCssClass="icon-plus"  
+                                href="<%= \"javascript:\" + renderResponse.getNamespace() + \"showPopup('\" + editServiceAdministrationURL +\"');\" %>"
+                    />
+					<%-- <aui:button 
 						icon="icon-plus" 
 						href="<%=
 								\"javascript:\" +  \"openDialog('\" + 
@@ -132,7 +142,7 @@
 							%>"
 						cssClass="action-button" 
 						value="add-administration"
-					/>
+					/> --%>
 				</c:if>
 			</c:when>
 			
@@ -234,7 +244,21 @@
 		</div>
 	</aui:nav-bar-search>
 </aui:nav-bar>
-
+<aui:script>
+    Liferay.provide(window, '<portlet:namespace />showPopup', function(url){
+        Liferay.Util.openWindow({
+            dialog : {
+                centered : true,
+                height : 800,
+                modal : true,
+                width : 800
+            },
+            id : '<portlet:namespace/>dialog',
+            title : '',
+            uri : url
+        });
+    });
+</aui:script>
 
 <%!
 	private Log _log = LogFactoryUtil.getLog("html.portlets.servicemgt.admin.toolbar.jsp");
