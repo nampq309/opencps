@@ -74,6 +74,9 @@ public class SyncFromBackOffice {
 			syncDLFileEntries = analyzeDossierFile.getSyncDLFileEntries();
 			data = analyzeDossierFile.getData();
 		}
+		
+		System.out.println("########################################################" +
+			"syncFromBackOfficeMsgBody.getReceptionNo() " + syncFromBackOfficeMsgBody.getReceptionNo());
 
 		DossierLocalServiceUtil.syncDossierStatus(
 			syncFromBackOfficeMsgBody.getOid(),
