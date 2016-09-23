@@ -141,7 +141,7 @@
 	</aui:row>
 	<aui:row>
 		<aui:col width="50">
-			<aui:select name="administrationCode" cssClass="submit-online input100">
+			<aui:select name="administrationCode" label="administration-name" cssClass="submit-online input100">
 				<%
 					if(listAdmin!=null && !listAdmin.isEmpty()){
 						for(DictItem d : listAdmin){
