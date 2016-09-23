@@ -60,7 +60,7 @@
 	>
 	<portlet:param name="mvcPath" value="/html/portlets/dossiermgt/submit/dossier_submit_online.jsp"/>
 	<portlet:param name="serviceinfoId" value="<%=String.valueOf(serviceinfoId) %>"/>
-	<portlet:param name="backURL" value="<%=backURL %>"/>
+	<%-- <portlet:param name="backURL" value="<%=backURL %>"/> --%>
 </liferay-portlet:renderURL>
 
 

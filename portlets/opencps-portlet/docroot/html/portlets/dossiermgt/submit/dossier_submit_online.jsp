@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 %>
-<%@page import="sun.print.resources.serviceui_zh_CN"%>
+<%-- <%@page import="sun.print.resources.serviceui_zh_CN"%> --%>
 <%@page import="javax.validation.Valid"%>
 <%@page import="javax.portlet.PortletRequest"%>
 <%@page import="com.liferay.portlet.PortletURLFactoryUtil"%>
