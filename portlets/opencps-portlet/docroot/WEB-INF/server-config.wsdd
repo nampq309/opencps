@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 
 <deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
 	<globalConfiguration>
@@ -32,4 +32,128 @@
 			<handler type="LocalResponder" />
 		</responseFlow>
 	</transport>
+	<service name="Plugin_api_ApiServiceService" provider="java:RPC" style="rpc" use="encoded">
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addDossierFile" qname="operNS:addDossierFile" returnQName="addDossierFileReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dossierfile" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getByoid" qname="operNS:getByoid" returnQName="getByoidReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getByoid" qname="operNS:getByoid" returnQName="getByoidReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="filetype" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="nextStep" qname="operNS:nextStep" returnQName="nextStepReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="actioncode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="nextStep" qname="operNS:nextStep" returnQName="nextStepReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="actioncode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="actionnote" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchDossierByDS_RD_SN_U" qname="operNS:searchDossierByDS_RD_SN_U" returnQName="searchDossierByDS_RD_SN_UReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dossierstatus" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serviceno" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="fromdate" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="todate" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchDossierByProcessStepAndUser" qname="operNS:searchDossierByProcessStepAndUser" returnQName="searchDossierByProcessStepAndUserReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="processno" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="stepno" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchDossierByUserAssignProcessOrder" qname="operNS:searchDossierByUserAssignProcessOrder" returnQName="searchDossierByUserAssignProcessOrderReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="addDossierFile getByoid nextStep searchDossierByDS_RD_SN_U searchDossierByProcessStepAndUser searchDossierByUserAssignProcessOrder" />
+		<parameter name="className" value="org.opencps.api.service.http.ApiServiceServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="ApiServiceServiceSoap" />
+		<parameter name="wsdlServiceElement" value="ApiServiceServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_api_ApiServiceService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.api.opencps.org" />
+	</service>
+	<service name="Plugin_datamgt_DictCollectionService" provider="java:RPC" style="rpc" use="encoded">
+		<typeMapping xmlns:ns="http://model.datamgt.opencps.org" qname="ns:DictCollectionSoap" type="java:org.opencps.datamgt.model.DictCollectionSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="http://model.datamgt.opencps.org" name="getDictCollection" qname="operNS:getDictCollection" returnQName="getDictCollectionReturn" returnType="rtns:DictCollectionSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="groupId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="collectionCode" type="tns:string"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="getDictCollection" />
+		<parameter name="className" value="org.opencps.datamgt.service.http.DictCollectionServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.datamgt.opencps.org" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DictCollectionServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DictCollectionServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_datamgt_DictCollectionService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.datamgt.opencps.org" />
+	</service>
+	<service name="Plugin_datamgt_DictItemService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.datamgt.opencps.org" xmlns:cmp-ns="http://model.datamgt.opencps.org" qname="ns:ArrayOf_tns2_DictItemSoap" type="java:org.opencps.datamgt.model.DictItemSoap[]" innerType="cmp-ns:DictItemSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.datamgt.opencps.org" qname="ns:DictItemSoap" type="java:org.opencps.datamgt.model.DictItemSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="http://model.datamgt.opencps.org" name="addDictItem" qname="operNS:addDictItem" returnQName="addDictItemReturn" returnType="rtns:DictItemSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictCollectionCode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictItemCode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictItemName" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="parentDictItemCode" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" name="deleteDictItem" qname="operNS:deleteDictItem" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictCollectionCode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictItemCode" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="http://model.datamgt.opencps.org" name="getDictItemInuseByItemCode" qname="operNS:getDictItemInuseByItemCode" returnQName="getDictItemInuseByItemCodeReturn" returnType="rtns:DictItemSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictCollectionId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="itemCode" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="http://model.datamgt.opencps.org" name="getDictItem" qname="operNS:getDictItem" returnQName="getDictItemReturn" returnType="rtns:DictItemSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictItemId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="urn:http.service.datamgt.opencps.org" xmlns:tns2="http://model.datamgt.opencps.org" name="getDictItemsByDictCollectionId" qname="operNS:getDictItemsByDictCollectionId" returnQName="getDictItemsByDictCollectionIdReturn" returnType="rtns:ArrayOf_tns2_DictItemSoap" returnItemType="tns2:DictItemSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictCollectionId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDictItemsByItemCodeDataSource" qname="operNS:getDictItemsByItemCodeDataSource" returnQName="getDictItemsByItemCodeDataSourceReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="collectionCode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="itemCode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="groupId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="urn:http.service.datamgt.opencps.org" xmlns:tns2="http://model.datamgt.opencps.org" name="getDictItemsByParentItemId" qname="operNS:getDictItemsByParentItemId" returnQName="getDictItemsByParentItemIdReturn" returnType="rtns:ArrayOf_tns2_DictItemSoap" returnItemType="tns2:DictItemSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="parentItemId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDictItemsInUseByDictCollectionIdAndParentItemIdDataSource" qname="operNS:getDictItemsInUseByDictCollectionIdAndParentItemIdDataSource" returnQName="getDictItemsInUseByDictCollectionIdAndParentItemIdDataSourceReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictCollectionId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="parentItemId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="urn:http.service.datamgt.opencps.org" xmlns:tns2="http://model.datamgt.opencps.org" name="getDictItemsInUseByDictCollectionIdAndParentItemId" qname="operNS:getDictItemsInUseByDictCollectionIdAndParentItemId" returnQName="getDictItemsInUseByDictCollectionIdAndParentItemIdReturn" returnType="rtns:ArrayOf_tns2_DictItemSoap" returnItemType="tns2:DictItemSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictCollectionId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="parentItemId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.datamgt.opencps.org" xmlns:rtns="http://model.datamgt.opencps.org" name="updateDictItem" qname="operNS:updateDictItem" returnQName="updateDictItemReturn" returnType="rtns:DictItemSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictCollectionCode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictItemCode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dictItemName" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="parentDictItemCode" type="tns:string"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="addDictItem deleteDictItem getDictItem getDictItemInuseByItemCode getDictItemsByDictCollectionId getDictItemsByItemCodeDataSource getDictItemsByParentItemId getDictItemsInUseByDictCollectionIdAndParentItemId getDictItemsInUseByDictCollectionIdAndParentItemIdDataSource updateDictItem" />
+		<parameter name="className" value="org.opencps.datamgt.service.http.DictItemServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.datamgt.opencps.org,urn:http.service.datamgt.opencps.org" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DictItemServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DictItemServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_datamgt_DictItemService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.datamgt.opencps.org" />
+	</service>
+	<service name="Plugin_datamgt_DictVersionService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.opencps.datamgt.service.http.DictVersionServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DictVersionServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DictVersionServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_datamgt_DictVersionService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.datamgt.opencps.org" />
+	</service>
 </deployment>

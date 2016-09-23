@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="Plugin_api_ApiServiceService" provider="java:RPC" style="rpc" use="encoded">
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addDossierFile" qname="operNS:addDossierFile" returnQName="addDossierFileReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dossierfile" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getByoid" qname="operNS:getByoid" returnQName="getByoidReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getByoid" qname="operNS:getByoid" returnQName="getByoidReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="filetype" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="nextStep" qname="operNS:nextStep" returnQName="nextStepReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="actioncode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="nextStep" qname="operNS:nextStep" returnQName="nextStepReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="oid" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="actioncode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="actionnote" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchDossierByDS_RD_SN_U" qname="operNS:searchDossierByDS_RD_SN_U" returnQName="searchDossierByDS_RD_SN_UReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dossierstatus" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serviceno" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="fromdate" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="todate" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchDossierByProcessStepAndUser" qname="operNS:searchDossierByProcessStepAndUser" returnQName="searchDossierByProcessStepAndUserReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="processno" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="stepno" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.api.opencps.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchDossierByUserAssignProcessOrder" qname="operNS:searchDossierByUserAssignProcessOrder" returnQName="searchDossierByUserAssignProcessOrderReturn" returnType="rtns:string" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="username" type="tns:string"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="addDossierFile getByoid nextStep searchDossierByDS_RD_SN_U searchDossierByProcessStepAndUser searchDossierByUserAssignProcessOrder" />
+		<parameter name="className" value="org.opencps.api.service.http.ApiServiceServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="ApiServiceServiceSoap" />
+		<parameter name="wsdlServiceElement" value="ApiServiceServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_api_ApiServiceService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.api.opencps.org" />
+	</service>
+</deployment>
