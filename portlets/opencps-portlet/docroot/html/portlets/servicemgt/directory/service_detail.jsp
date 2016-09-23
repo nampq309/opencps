@@ -47,7 +47,7 @@
 	>
 	<portlet:param name="mvcPath" value="/html/portlets/dossiermgt/submit/dossier_submit_online.jsp"/>
 	<portlet:param name="serviceinfoId" value="<%=String.valueOf(serviceinfoId) %>"/>
-	<portlet:param name="backURL" value="<%=backURL %>"/>
+	<%-- <portlet:param name="backURL" value="<%=backURL %>"/> --%>
 </liferay-portlet:renderURL>
 
 
@@ -189,6 +189,7 @@
 				</tr>
 				<tr>
 					<td class="col-left" colspan="2">
+                        <%-- <aui:button href="<%= serviceInfo.getOnlineUrl() %>" cssClass="des-sub-button radius20" value="online-url-button"></aui:button> --%>
 						<aui:button href="<%= renderToSubmitOnline.toString() %>" cssClass="des-sub-button radius20" value="online-url-button"></aui:button>
 					</td>
 				</tr>

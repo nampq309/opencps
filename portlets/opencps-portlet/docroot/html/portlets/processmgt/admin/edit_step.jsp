@@ -153,10 +153,14 @@
 	
 	DictItem itemStatus = null;
 	
-	if(step != null) {
-		itemStatus = PortletUtil.getDictItem("DOSSIER_STATUS", step.getDossierStatus(), scopeGroupId);
-		dictStatusId = itemStatus.getDictItemId();
-	}
+	try {
+	    if(step != null) {
+    		itemStatus = PortletUtil.getDictItem("DOSSIER_STATUS", step.getDossierStatus(), scopeGroupId);
+    		if (itemStatus != null) dictStatusId = itemStatus.getDictItemId();
+    	}  
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 %>
 
 <portlet:actionURL name="updateProcessStep" var="updateProcessStepURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString()%>"/>

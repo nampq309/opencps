@@ -41,7 +41,8 @@
 	List<WorkingUnit> workingUnits = new ArrayList<WorkingUnit>();
 	
 	try{
-		workingUnits = WorkingUnitLocalServiceUtil.getWorkingUnits(scopeGroupId, 0);
+		//workingUnits = WorkingUnitLocalServiceUtil.getWorkingUnits(scopeGroupId, 0);
+		workingUnits = WorkingUnitLocalServiceUtil.getWorkingUnit(scopeGroupId, true);
 		
 	}catch(Exception e){
 		_log.error(e);
