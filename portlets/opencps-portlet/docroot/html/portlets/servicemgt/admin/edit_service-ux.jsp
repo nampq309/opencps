@@ -252,8 +252,7 @@
 	
 	<aui:row>
 		<aui:col cssClass="center pd_t20">
-			<aui:button type="submit" value="submit" cssClass="radius20 width180 pd_t20 height40"/>
+			<aui:button type="submit" value="submit-service" cssClass="radius20 width180 pd_t20 height40"/>
 		</aui:col>
 	</aui:row>
 </aui:form>
-
