@@ -88,6 +88,6 @@
 		<aui:input type="hidden" name="<%=DictItemDisplayTerms.PARENTITEM_ID %>" value="<%=String.valueOf(dictItem.getDictItemId()) %>"></aui:input>
 	</c:if>
 	
-	<aui:button type="submit" name="submit" value="submit"/>
+	<aui:button type="submit" name="submit" value="agree"/>
 	<aui:button type="reset" value="clear"/>
 </aui:form>
