@@ -61,7 +61,7 @@
 	
 			<liferay-ui:icon
 			 	image="publish"
-			 	cssClass="search-container-action fa publish" 
+			 	cssClass="search-container-action fa activate" 
 			 	message="approve"
 				url="<%= updateStatusURL.toString()%>" 
 			/>
