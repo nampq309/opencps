@@ -83,7 +83,9 @@
 		
 	}
 %>
-
+<liferay-portlet:renderURL var="backDossierList">
+    <portlet:param name="mvcPath" value="/html/portlets/dossiermgt/frontoffice/frontofficedossierlist.jsp"/>
+</liferay-portlet:renderURL>
 <c:choose>
 	<c:when test="<%=DossierPermission.contains(permissionChecker, scopeGroupId, ActionKeys.UPDATE) && Validator.isNotNull(accountType) &&
 				(accountType.equals(PortletPropsValues.USERMGT_USERGROUP_NAME_CITIZEN) ||
@@ -120,6 +122,7 @@
 									<portlet:param name="<%=DossierDisplayTerms.DOSSIER_ID %>" value="<%=String.valueOf(dossier.getDossierId()) %>"/>
 									<portlet:param name="<%=DossierDisplayTerms.DOSSIER_STATUS %>" value="<%=String.valueOf(PortletConstants.DOSSIER_STATUS_NEW) %>"/>
 									<portlet:param name="backURL" value="<%=currentURL %>"/>
+                                    <portlet:param name="redirectURL" value="<%=backDossierList %>"/>
 								</portlet:actionURL> 
 						 		<liferay-ui:icon
 						 			cssClass="search-container-action fa forward"
@@ -134,6 +137,7 @@
 									<portlet:param name="<%=DossierDisplayTerms.DOSSIER_ID %>" value="<%=String.valueOf(dossier.getDossierId()) %>"/>
 									<portlet:param name="<%=DossierDisplayTerms.DOSSIER_STATUS %>" value="<%=String.valueOf(PortletConstants.DOSSIER_STATUS_WAITING) %>"/>
 									<portlet:param name="backURL" value="<%=currentURL %>"/>
+                                    <portlet:param name="redirectURL" value="<%=backDossierList %>"/>
 								</portlet:actionURL> 
 						 		<liferay-ui:icon
 						 			cssClass="search-container-action fa forward"
@@ -143,10 +147,6 @@
 						 		/> 
 					 		</c:if>
 					 	</c:if>
-					 	
-					 	<liferay-portlet:renderURL var="backDossierList">
-					 		<portlet:param name="mvcPath" value="/html/portlets/dossiermgt/frontoffice/frontofficedossierlist.jsp"/>
-					 	</liferay-portlet:renderURL>
 					 	
 					 	<liferay-ui:icon
 								image="back"
