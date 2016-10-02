@@ -1,4 +1,4 @@
-<div class="opencps_home" id="main-content" role="main">
+<div class="home-ux-layout" id="main-content" role="main">
 	<div class="portlet-layout row-fluid">
 		<div class="portlet-column portlet-column-only span12 home-screen" id="column-1">
 			$processor.processColumn("column-1", "portlet-column-content portlet-column-content-only")
