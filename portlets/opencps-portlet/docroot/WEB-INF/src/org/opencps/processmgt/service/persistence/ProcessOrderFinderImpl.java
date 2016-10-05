@@ -650,10 +650,8 @@ public class ProcessOrderFinderImpl extends BasePersistenceImpl<ProcessOrder>
 					.add(processStepId);
 			}
 
-			qPos
-				.add(loginUserId);
-			qPos
-				.add(assignToUserId);
+			qPos.add(loginUserId);
+			//qPos.add(assignToUserId);
 
 			Iterator<Object[]> itr = (Iterator<Object[]>) QueryUtil
 				.list(q, getDialect(), start, end).iterator();

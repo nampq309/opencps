@@ -234,9 +234,7 @@
 					opencps_stepallowance.roleId = role.roleId
             ) AS stepallowance
             ON
-            	stepallowance.processStepId = opencps_processstep.processStepId
-            OR
-				opencps_processorder.assignToUserId = ?
+            	stepallowance.processStepId = opencps_processstep.processStepId            
 			ORDER BY opencps_processorder.modifiedDate DESC, opencps_processorder.actionDatetime DESC
 		]]>
 	</sql>
