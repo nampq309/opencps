@@ -8,7 +8,7 @@
 }
 
 .opencps-theme.ux header.opencps-header-wrapper.guest .logo{
-	background: rgba(0, 0, 0, 0) url("../images/custom/logo.png") no-repeat scroll left center;
+	background: rgba(0, 0, 0, 0) url("../images/custom/logosct.png") no-repeat scroll left center;
     height: 46px;
     padding: 38px 0;
     width: 411px;
@@ -110,11 +110,11 @@
 }
 
 .opencps-theme.ux header.opencps-header-wrapper.member .logo{
-	background: rgba(0, 0, 0, 0) url("../images/custom/logo_small.png") no-repeat scroll left center;
+	background: rgba(0, 0, 0, 0) url("../images/custom/logo_small_sctbp.png") no-repeat scroll left center;
     float: left;
     height: 46px;
     padding: 12px 0;
-    width: 184px;
+    width: 260px;
 }
 
 .opencps-theme.ux header.opencps-header-wrapper.member .hotline{

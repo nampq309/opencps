@@ -38,7 +38,7 @@
 	            <a href="$site_default_url" title="#language_format ("go-to-x", [$site_name])" class="logo"></a>
 	            <div class="right-panel">
 		            <div class="hotline">
-		                #language ("hotline-key")<br/><span>1900 0311</span>
+		                #language ("hotline-key")<br/><span>0651 3870235</span>
 		            </div>
 		            <a href="$sign_in_url" class="signin">#language ("login-key")</a>
 		            <a href="$register_url" class="register">#language ("register-key")</a>
@@ -54,7 +54,7 @@
 	            <a href="" class="logo"></a>
 	            <div class="right-panel">
 		            <div class="hotline">
-		                #language ("hotline-key")<br/><span>1900 0311</span>
+		                #language ("hotline-key")<br/><span>0651 3870235</span>
 		            </div>
 				</div>
 				<div class="nav-container-small">
@@ -90,7 +90,7 @@
 	<footer>
 		<div class="content">
             <div class="span3 logo">
-                <p>Copyright © 2016 - OpenCPS v1.5</p>
+                <p>Ecomviet DVC 1.0</p>
             </div>
             <div class="span2">
                 <p class="title">#language ("danhmuc-key")</p>
@@ -109,23 +109,10 @@
             </div>
             <div class="span2">
                 <p class="title">#language ("lienhehotro-key")</p>
-                <p class="address">#language ("nhavapa-key")<br/>#language ("tonthatthuyet-street-key")</p>
-                <p class="mail">hotro@opencps.vn</p>
-                <p class="phone">1900 0311</p>
-            </div>
-            <div class="span3">
-                <p class="title">#language ("lienketwebsite-key")</p>
-                <div class="select">
-                    <select onchange="location = this.options[this.selectedIndex].value;">
-                        <option>#language ("chon-lienketwebsite-key")</option>
-                        <option value="http://opencps.org.vn/">Trang Cộng đồng OpenCPS</option>
-                        <option value="http://fds.vn/">Cty cổ phần phát triển và dịch vụ nguồn mở FDS</option>
-                        <option value="http://netnam.com	">Cty cổ phần NETNAM</option>
-                        <option value="http://www.iwayvietnam.com/">Cty cổ phần giải pháp thông tin iWay</option>
-                        <option value="http://www.cmcsoft.com/">Cty cổ phần phần mềm CMC</option>
-                    </select>
-                </div>
-            </div>
+                <p class="address">Sở Công Thương Tỉnh Bình Phước</p>
+                <p class="mail">socongthuong@binhphuoc.gov.vn</p>
+                <p class="phone">0651 3870235</p>
+            </div>            
         </div>
 	</footer>
 

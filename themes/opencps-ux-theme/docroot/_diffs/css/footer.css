@@ -30,11 +30,12 @@
 }
 
 .opencps-theme.ux footer .content .logo {
-    background: rgba(0, 0, 0, 0) url("../images/custom/logo_footer.png") no-repeat scroll 0 0 / 215px 57px;
+    background: rgba(0, 0, 0, 0) url("../images/custom/logo_footersct.png") no-repeat scroll 0 0 / 270px 30px;
     margin-left: 0;
     padding-left: 0;
-    padding-top: 65px;
-    width: 222px;
+    padding-top: 30px;
+    width: 272px;
+    margin-top: 6px;
 }
 
 .opencps-theme.ux footer .content .logo p {
@@ -42,6 +43,7 @@
     font-size: 13px;
     margin-bottom: 0;
     opacity: 0.2;
+    margin-left: 16%;
 }
 
 .opencps-theme.ux footer .content p{
