@@ -589,7 +589,8 @@ public class UserMgtPortlet extends MVCPortlet {
 					MessageKeys.USERMGT_SYSTEM_EXCEPTION_OCCURRED);
 			}
 
-			_log.error(e);
+			e.printStackTrace();
+			_log.error(e.getMessage());
 
 			actionResponse.setRenderParameter(
 				"mvcPath", "/html/portlets/usermgt/admin/edit_employee.jsp");
