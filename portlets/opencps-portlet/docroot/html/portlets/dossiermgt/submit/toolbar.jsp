@@ -38,7 +38,7 @@
 <div class="form-search">
 	<aui:form action="<%= searchURL %>" method="post" name="fm">
 		<aui:row>
-			<aui:col width="25" cssClass="search-col">
+			<%-- <aui:col width="25" cssClass="search-col">
 				<datamgt:ddr
 					depthLevel="1" 
 					dictCollectionCode="GOVERNMENT_AGENCY"
@@ -51,7 +51,7 @@
 				>
 				</datamgt:ddr>
 
-			</aui:col>
+			</aui:col> --%>
 			<aui:col width="25" cssClass="search-col">
 				<datamgt:ddr
 					depthLevel="1" 
