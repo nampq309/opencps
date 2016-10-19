@@ -532,9 +532,6 @@ public class UserMgtPortlet extends MVCPortlet {
 		catch (Exception e) {
 
 			// PortalUtil.copyRequestParameters(actionRequest, actionResponse);
-
-			String returnURL = ParamUtil.getString(actionRequest, "returnURL");
-
 			if (e instanceof EmptyEmployeeEmailException) {
 				SessionErrors.add(
 					actionRequest, EmptyEmployeeEmailException.class);
@@ -583,19 +580,19 @@ public class UserMgtPortlet extends MVCPortlet {
 					actionRequest, DuplicateUserEmailAddressException.class);
 			}
 			else {
-
 				SessionErrors.add(
 					actionRequest,
 					MessageKeys.USERMGT_SYSTEM_EXCEPTION_OCCURRED);
 			}
-
-			e.printStackTrace();
 			_log.error(e.getMessage());
-
-			actionResponse.setRenderParameter(
-				"mvcPath", "/html/portlets/usermgt/admin/edit_employee.jsp");
-			actionResponse.setRenderParameter("backURL", returnURL);
+			e.printStackTrace();
+		} finally {
+		    String returnURL = ParamUtil.getString(actionRequest, "returnURL");
+		    actionResponse.setRenderParameter(
+		            "mvcPath", "/html/portlets/usermgt/admin/edit_employee.jsp");
+		          actionResponse.setRenderParameter("backURL", returnURL);
 		}
+		
 
 	}
 
