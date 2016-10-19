@@ -78,86 +78,121 @@ public class MsgOutBackOffice implements MessageListener {
 			// Check file return
 			for (WorkflowOutput workflowOutput : workflowOutputs) {
 
-				DossierFile dossierFile = null;
-				try {
-					DossierPart dossierPart =
-						DossierPartLocalServiceUtil.getDossierPart(workflowOutput.getDossierPartId());
-					dossierFile =
-						DossierFileLocalServiceUtil.getDossierFileInUse(
-							toBackOffice.getDossierId(),
-							dossierPart.getDossierpartId());
+			    DossierFile dossierFile = null;
+			    try {
+			        DossierPart dossierPart =
+			                DossierPartLocalServiceUtil.getDossierPart(workflowOutput.getDossierPartId());
+			        dossierFile =
+			                DossierFileLocalServiceUtil.getDossierFileInUse(
+			                        toBackOffice.getDossierId(),
+			                        dossierPart.getDossierpartId());
 
-					dossierFile.setSyncStatus(PortletConstants.DOSSIER_FILE_SYNC_STATUS_SYNCSUCCESS);
-					dossierFiles.add(dossierFile);
-				}
-				catch (Exception e) {
-					_log.error(e);
-				}
-
-				
+			        dossierFile.setSyncStatus(PortletConstants.DOSSIER_FILE_SYNC_STATUS_SYNCSUCCESS);
+			        dossierFiles.add(dossierFile);
+			    }
+			    catch (Exception e) {
+			        _log.error(e);
+			    }
 			}
+			/*List<DossierFileMsgBody> lstDossierFileMsgBody =
+      JMSMessageBodyUtil.getDossierFileMsgBody(dossierFiles);
+
+    
+     * JMSContext context = JMSMessageUtil.createProducer(
+     * toBackOffice.getCompanyId(), toBackOffice.getGovAgencyCode(),
+     * true, WebKeys.JMS_QUEUE_OPENCPS_FRONTOFFICE.toLowerCase(),
+     * WebKeys.JMS_QUEUE_OPENCPS_FRONTOFFICE.toLowerCase(),
+     * "remote", "jmscore");
+     
+
+    context =
+      JMSMessageUtil.createHornetqProducer(
+        toBackOffice.getCompanyId(),
+        toBackOffice.getGovAgencyCode(), true,
+        WebKeys.JMS_QUEUE_OPENCPS.toLowerCase(),
+        WebKeys.JMS_QUEUE_OPENCPS.toLowerCase(), "remote",
+        "hornetq");
+
+    _log.info("/////////////////////////Dossifile SIZE " +
+      lstDossierFileMsgBody.size());
+
+    SyncFromBackOfficeMessage syncFromBackoffice =
+      new SyncFromBackOfficeMessage(context);
+
+    SyncFromBackOfficeMsgBody msgBody =
+      new SyncFromBackOfficeMsgBody();
+
+    _log.info("################################## dossier.getReceptionNo()" +
+      dossier.getReceptionNo() +
+      "--Time--" +
+      System.currentTimeMillis());
+    
+    _log.info("################################## toBackOffice.getReceptionNo()" +
+            toBackOffice.getReceptionNo() +
+            "--Time--" +
+            System.currentTimeMillis());
+    
+    
+
+    msgBody.setOid(dossier.getOid());
+    msgBody.setReceptionNo(toBackOffice.getReceptionNo());
+    msgBody.setFinishDatetime(toBackOffice.getFinishDatetime());
+    msgBody.setDossierStatus(toBackOffice.getDossierStatus());
+    msgBody.setLstDossierFileMsgBody(lstDossierFileMsgBody);
+    msgBody.setReceiveDatetime(toBackOffice.getReceiveDatetime());
+    msgBody.setSubmitDateTime(toBackOffice.getSubmitDateTime());
+    msgBody.setEstimateDatetime(toBackOffice.getEstimateDatetime());
+    msgBody.setPaymentFile(toBackOffice.getPaymentFile());
+    msgBody.setActorId(toBackOffice.getActorId());
+    msgBody.setActor(toBackOffice.getActor());
+    msgBody.setActorName(toBackOffice.getActorName());
+    msgBody.setActionInfo(toBackOffice.getActionInfo());
+    msgBody.setMessageInfo(toBackOffice.getMessageInfo());
+    msgBody.setFileGroupId(toBackOffice.getFileGroupId());
+    msgBody.setRequestCommand(toBackOffice.getRequestCommand());
+    syncFromBackoffice.sendMessageByHornetq(msgBody);
+  */
 			List<DossierFileMsgBody> lstDossierFileMsgBody =
-			        JMSMessageBodyUtil.getDossierFileMsgBody(dossierFiles);
+				JMSMessageBodyUtil.getDossierFileMsgBody(dossierFiles);
 
 			/*
 			 * JMSContext context = JMSMessageUtil.createProducer(
 			 * toBackOffice.getCompanyId(), toBackOffice.getGovAgencyCode(),
 			 * true, WebKeys.JMS_QUEUE_OPENCPS_FRONTOFFICE.toLowerCase(),
-			 * WebKeys.JMS_QUEUE_OPENCPS_FRONTOFFICE.toLowerCase(),
-			 * "remote", "jmscore");
+			 * WebKeys.JMS_QUEUE_OPENCPS_FRONTOFFICE.toLowerCase(), "remote",
+			 * "jmscore");
 			 */
 
 			context =
-			        JMSMessageUtil.createHornetqProducer(
-			                toBackOffice.getCompanyId(),
-			                toBackOffice.getGovAgencyCode(), true,
-			                WebKeys.JMS_QUEUE_OPENCPS.toLowerCase(),
-			                WebKeys.JMS_QUEUE_OPENCPS.toLowerCase(), "remote",
-			                "hornetq");
+				JMSMessageUtil.createHornetqProducer(
+					toBackOffice.getCompanyId(),
+					toBackOffice.getGovAgencyCode(), true,
+					WebKeys.JMS_QUEUE_OPENCPS.toLowerCase(),
+					WebKeys.JMS_QUEUE_OPENCPS.toLowerCase(), "remote",
+					"hornetq");
 
-			_log.info("/////////////////////////Dossifile SIZE " +
-			        lstDossierFileMsgBody.size());
+			_log.info(">Dossifile SIZE " + lstDossierFileMsgBody.size());
 
 			SyncFromBackOfficeMessage syncFromBackoffice =
-			        new SyncFromBackOfficeMessage(context);
+				new SyncFromBackOfficeMessage(context);
 
-			SyncFromBackOfficeMsgBody msgBody =
-			        new SyncFromBackOfficeMsgBody();
-
-			_log.info("################################## dossier.getReceptionNo()" +
-			        dossier.getReceptionNo() +
-			        "--Time--" +
-			        System.currentTimeMillis());
-
-			_log.info("################################## toBackOffice.getReceptionNo()" +
-			        toBackOffice.getReceptionNo() +
-			        "--Time--" +
-			        System.currentTimeMillis());
-
-
+			SyncFromBackOfficeMsgBody msgBody = new SyncFromBackOfficeMsgBody();
 
 			msgBody.setOid(dossier.getOid());
-			msgBody.setReceptionNo(toBackOffice.getReceptionNo());
-			msgBody.setFinishDatetime(toBackOffice.getFinishDatetime());
+			msgBody.setReceptionNo(dossier.getReceptionNo());
+			msgBody.setFinishDatetime(dossier.getFinishDatetime());
 			msgBody.setDossierStatus(toBackOffice.getDossierStatus());
 			msgBody.setLstDossierFileMsgBody(lstDossierFileMsgBody);
 			msgBody.setReceiveDatetime(toBackOffice.getReceiveDatetime());
 			msgBody.setSubmitDateTime(toBackOffice.getSubmitDateTime());
 			msgBody.setEstimateDatetime(toBackOffice.getEstimateDatetime());
 			msgBody.setPaymentFile(toBackOffice.getPaymentFile());
-			msgBody.setActorId(toBackOffice.getActorId());
-			msgBody.setActor(toBackOffice.getActor());
-			msgBody.setActorName(toBackOffice.getActorName());
-			msgBody.setActionInfo(toBackOffice.getActionInfo());
-			msgBody.setMessageInfo(toBackOffice.getMessageInfo());
-			msgBody.setFileGroupId(toBackOffice.getFileGroupId());
-			msgBody.setRequestCommand(toBackOffice.getRequestCommand());
-			syncFromBackoffice.sendMessageByHornetq(msgBody);
 
+			syncFromBackoffice.sendMessageByHornetq(msgBody);
 
 		}
 		catch (Exception e) {
-		    _log.error(e);
+			_log.error(e);
 		}
 		finally {
 			if (context != null) {
