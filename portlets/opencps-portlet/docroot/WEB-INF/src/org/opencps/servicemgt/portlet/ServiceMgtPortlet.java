@@ -357,7 +357,9 @@ public class ServiceMgtPortlet extends MVCPortlet {
 				    displayTerms.getAdministrationCode(),
 				    displayTerms.getAdministrationIndex(),
 				    displayTerms.getDomainCode(),
-				    displayTerms.getDomainIndex(), onlineURL,
+				    displayTerms.getDomainIndex(),
+				    displayTerms.getActiveStatus(),
+				    onlineURL,
 				    displayTerms.setFileTemplateIds(actionRequest), serviceContext);
 				
 				// Redirect page
