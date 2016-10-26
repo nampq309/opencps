@@ -255,7 +255,7 @@ public class ServiceInfoLocalServiceImpl
 	    String serviceActors, String serviceResults, String serviceRecords,
 	    String serviceFee, String serviceInstructions,
 	    String administrationCode, String administrationIndex,
-	    String domainCode, String domainIndex, String onlineUrl,
+	    String domainCode, String domainIndex, int activeStatus, String onlineUrl,
 	    long[] fileTemplateIds, ServiceContext context)
 	    throws PortalException, SystemException {
 
@@ -299,6 +299,7 @@ public class ServiceInfoLocalServiceImpl
 		service.setAdministrationIndex(dictItemAdmin.getTreeIndex());
 		service.setDomainCode(domainCode);
 		service.setDomainIndex(dictItemDomain.getTreeIndex());
+		service.setActiveStatus(activeStatus);
 		service.setOnlineUrl(onlineUrl);
 		service.setHasTemplateFiles(hasTemplateFiles);
 
