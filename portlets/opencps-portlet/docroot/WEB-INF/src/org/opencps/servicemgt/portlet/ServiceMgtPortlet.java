@@ -341,6 +341,7 @@ public class ServiceMgtPortlet extends MVCPortlet {
 				// TODO: Validator in here
 				
 				// Update ServiceInfo
+			  _log.info("update ServiceInfo with activeStatus = " + displayTerms.getActiveStatus());
 				ServiceInfoLocalServiceUtil.updateService(
 				    serviceInfoId, displayTerms.getServiceNo(),
 				    displayTerms.getServiceName(), displayTerms.getFullName(),
