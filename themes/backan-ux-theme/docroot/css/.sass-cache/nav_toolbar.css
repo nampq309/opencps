@@ -1,0 +1,40 @@
+.opencps-theme.ux .opencps-toolbar select {
+  border-radius: 20px;
+  height: 41px;
+  padding: 0 20px; }
+
+.opencps-theme.ux .opencps-toolbar button {
+  border-radius: 20px;
+  height: 41px; }
+
+.opencps-theme.ux .opencps-toolbar input[type="text"] {
+  height: 41px; }
+
+.opencps-theme.ux .opencps-toolbar .navbar-inner {
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0; }
+
+.opencps-theme.ux .opencps-toolbar div.search-input.input-keyword {
+  display: flex; }
+
+.opencps-theme.ux .opencps-toolbar .search-input.input-keyword input[type="text"] {
+  border-radius: 20px 0 0 20px;
+  padding-left: 25px;
+  float: left;
+  flex-grow: 1; }
+
+.opencps-theme.ux .opencps-toolbar .search-input.input-keyword button {
+  background: #0074cd none repeat scroll 0 0;
+  border: 1px solid #0074cd;
+  border-radius: 0 20px 20px 0;
+  box-shadow: none;
+  color: #fff;
+  margin-top: 0;
+  text-shadow: none;
+  float: left;
+  width: 56px; }
+

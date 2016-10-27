@@ -1,0 +1,19 @@
+.dialog-iframe-popup .input100 {
+  width: 100%; }
+
+.opencps-dialog {
+  border-radius: 0 !important;
+  outline: 10px solid rgba(255, 255, 255, 0.4) !important;
+  border: 0;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.modal-header {
+  font-family: 'Roboto-Bold';
+  font-size: 20px;
+  background-color: #0271c7;
+  color: #fff;
+  text-transform: uppercase;
+  min-height: 30px;
+  padding: 0 30px; }
+

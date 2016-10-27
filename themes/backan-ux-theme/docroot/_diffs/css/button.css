@@ -1,0 +1,11 @@
+.opencps-theme.ux .btn {
+	background: #0090ff;
+	border: none;
+	color: #fff;
+	text-shadow: none;
+}
+
+.opencps-theme.ux .success-field:FOCUS {
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px
+		rgba(82, 168, 236, 0.6) !Important;
+}

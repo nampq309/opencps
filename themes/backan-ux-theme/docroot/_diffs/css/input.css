@@ -1,0 +1,36 @@
+.opencps-theme.ux select {
+	background: transparent none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	outline: none;
+	line-height: 20px;
+	border: 1px solid #e1e1e1;
+	margin-bottom: 0
+}
+
+.opencps-theme.ux select:only-child {
+	background: white
+		url("../images/custom/nav_toolbar/select_arrow_gray.png") no-repeat
+		scroll 97% center;
+	border: 1px solid #e1e1e1 !important;
+	overflow: hidden;
+}
+
+.opencps-theme.ux select:nth-child(2n) {
+	background: white
+		url("../images/custom/nav_toolbar/select_arrow_gray.png") no-repeat
+		scroll 97% center;
+	border: 1px solid #e1e1e1 !important;
+	overflow: hidden;
+}
+
+.opencps-theme.ux .input100 {
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-khtml-box-sizing: border-box;
+	box-sizing: border-box;
+	min-height: 30px;
+	max-width: 100% !important;
+	width: 100%;
+}

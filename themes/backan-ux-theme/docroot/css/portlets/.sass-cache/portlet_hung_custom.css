@@ -1,0 +1,475 @@
+/*------------------------------
+		THU TUC HANH CHINH
+------------------------------*/
+/*---------- Left Col - PortletID 11 ----------*/
+/*--- Portlet ---*/
+.opencps-theme .portlet-boundary_11_WAR_opencpsportlet_ .portlet {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin-bottom: 30px; }
+
+/* Header */
+.opencps-theme .portlet-boundary_11_WAR_opencpsportlet_ .portlet header {
+  border-bottom: 1px solid #e1e1e1;
+  height: 50px;
+  padding-left: 25px; }
+
+.opencps-theme .portlet-boundary_11_WAR_opencpsportlet_ .portlet header h1 {
+  line-height: 50px;
+  font-size: 16px;
+  font-family: 'Roboto-Bold';
+  text-transform: uppercase;
+  margin: 0;
+  /* padding-left: 25px;
+  background: url(../images/frame_1/icon_ngoinha_blue.png) 0 center no-repeat; */ }
+
+/* Content */
+.opencps-theme .portlet-boundary_11_WAR_opencpsportlet_ .portlet .portlet-content {
+  padding: 15px 25px; }
+
+.opencps-theme .portlet-boundary_11_WAR_opencpsportlet_ .portlet .portlet-body {
+  background-color: transparent; }
+
+.opencps-theme .portlet-boundary_11_WAR_opencpsportlet_ .portlet .portlet-body .service-menu ul {
+  margin: 0; }
+
+.opencps-theme .portlet-boundary_11_WAR_opencpsportlet_ .portlet .portlet-body .service-menu ul li {
+  padding: 5px 0 5px 15px;
+  position: relative; }
+
+.opencps-theme .portlet-boundary_11_WAR_opencpsportlet_ .portlet .portlet-body .service-menu ul li:before {
+  content: "\f111";
+  position: absolute;
+  left: 0;
+  font-family: FontAwesome;
+  color: #0f97ff;
+  font-size: 12px; }
+
+.opencps-theme .portlet-boundary_11_WAR_opencpsportlet_ .portlet .portlet-body .service-menu ul li i {
+  display: none; }
+
+/*---------- Right Col - PortletID 10 ----------*/
+.opencps-theme .ocps-bound-service-infodirect, .opencps-theme .ocps-service-detal-bound-all {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px; }
+
+/*--- Khu vuc tim kiem ---*/
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar {
+  margin: 0; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner {
+  background: none #fff;
+  padding: 25px;
+  border: 0;
+  box-shadow: none; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .navbar-search {
+  margin-top: 0;
+  float: none; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span3 {
+  width: 48.5%;
+  margin: 0; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span3:first-child {
+  margin-right: 3%; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span5 {
+  width: 100%;
+  margin: 0; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span3 {
+  margin-bottom: 15px; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span3 .control-group,
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span5 .control-group {
+  width: 100%;
+  height: 41px;
+  overflow: hidden;
+  background: url(../images/frame_1/icon_select_gray.png) no-repeat right;
+  background-position: 325px center;
+  margin-bottom: 0; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span3 .control-group select,
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span5 .control-group select {
+  background: transparent none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  line-height: 20px;
+  padding: 0 10px;
+  width: 100%;
+  height: 41px;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span5 label {
+  display: none; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span5 .input-append {
+  width: 100%; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span5 .input-append input {
+  height: 41px;
+  border-radius: 4px;
+  width: 48.5%;
+  margin-bottom: 15px;
+  border: 1px solid #e1e1e1;
+  margin-right: 3%;
+  margin-bottom: 0; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span5 .input-append button {
+  border-radius: 4px !important;
+  margin-bottom: 0 !important;
+  position: relative;
+  text-indent: 30px;
+  width: 48.5%;
+  height: 41px; }
+
+.opencps-theme .ocps-bound-service-infodirect .navbar.custom-toolbar .navbar-inner .toolbar_search_input .span5 .input-append button:before {
+  content: "\f002";
+  position: absolute;
+  font-family: FontAwesome;
+  left: 30%; }
+
+/*--- Bang danh sach ---*/
+/* Header */
+.opencps-theme .ocps-bound-service-infodirect .opcs-serviceinfo-list-label {
+  border-bottom: 1px solid #e1e1e1;
+  height: 70px;
+  padding-left: 30px; }
+
+.opencps-theme .ocps-bound-service-infodirect .opcs-serviceinfo-list-label p {
+  line-height: 70px;
+  font-size: 16px;
+  font-family: 'Roboto-Bold';
+  text-transform: uppercase;
+  padding-left: 25px;
+  background: url(../images/frame_1/icon_danhsachhoso_blue.png) 0 center no-repeat; }
+
+/* Content */
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container {
+  margin-top: 0;
+  position: relative;
+  overflow: inherit; }
+
+/*Search container top*/
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .taglib-search-iterator-page-iterator-top {
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .taglib-search-iterator-page-iterator-top .taglib-page-iterator {
+  overflow: inherit; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .taglib-search-iterator-page-iterator-top .lfr-pagination-config > div:first-child,
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .taglib-search-iterator-page-iterator-top .lfr-pagination-buttons {
+  display: none; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .taglib-search-iterator-page-iterator-top .lfr-pagination-config > div:last-child a {
+  background: none transparent !important;
+  color: #444 !important;
+  top: -206px;
+  right: 30px;
+  box-shadow: none; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .taglib-search-iterator-page-iterator-top .search-results {
+  position: absolute;
+  right: 200px;
+  font-size: 14px;
+  margin: 0;
+  width: 130px;
+  top: -205px; }
+
+/*Table*/
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table {
+  border: 0; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table thead {
+  display: none; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table td {
+  background: none #fff;
+  border: 0;
+  border-bottom: 1px solid #e1e1e1;
+  position: relative; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table tr:first-child td {
+  border-top: 1px solid #e1e1e1; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table td:after {
+  content: "";
+  border-right: 1px solid #e1e1e1;
+  width: 1px;
+  height: calc(100% - 30px);
+  position: absolute;
+  right: 0;
+  top: 15px; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table td:first-child:after,
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table td:last-child:after {
+  border: 0; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table td.table-cell {
+  padding: 20px 15px; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table td.table-cell.first {
+  text-align: right;
+  font-family: 'Roboto-Bold';
+  padding: 20px 0;
+  width: 40px; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table td.table-cell.last {
+  width: 350px;
+  padding: 20px 30px; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table td.table-cell.last .ocps-searh-bound-data p span {
+  font-family: 'Roboto-Bold';
+  display: inline-block;
+  width: 125px; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .searchcontainer table td.ocps-searh-bound-data-chirld-span {
+  display: none; }
+
+/*Search container bottom*/
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .taglib-search-iterator-page-iterator-bottom .lfr-pagination-config,
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .taglib-search-iterator-page-iterator-bottom .search-results {
+  display: none; }
+
+.opencps-theme .ocps-bound-service-infodirect .lfr-search-container .taglib-search-iterator-page-iterator-bottom .pager.lfr-pagination-buttons {
+  float: none;
+  margin-bottom: 25px; }
+
+/*--- Bang danh sach chi tiet ---*/
+/* Top title + Back */
+.opencps-theme .ocps-service-detal-bound-all .ocps-hide-header {
+  display: none; }
+
+.opencps-theme .ocps-service-detal-bound-all .ocps-custom-header {
+  border-bottom: 1px solid #e1e1e1;
+  height: 70px;
+  padding-left: 30px; }
+
+.opencps-theme .ocps-service-detal-bound-all .ocps-custom-header .ocps-span {
+  margin: 0; }
+
+.opencps-theme .ocps-service-detal-bound-all .ocps-custom-header .ocps-span a {
+  padding-left: 20px;
+  line-height: 70px;
+  position: relative; }
+
+.opencps-theme .ocps-service-detal-bound-all .ocps-custom-header .ocps-span a:before {
+  content: "\f0a8";
+  font-family: FontAwesome;
+  position: absolute;
+  font-size: 18px;
+  left: 0; }
+
+.opencps-theme .ocps-service-detal-bound-all .ocps-custom-header .opcps-label {
+  line-height: 70px;
+  font-size: 16px;
+  font-family: 'Roboto-Bold';
+  text-transform: uppercase;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); }
+
+/* Table */
+.opencps-theme .ocps-service-detal-bound-all .service-detail-wrapper {
+  overflow: hidden; }
+
+.opencps-theme .ocps-service-detal-bound-all .service-detail-wrapper table {
+  border: 0; }
+
+.opencps-theme .ocps-service-detal-bound-all .service-detail-wrapper table td {
+  border: 0;
+  border-bottom: 1px solid #e1e1e1; }
+
+.opencps-theme .ocps-service-detal-bound-all .service-detail-wrapper table td.col-left {
+  width: 150px;
+  min-width: 100px;
+  padding: 15px;
+  vertical-align: top;
+  font-family: 'Roboto-Bold'; }
+
+.opencps-theme .ocps-service-detal-bound-all .service-detail-wrapper table td.col-right ul {
+  margin: 0; }
+
+.opencps-theme .ocps-service-detal-bound-all .service-detail-wrapper table td.col-right ul a {
+  word-break: break-all; }
+
+.opencps-theme .ocps-service-detal-bound-all .service-detail-wrapper table tr:first-child td {
+  border-bottom: 0;
+  padding-bottom: 0; }
+
+/*------------------------------
+		QUAN TRI HE THONG
+------------------------------*/
+/*---------- PortletID 9 - Detail ----------*/
+/* .ocps-update-service-bound-all .ocps-update-service-bound-general {
+	background-color: #fff;
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+	border-radius: 4px;
+	padding: 0 30px 30px;
+	margin-bottom: 30px;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-general > a, 
+.ocps-update-service-bound-all .ocps-update-service-bound-detail > a {
+	border-bottom: 1px solid #e1e1e1;
+	font-family: 'Roboto-Bold';
+	font-size: 16px;
+	line-height: 60px;
+    display: block;
+    margin: 0 -30px 20px;
+    padding: 0 30px 0 55px;
+    background: url(../images/frame_1/icon_dangnhap_hover.png) 30px center no-repeat;
+    text-transform: uppercase;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-general .ocps-edit-serviceinfo-col-only .control-label, 
+.ocps-update-service-bound-all .ocps-update-service-bound-general .ocps-edit-serviceinfo-col .control-label {
+	display: inline-block;
+	width: 125px;
+	font-family: 'Roboto-Bold';
+	margin: 0;
+	line-height: 41px;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-general .ocps-edit-serviceinfo-col-only .lfr-input-text, 
+.ocps-update-service-bound-all .ocps-update-service-bound-general .ocps-edit-serviceinfo-col select, 
+.ocps-update-service-bound-all .ocps-update-service-bound-general .ocps-edit-serviceinfo-col .lfr-input-text {
+	height: 41px;
+	display: inline-block;
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+	width: calc(100% - 130px) !important;
+	max-width: 100% !important;
+	margin: 0;
+	box-shadow: none;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-general .ocps-edit-serviceinfo-col {
+	width: 32%;
+	float: left;
+	margin: 0 2% 0 0;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-general .control-group {
+	margin-bottom: 15px;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-general .ocps-edit-serviceinfo-col:last-child {
+	margin-right: 0;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-general .row-fluid:last-child .ocps-edit-serviceinfo-col .control-group {
+	margin: 0;
+}
+
+.ocps-update-service-bound-all .ocps-update-service-bound-detail {
+	background-color: #fff;
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+	border-radius: 4px 4px 0 0;
+	padding: 0 30px 1px;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-detail .row-fluid {
+	margin-bottom: 15px;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-detail .row-fluid .label {
+	background-color: transparent;
+    color: #444;
+    text-shadow: none;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Roboto-Bold';
+    width: 145px;
+    vertical-align: top;
+    white-space: normal;
+    line-height: normal;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-detail .row-fluid .span12 > div:not(.label) {
+	width: calc(100% - 150px);
+    display: inline-block;
+}
+
+.ocps-update-service-bound-all .ocps-update-service-bound-template {
+	background-color: #fff;
+	-webkit-box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.2);
+	box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.2);
+	border-radius: 0 0 4px 4px;
+	padding: 0 30px 30px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-template .modify-link {
+	display: inline-block;
+    width: 145px;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-template .lfr-search-container {
+	margin-top: 0;
+	display: inline-block;
+    width: calc(100% - 150px);
+    float: right;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-template .lfr-search-container table {
+	border-collapse: collapse;
+}
+.ocps-update-service-bound-all .ocps-update-service-bound-template .lfr-search-container table td {
+	border: 1px solid #e1e1e1;
+}
+
+.opencps-theme .portlet-boundary_9_WAR_opencpsportlet_ form {
+	margin-bottom: 0;
+}
+Button
+.opencps-theme .portlet-boundary_9_WAR_opencpsportlet_ form > button {
+	padding: 5px 50px;
+	position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+ */
+/*---------- PortletID 85 ----------*/
+/*--- Portlet ---*/
+.opencps-theme .portlet-boundary_85_ .portlet {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin-bottom: 30px; }
+
+/* Header */
+.opencps-theme .portlet-boundary_85_ .portlet header {
+  border-bottom: 1px solid #e1e1e1;
+  height: 50px;
+  padding-left: 25px; }
+
+.opencps-theme .portlet-boundary_85_ .portlet header h1 {
+  line-height: 50px;
+  font-size: 16px;
+  font-family: 'Roboto-Bold';
+  text-transform: uppercase;
+  margin: 0; }
+
+/* Content */
+.opencps-theme .portlet-boundary_85_ .portlet .portlet-content {
+  padding: 15px 25px; }
+
+.opencps-theme .portlet-boundary_85_ .portlet .portlet-body {
+  background-color: transparent; }
+
+.opencps-theme .portlet-boundary_85_ .portlet .portlet-body .sitemap-class {
+  margin: 0; }
+
+.opencps-theme .portlet-boundary_85_ .portlet .portlet-body .sitemap-class li {
+  padding: 5px 0 5px 20px;
+  position: relative; }
+
+.opencps-theme .portlet-boundary_85_ .portlet .portlet-body .sitemap-class li:before {
+  content: "\f111";
+  position: absolute;
+  left: 0;
+  font-family: FontAwesome;
+  color: #0f97ff;
+  font-size: 12px; }
+
