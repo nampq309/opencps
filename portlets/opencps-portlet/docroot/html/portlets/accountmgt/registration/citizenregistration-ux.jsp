@@ -310,16 +310,16 @@
 							String popupURL = renderResponse.getNamespace() +  "openDialogTermOfUse();";
 							chiTiet =  "<a onclick=\""+popupURL+"\" class=\"detail-terms-links\">"+LanguageUtil.get(pageContext, "term-detail")+"</a>";
 						%>
-						<aui:input 
+						<%-- <aui:input 
 							name="termsOfUse"
 							type="checkbox" 
 							label="<%= LanguageUtil.format(pageContext, \"terms-of-use-x\", chiTiet) %>"
-						/>
+						/> --%>
 					</aui:row>
 				</div>
 			</div>
 			<aui:row>
-				<aui:button name="register" type="submit" value="register" disabled="true" />
+				<aui:button name="register" type="submit" value="register" />
 			</aui:row>
 		</div>
 		
