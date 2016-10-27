@@ -52,7 +52,7 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 	 */
 	public int countService(
 	    long groupId, String keywords, String administrationCode,
-	    String domainCode) {
+	    String domainCode, boolean activeService) {
 
 		//String[] names = null;
 		boolean andOperator = false;
@@ -65,7 +65,7 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 		}
 
 		return _countService(
-		    groupId, keywords, administrationCode, domainCode, andOperator);
+		    groupId, keywords, administrationCode, domainCode, activeService, andOperator);
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 	 */
 	public List<ServiceInfo> searchService(
 	    long groupId, String keywords, String administrationCode,
-	    String domainCode, int start, int end) {
+	    String domainCode, boolean activeService, int start, int end) {
 
 		//String[] names = null;
 		boolean andOperator = false;
@@ -92,7 +92,7 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 		}
 
 		return _searchService(
-		    groupId, keywords, administrationCode, domainCode, andOperator, start,
+		    groupId, keywords, administrationCode, domainCode, activeService, andOperator, start,
 		    end);
 	}
 
@@ -107,7 +107,7 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 	 * @return
 	 */
 	private List<ServiceInfo> _searchService(
-	    long groupId, String keyword, String adminCode, String domainCode,
+	    long groupId, String keyword, String adminCode, String domainCode, boolean activeStatus,
 	    boolean andOperator, int start, int end) {
 
 		//keywords = CustomSQLUtil.keywords(keywords);
@@ -150,6 +150,11 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 				    StringUtil.replace(
 				        sql, "AND (opencps_serviceinfo.domainCode = ?)",
 				        StringPool.BLANK);
+			}
+			
+			//Nam Phung
+			if (activeStatus) {
+			    sql += " AND opencps_serviceinfo.activeStatus = 1 ";
 			}
 			
 
@@ -206,7 +211,7 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 	 * @return
 	 */
 	private int _countService(
-	    long groupId, String keyword, String adminCode, String domainCode,
+	    long groupId, String keyword, String adminCode, String domainCode, boolean activeService,
 	    boolean andOperator) {
 
 		//keywords = CustomSQLUtil.keywords(keywords);
@@ -250,6 +255,11 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 				        sql, "AND (opencps_serviceinfo.domainCode = ?)",
 				        StringPool.BLANK);
 			}
+			
+			//Nam Phung
+			if (activeService) {
+          sql += " AND opencps_serviceinfo.activeStatus = 1 ";
+      }
 
 			SQLQuery q = session.createSQLQuery(sql);
 

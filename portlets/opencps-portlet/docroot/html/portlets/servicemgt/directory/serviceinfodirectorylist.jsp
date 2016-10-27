@@ -120,10 +120,10 @@
 			<%
 				ServiceSearchTerms searchTerms = (ServiceSearchTerms) searchContainer.getSearchTerms();
 	
-				total = ServiceInfoLocalServiceUtil.countService(scopeGroupId, searchTerms.getKeywords(), 
+				total = ServiceInfoLocalServiceUtil.countActiveService(scopeGroupId, searchTerms.getKeywords(), 
 					searchTerms.getAdministrationCode(), searchTerms.getDomainCode());
 	
-				results = ServiceInfoLocalServiceUtil.searchService(scopeGroupId, searchTerms.getKeywords(), 
+				results = ServiceInfoLocalServiceUtil.searchActiveService(scopeGroupId, searchTerms.getKeywords(), 
 					searchTerms.getAdministrationCode(), searchTerms.getDomainCode(),
 					searchContainer.getStart(), searchContainer.getEnd());
 				
@@ -185,7 +185,7 @@
 					</div>
 				</liferay-util:buffer>
 			<%
-				if(service.getActiveStatus() !=0) {
+				if(service.getActiveStatus() == 1) {
 					row.setClassName("opencps-searchcontainer-row");
 					
 					// no column
