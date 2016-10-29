@@ -14,6 +14,7 @@
 	
 	<link rel="shortcut icon" type="image/png" href="$images_folder/custom/favicon.png"/>
 	
+	<script type="text/javascript" src="$javascript_folder/jquery.min.js" ></script>
 	<script type="text/javascript" src="$javascript_folder/bootstrap.min.js" ></script>
 
 	<script type="text/javascript">
@@ -33,7 +34,10 @@
 	#end
 	
 	#if(!$is_signed_in) 
-		<header id="banner" role="banner" class="opencps-header-wrapper guest">
+		<header id="banner" role="banner">
+			<!-- Start header top -->
+			<!--
+			<header id="banner" role="banner" class="opencps-header-wrapper guest">
 			<div class="header container align-middle">
 	            <a href="$site_default_url" title="#language_format ("go-to-x", [$site_name])" class="logo"></a>
 	            <div class="right-panel">
@@ -43,7 +47,26 @@
 		            <a href="$sign_in_url" class="signin">#language ("login-key")</a>
 		            <a href="$register_url" class="register">#language ("register-key")</a>
 	            </div>
+			</div> -->
+			<div class="btn-primary wrapper-header-top">
+				<div class="container">
+					<div class="container-inner">
+						<div class="col-xs-12 col-sm-6 col-lg-6">
+							<div class="logo-page">
+								<a href="#" title="Hệ thống dịch vụ công trực tuyến tỉnh bình phước" class="color-white">Hệ thống dịch vụ công trực tuyến tỉnh bình phước</a>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-lg-6">
+							<div class="hotline">
+								<a href="#" title="hotline">
+									<img src="images/hotline.png" alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			<!-- End header top -->
 		</header>
 		<div class="nav-container">
 			#parse ("$full_templates_path/navigation_public_page.vm")
