@@ -2,16 +2,17 @@
 #set ($publicLayoutPlid = $layoutService.getDefaultPlid($layout.getGroupId(), false)) ##true for private pages and false for public
 #set ($publicLayout = $layoutService.getLayout($publicLayoutPlid))
 #set ($publicLayouts = $layoutService.getLayouts($layout.getGroupId(), false, 0))
-	
+<div class="container-inner">
+	<div class="nav-header">
 <nav class="$nav_css_class top-menu public" id="navigation" role="navigation">
 
 	#if (!$is_signed_in)
-		<ul>
+		<ul class="topnav" id="myTopnav">
 			#foreach ($nav_item in $publicLayouts)
 
 				#if (!$nav_item.isHidden())
 					#if ($nav_item.isSelected())
-		                <li class="selected">
+		                <li class="active">
 		            #else
 		                <li>
 		            #end
@@ -23,19 +24,19 @@
 		</ul>
 	#else
 		#if($layout.isPublicLayout())
-			<ul>
+			<ul class="topnav" id="myTopnav">
 				<li>
 					<a href="/group/guest">#language("back-to-backoffice")</a>
 				</li>
 			</ul>
 		#else
-			<ul aria-label="#language ("site-pages")" role="menubar">
+			<ul aria-label="#language ("site-pages")" role="menubar" class="topnav" id="myTopnav">
 			    #foreach ($nav_item in $publicLayouts)
 
 				
 				#if (!$nav_item.isHidden())
 					 #if ($nav_item.isSelected())
-		                <li class="selected">
+		                <li class="active">
 		            #else
 		                <li>
 		            #end
@@ -48,3 +49,6 @@
 		#end
 	#end
 </nav>
+	</div>
+</div>
+<!-- End nav -->
