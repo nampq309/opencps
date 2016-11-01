@@ -1,0 +1,494 @@
+.search_tools label{
+  display: none !important;
+}
+
+.opencps-theme .search_tools .input-append .btn-group button {
+    height: 60px !important;
+    background: none white !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    text-shadow: none !important;
+    border: 1px solid #ececec !important;
+    min-width: 125px !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    color: #444 !important;
+}
+
+.opencps-theme.ux button[data-toggle="dropdown"]{
+	background: white none repeat scroll 0 0 !important;
+    border: 1px solid #ececec !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    height: 60px !important;
+    text-shadow: none !important;
+    color: #292929;
+    min-width: 125px !important;
+    width: 100% !important;
+}
+.custom-toolbar.search_tools{
+  background-color: transparent !important;;
+border-color:  transparent !important;;
+}
+
+.payment .table-columns {
+    display: none;
+}
+.payment tr>td{
+  padding: 15px 30px !important;
+position: relative !important;
+border: 0 !important;
+border-bottom: 1px solid #ccc !important;
+}
+.payment tr>td:after{
+  content: "";
+border-right: 1px solid #e1e1e1;
+width: 1px;
+height: calc(100% - 30px);
+position: absolute;
+right: 0;
+top: 15px;
+}
+.payment tr>td:last-child:after{
+  content: "";
+border-right: 0px solid #e1e1e1;
+width: 1px;
+height: calc(100% - 30px);
+position: absolute;
+right: 0;
+top: 15px;
+}
+table.payment {
+  border-left: 1px solid #ccc !important;
+}
+table.payment tr td:last-child {
+  display: none;
+}
+table.payment tr td:nth-last-of-type(-n+2):after {border-right: 0;}
+
+ .detail-right {
+    background-color: white;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    width: 370px;
+    float: right;
+    padding: 30px 25px;
+}
+.opencps-theme .page-search{
+	float: right;
+}
+.opencps-theme .page-search .input-append input.search-query[type="text"] {
+    border-radius: 20px 0 0 20px !important;
+    height: 40px !important;
+    width: 382px !important;
+    border-right: 0 !important;
+    border-left: 1px solid #e1e1e1 !important;
+    border-top: 1px solid #e1e1e1 !important;
+}
+.opencps-theme  .page-search .search_tools .input-append .btn-group button {
+    height: 40px !important;
+    background: none white !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    text-shadow: none !important;
+    border: 1px solid #ececec !important;
+    width: 125px !important;
+}
+.opencps-theme .page-search .input-append > button.btn {
+    text-indent: -9999px;
+    position: relative;
+    height: 40px !important;
+    background: none #0074cd;
+    box-shadow: none;
+    border-radius: 0 20px 20px 0 !important;
+    text-shadow: none;
+    width: 60px;
+    color: white;
+    border: 1px solid #0074cd;
+    margin-left: -3px;
+}
+.opencps-theme .page-search .input-append > button.btn::before {
+    content: "\f002";
+    font-family: FontAwesome;
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    text-indent: 0;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+/*--- Search File Detail ---*/
+.detail-left {background-color: white; border-radius: 8px; -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2); width: 58%; float: left; padding: 30px 25px}
+.detail-left h4 {margin: 0; font-family: 'Roboto-Bold'; font-weight: normal; font-size: 18px; padding-left: 25px}
+.detail-left h4 {margin-bottom: 5px}
+.detail-left h4:first-child {margin-bottom: 20px}
+.detail-left h4.matiepnhan {background: url(/opencps-ux-theme/css/../images/custom/icon_matiepnhan.png) 0 center no-repeat}
+.detail-left h4.thutuc {background: url(/opencps-ux-theme/css/../images/custom/icon_thutuc.png) 0 center no-repeat}
+.detail-left h4.coquanthuchien {background: url(/opencps-ux-theme/css/../images/custom/icon_coquanthuchien.png) 0 center no-repeat}
+.detail-left h4.chuhoso {background: url(/opencps-ux-theme/css/../images/custom/icon_chuhoso.png) 0 center no-repeat}
+.detail-left h4.diachi {background: url(/opencps-ux-theme/css/../images/custom/icon_diachi_2.png) 0 center no-repeat}
+.detail-left h4.ngaytiepnhan {background: url(/opencps-ux-theme/css/../images/custom/icon_ngaythang.png) 0 center no-repeat}
+.detail-left h4.ngayhentra {background: url(/opencps-ux-theme/css/../images/custom/icon_ngaythang.png) 0 center no-repeat}
+.detail-left h4.ngayhoanthanh {background: url(/opencps-ux-theme/css/../images/custom/icon_ngaythang.png) 0 center no-repeat}
+.detail-left p {margin-bottom: 20px}
+.detail-left p:last-child {margin-bottom: 0px}
+
+.detail-right {background-color: white; border-radius: 8px; -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2); width: 370px; float: right; padding: 30px 25px}
+.detail-right h4 {margin: 0 0 20px; font-family: 'Roboto-Bold'; font-weight: normal; font-size: 18px}
+.detail-right .info .date {margin-left: -130px; position: absolute;}
+.detail-right .info {float: right; width: calc(100% - 116px);padding-left: 20px;border-left: 1px solid #e1e1e1;}
+.detail-right .date p, .detail-right .info p {margin-bottom: 0}
+.detail-right .date div, .detail-right .info div {margin-bottom: 30px}
+.detail-right .date div:last-child, .detail-right .info div:last-child {margin-bottom: 0px}
+.detail-right .info p span {display: inline-block; width: 75px; font-family: 'Roboto-Bold'; position: relative;}
+.detail-right .info div p:first-child span:before {content: "\f111"; position: absolute; font-family: FontAwesome; margin-left: -26px; color: #0f97ff}
+.table.payment tr td:nth-child(2) p span:first-child {
+    display: inline-block;
+    width: 95px;
+}
+.table.payment tr td:nth-child(3) p span:first-child {
+    display: inline-block;
+    width: 105px;
+}
+.table.payment tr td p span {
+    font-family: 'Roboto-Bold';
+}
+.table.payment tr td span.mamau::before {
+    top: 15px;
+}
+.table.payment tr td p .mamau {
+    font-family: 'Roboto-Regular' !important;
+}
+.mamau::before {
+    content: "\f111";
+    position: absolute;
+    font-family: FontAwesome;
+}
+.chothanhtoan {
+    color: #af8400;
+}
+.table.payment tr td p .sotien {
+    font-family: 'Roboto-Bold' !important;
+    font-size: 18px;
+}
+/* Ma mau cho ho so */
+.mamau:before {content: "\f111"; position: absolute; font-family: FontAwesome;}
+.moi {color: #00b4ff; font-family: 'Roboto-Regular' !important;}
+.tiepnhanhoso {color: #00b3ce; font-family: 'Roboto-Regular' !important;}
+.chobosung {color: #a5a313; font-family: 'Roboto-Regular' !important;}
+.chothanhtoan {color: #af8400; font-family: 'Roboto-Regular' !important;}
+.datuchoi {color: #d46262; font-family: 'Roboto-Regular' !important;}
+.datiepnhan {color: #23b58d; font-family: 'Roboto-Regular' !important;}
+.dangxuly {color: #0078ff; font-family: 'Roboto-Regular' !important;}
+.dahuy {color: #74635b; font-family: 'Roboto-Regular' !important;}
+.hoanthanh {color: #37b400; font-family: 'Roboto-Regular' !important;}
+.luutru {color: #807da9; font-family: 'Roboto-Regular' !important;}
+.hethong {color: #0055b4; font-family: 'Roboto-Regular' !important;}
+.loi {color: #e54127; font-family: 'Roboto-Regular' !important;}
+
+.table.payment tr td a.button{
+    width: 132px;
+	height: 20px;
+	border: 0px solid #e1e1e1;
+	color: white !important;
+	border-radius: 20px;
+	background: none #0090ff;
+	padding: 5px 25px 5px 25px;
+	display: block;
+	text-align: center;
+}
+.table.payment tr td p .chitiet {
+    color: #0090ff !important;
+}
+.payment-ld .content {
+    background-color: white;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+.payment-ld .content.overfolow {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
+	overflow: unset !important;
+}
+.payment-ld .content.overfolow div.box50:first-child {
+    margin-right: 20px;
+}
+.file_manage_title {
+    background: url(/opencps-ux-theme/css/../images/custom/icon_listdossier.png) 0 center no-repeat;
+    padding-left: 20px;
+    text-transform: uppercase;
+    font-family: 'Roboto-Bold';
+    font-size: 16px;
+    line-height: 60px;
+    margin-bottom: 0 !important;
+    float: left;
+}
+.file_manage_title_new{
+	background: url(/opencps-ux-theme/css/../images/custom/icon_capnhat.png) 0 center no-repeat;
+    padding-left: 20px;
+    text-transform: uppercase;
+    font-family: 'Roboto-Bold';
+    font-size: 16px;
+    line-height: 60px;
+    margin-bottom: 0 !important;
+    float: left;
+}
+.payment-ld .content .title_box .count {
+    margin-left: auto;
+    color: #666;
+    margin-bottom: 0;
+    line-height: 60px;
+    text-align: right;
+}
+.payment-ld .content .title_box .count span {
+    font-family: 'Roboto-Bold';
+    color: black;
+}
+.payment-ld .content .title_box {
+    border-bottom: 1px solid #ccc;
+    height: 61px;
+    display: flex;
+    align-content: center;
+    padding: 0 20px;
+}
+.payment-ld .content .box50 {
+    background-color: white;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    width: calc((100% - 30px) / 2);
+    float: left;
+}
+
+.payment-ld .content .box50 > div, .payment-ld .content .box100 > div {
+    border-bottom: 1px solid #ccc;
+    padding: 15px 30px 5px;
+}
+.payment-ld .content .box50:nth-child(1) p span:first-child {
+    font-family: 'Roboto-Bold';
+    display: inline-block;
+}
+.payment-ld .content .box50:nth-child(2) p span:first-child {
+    font-family: 'Roboto-Bold';
+    display: inline-block;
+    width: 160px;
+}
+.payment-ld .content .box50:nth-child(1) div.over100{
+	overflow: hidden;
+	width: 100%;
+}
+.payment-ld .content .box50:nth-child(1) div.over100  p:first-child{
+  	width: 100%;
+}
+.payment-ld .content .box50:nth-child(1) div.over100  p span:first-child{
+	float: left;
+	width: 155px;
+}
+.payment-ld .content .box50:nth-child(1) div.over100  p span:last-child{
+	width: 65%;
+	float: left;
+	text-align: justify;
+}
+.payment-ld .content .box100 div.over100{
+	overflow: hidden;
+}
+.payment-ld .content .box100 div.over100  p span:first-child{
+	float: left;
+	width: 143px;
+}
+.payment-ld .content .box100 div.over100  p span:last-child{
+	width: 65%;
+	float: left;
+	text-align: justify;
+}
+.payment-ld .content .box50 a, .payment-ld .content .box100 a {
+    color: #0090ff !important;
+}
+.payment-ld .content .box100 > div:last-child button {
+    background: none #0090ff;
+    border: 0;
+    color: white;
+    width: 118px;
+    height: 30px;
+    border-radius: 20px;
+    font-family: 'Roboto-Bold';
+    text-shadow: none !important;
+}
+.payment-ld .content .box100 > div:last-child {
+    display: flex;
+    font-family: 'Roboto-Bold';
+    justify-content: space-between;
+    align-items: center;
+/*     padding: 15px 30px; */
+}
+.payment-ld .content .box100 p span:first-child {
+    font-family: 'Roboto-Bold';
+    display: inline-block;
+    width: 140px;
+}
+
+
+.payment-ld .box100 > div:last-child input[type="text"] {
+  width: 700px !important;
+  height: 30px;
+}
+.payment-ld .box100 > div:last-child .control-group, .payment-ld .box100 > div:last-child .control-group input {
+  margin: 0
+}
+
+.payment-ld .content .box100 .box50 {
+    display: block !important;
+    box-shadow: none;
+    padding: 20px 0;
+    font-family: 'Roboto-Regular' !important;
+    border-bottom: 0;
+    border-radius: 0;
+}
+.payment-ld .content .box100 .box50 > div {
+    border-bottom: 0;
+    padding: 10px 30px 0;
+}
+.bor-left {
+    border-left: 1px solid #e1e1e1;
+}
+.text-center {
+    text-align: center;
+}
+
+.opencps-theme .payment.payment_search .input-append input {height: 41px; border-radius: 20px 0 0 20px; padding-left: 25px; border-color: #ececec; min-width: 300px}
+.opencps-theme .payment.payment_search .input-append .btn-group button {height: 41px; background: none white; box-shadow: none; border-radius: 0 !important; text-shadow: none; border: 1px solid #ececec; width: 93px}
+.opencps-theme .payment.payment_search .input-append > button > i {font-size: 16px}
+
+.payment.payment_search.search_tools select {
+    background: transparent none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    line-height: 20px;
+    padding: 0 20px;
+    width: 265px;
+    height: 41px;
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+}
+.payment.payment_search.search_tools .select {
+    width: 265px;
+    height: 41px;
+    overflow: hidden;
+    background: url(/opencps-ux-theme/css/../images/custom/icon_select_gray.png) white no-repeat right;
+    background-position: 93% center;
+    border-radius: 20px;
+    margin: 0 20px 0 0;
+}
+.payment.payment_search.search_tools .navbar-inner{
+	background: transparent !important;
+	border: 0;
+	box-shadow: none !important;
+    padding: 0;
+}
+.image_placeholder {
+    background: url(/opencps-ux-theme/css/../images/custom/image_placeholder.png);
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+.opencps-theme.ux .home_bg .form-search label{
+  display: none;
+}
+.opencps-theme.ux .home_bg .page-search button[data-toggle="dropdown"]{
+  height: 40px !important;
+}
+.opencps-theme.ux .portlet-boundary_19_WAR_opencpsportlet_ .page-search button[data-toggle="dropdown"]{
+  height: 40px !important;
+}
+.payment-ld .content .box50:nth-child(1) p:first-child {
+  float: left;
+  width: 155px;
+}
+.payment-ld .content .box50:nth-child(2) p:first-child {
+  float: left;
+  width: 165px;
+}
+.upercase{
+	text-transform: uppercase;	
+}
+.payment-ld input[type="file"]{
+  display: none;
+}
+.taglib-page-iterator .pagination ul{
+	float: left;
+	left: 50%;
+	position: relative;
+	transform: translate(-50%);
+}
+.taglib-page-iterator div.search-results{
+  display: none;
+}
+.taglib-page-iterator .lfr-pagination-config{
+	float: right !important;
+}
+.opencps-theme.ux .taglib-page-iterator .btn {
+    color: #333 !important;
+}
+.taglib-search-iterator-page-iterator-top .taglib-page-iterator ul.lfr-pagination-buttons{
+  display: none;
+}
+.taglib-search-iterator-page-iterator-bottom .taglib-page-iterator ul.lfr-pagination-buttons{
+  display: block;
+}
+.taglib-search-iterator-page-iterator-bottom .taglib-page-iterator div.lfr-pagination-config{
+  display: none;
+}
+.paymentUploadBTN{
+	background-color: rgb(245, 245, 245);
+	border: 1px solid rgb(225, 225, 225);
+	color: rgb(68, 68, 68);
+	font-size: 12px;
+	text-transform: uppercase;
+	width: 50%;
+	padding: 5px 0px;
+	border-radius: 20px;
+	left: 50%;
+	margin-top: 10px;
+	transform: translateX(-50%);
+	position: relative;
+}
+
+.paymentUploadBTN label{
+	margin-bottom: -2px !important;
+}
+.opencps-theme.ux .portlet-boundary_19_WAR_opencpsportlet_ .opencps-toolbar .navbar-inner{
+  padding-right: 0;
+}
+.head .headh3{
+	float: left;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+.opencps-theme.ux .portlet-boundary_19_WAR_opencpsportlet_ .taglib-header{
+	display: none;
+}
+.opencps-theme.ux .portlet-boundary_19_WAR_opencpsportlet_ .toolbar_search_input label{
+	display: none;
+}
+
+div.payment-ld:nth-child(2){
+	padding-bottom: 25px;
+}
+.paymentBtnAll{
+	height: 41px;
+	background: rgb(0, 144, 255) url(/opencps-ux-theme/css/../images/custom/icon_quanlythuphi.png) no-repeat scroll 50px center !important;
+	border: 0px none;
+	color: white;
+	font-family: "Roboto-Bold";
+	text-transform: uppercase;
+	width: 210px;
+	border-radius: 20px;
+	text-indent: 30px;
+}

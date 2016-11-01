@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+#parse ($init)
+
+
+<html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
+
+<head>
+	<title>$the_title - $company_name</title>
+
+	#*<meta content="initial-scale=1.0, width=device-width" name="viewport" />*#
+
+	$theme.include($top_head_include)
+	
+	<link rel="shortcut icon" type="image/png" href="$images_folder/custom/favicon.png"/>
+	
+	<script type="text/javascript" src="$javascript_folder/jquery.min.js" ></script>
+	<script type="text/javascript" src="$javascript_folder/bootstrap.min.js" ></script>
+
+	<script type="text/javascript">
+        function handleChange() {
+            var arr = document.getElementById('menu1') ;
+            window.location = arr.value ;
+        } 
+    </script>
+</head>
+
+<body class="$css_class opencps-theme ux">
+
+	$theme.include($body_top_include)
+	
+	#if ($is_signed_in && $permissionChecker.isOmniadmin())
+		#dockbar()
+	#end
+	
+	#if(!$is_signed_in) 
+		<header id="banner" role="banner">
+			<!-- Start header top -->
+			<!--
+			<header id="banner" role="banner" class="opencps-header-wrapper guest">
+			<div class="header container align-middle">
+	            <a href="$site_default_url" title="#language_format ("go-to-x", [$site_name])" class="logo"></a>
+	            <div class="right-panel">
+		            <div class="hotline">
+		                #language ("hotline-key")<br/><span>0651 3870235</span>
+		            </div>
+		            <a href="$sign_in_url" class="signin">#language ("login-key")</a>
+		            <a href="$register_url" class="register">#language ("register-key")</a>
+	            </div>
+			</div>
+			-->
+			<div class="btn-primary-bp wrapper-header-top">
+				<div class="container">
+					<div class="container-inner">
+						<div class="col-xs-12 col-sm-6 col-lg-6 span6">
+							<div class="logo-page">
+								<a href="#" title="Hệ thống dịch vụ công trực tuyến tỉnh bình phước" class="color-white">Hệ thống dịch vụ công trực tuyến tỉnh bình phước</a>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-lg-6 span5">
+							<div class="land-hotline">
+								<a href="#" title="hotline">
+									<img alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End header top -->
+		</header>
+	<!-- Start nav -->
+	<div class="wrapper-nav">
+		<div class="container">
+			#parse ("$full_templates_path/navigation_public_page.vm")
+		</div>
+	</div>
+	<!-- End nav -->
+	#else 
+		<header id="banner" role="banner" class="opencps-header-wrapper member">
+			<div class="header container align-middle">
+	            <a href="" class="logo"></a>
+	            <div class="right-panel">
+		            <div class="hotline">
+		                #language ("hotline-key")<br/><span>0651 3870235</span>
+		            </div>
+				</div>
+				<div class="nav-container-small">
+					#if ($has_navigation || $is_signed_in)
+						#parse ("$full_templates_path/navigation_public_page.vm")
+					#end
+				</div>
+			</div>
+			
+		</header>
+		<div class="nav-container">
+			#if ($has_navigation || $is_signed_in)
+				#parse ("$full_templates_path/navigation_private_page.vm")
+			#end
+		</div>
+	#end
+	
+	<article id="wrapper" class="container">	
+		<div id="content">
+	
+			#if ($selectable)
+				$theme.include($content_include)
+			#else
+				$portletDisplay.recycle()
+	
+				$portletDisplay.setTitle($the_title)
+	
+				$theme.wrapPortlet("portlet.vm", $content_include)
+			#end
+		</div>
+	</article>
+
+<!-- Start footer -->	
+	<footer>	
+        
+	<div class="wrapper-footer">
+		<div class="container">
+			<div class="container-inner">
+				<div class="footer">
+					<div class="col-xs-12 col-sm-12 col-lg-6 span4">
+						<div class="place-phone">
+							<div class="title-place-phone">
+								<span class="color-ogange">Sở Công Thương Tỉnh Bình Phước</span>
+							</div>
+							<div class="body-place-phone">
+								<div class="place">
+									<span><i class="icon-place"></i>socongthuong@binhphuoc.gov.vn</span>
+								</div>
+								<div class="phone-number">
+									<span><i class="icon-phone"></i>0651 3870235</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-lg-6 span7">
+						<div class="introduction">
+							<div class="col-xs-12 col-sm-12 col-lg-12 span7">
+								<div class="title-introduction">
+									<ul>
+									  <li><span class="color-ogange">#language ("conduct-key")</span></li>
+									</ul>									
+								</div>
+							</div>
+							<div class="menu-intro">
+								<div class="col-xs-6 col-sm-4 col-lg-4 span2">
+									<ul>
+										<li><a href="/dang-ky-tai-khoan"> #language ("account-register-key")</a></li>
+										<li><a href="/home">#language ("tracuu-ketqua-key")</a></li>
+									</ul>
+								</div>
+								<div class="col-xs-6 col-sm-4 col-lg-4 span2">
+									<ul>
+										<li><a href="/dang-nhap-he-thong">#language ("system-login-key")</a></li>
+										<li><a href="/can-bo-xu-ly-ho-so">#language ("cbxl-nophs-key")</a></li>
+									</ul>
+								</div>
+								<div class="col-xs-6 col-sm-4 col-lg-4 span2">
+									<ul>
+										<li><a href="/nop-ho-so-truc-tuyen">#language ("nop-hstt-key")</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+        
+	</footer>
+
+	$theme.include($body_bottom_include)
+	
+	$theme.include($bottom_include)
+
+</body>
+
+</html>
