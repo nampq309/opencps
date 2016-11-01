@@ -42,7 +42,7 @@
 	            <a href="$site_default_url" title="#language_format ("go-to-x", [$site_name])" class="logo"></a>
 	            <div class="right-panel">
 		            <div class="hotline">
-		                #language ("hotline-key")<br/><span>0651 3870235</span>
+		                #language ("hotline-key")<br/><span>0501 2216 943</span>
 		            </div>
 		            <a href="$sign_in_url" class="signin">#language ("login-key")</a>
 		            <a href="$register_url" class="register">#language ("register-key")</a>
@@ -54,7 +54,7 @@
 					<div class="container-inner">
 						<div class="col-xs-12 col-sm-6 col-lg-6 span6">
 							<div class="logo-page">
-								<a href="#" title="Hệ thống dịch vụ công trực tuyến tỉnh bình phước" class="color-white">Hệ thống dịch vụ công trực tuyến tỉnh bình phước</a>
+								<a href="#" title="Hệ thống dịch vụ công trực tuyến tỉnh Đắk Nông" class="color-white">Hệ thống dịch vụ công trực tuyến tỉnh Đắk Nông</a>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-lg-6 span5">
@@ -125,14 +125,14 @@
 					<div class="col-xs-12 col-sm-12 col-lg-6 span4">
 						<div class="place-phone">
 							<div class="title-place-phone">
-								<span class="color-ogange">Sở Công Thương Tỉnh Bình Phước</span>
+								<span class="color-ogange">Sở Công Thương Tỉnh Đắk Nông</span>
 							</div>
 							<div class="body-place-phone">
 								<div class="place">
-									<span><i class="icon-place"></i>socongthuong@binhphuoc.gov.vn</span>
+									<span><i class="icon-place"></i>socongthuong@daknong.gov.vn</span>
 								</div>
 								<div class="phone-number">
-									<span><i class="icon-phone"></i>0651 3870235</span>
+									<span><i class="icon-phone"></i>0501 2216 943</span>
 								</div>
 							</div>
 						</div>
