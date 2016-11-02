@@ -38,7 +38,7 @@
 	            <a href="$site_default_url" title="#language_format ("go-to-x", [$site_name])" class="logo"></a>
 	            <div class="right-panel">
 		            <div class="hotline">
-		                #language ("hotline-key")<br/><span>02813 870120</span>
+		                #language ("hotline-key")<br/><span>027 3824613</span>
 		            </div>
 		            <a href="$sign_in_url" class="signin">#language ("login-key")</a>
 		            <a href="$register_url" class="register">#language ("register-key")</a>
@@ -54,7 +54,7 @@
 	            <a href="" class="logo"></a>
 	            <div class="right-panel">
 		            <div class="hotline">
-		                #language ("hotline-key")<br/><span>0651 3870235</span>
+		                #language ("hotline-key")<br/><span>027 3824613</span>
 		            </div>
 				</div>
 				<div class="nav-container-small">
@@ -109,9 +109,9 @@
             </div>
             <div class="span3">
                 <p class="title">#language ("lienhehotro-key")</p>
-                <p class="address">Sở Công Thương Bắc Kạn</p>
-                <p class="mail">socongthuong@congthuongbackan.gov.vn</p>
-                <p class="phone">02813.870120</p>
+                <p class="address">Sở Công Thương Tuyên Quang</p>
+                <p class="mail">congthuong@tuyenquang.gov.vn </p>
+                <p class="phone">027 3824613</p>
             </div>            
         </div>
 	</footer>
