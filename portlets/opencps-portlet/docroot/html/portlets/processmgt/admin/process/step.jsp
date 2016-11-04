@@ -94,7 +94,8 @@
 			row.addText(step.getStepName());
 			
 			// step name
-			row.addText(PortletUtil.getDossierStatusLabel(step.getDossierStatus(), locale));
+			//row.addText(PortletUtil.getDossierStatusLabel(step.getDossierStatus(), locale));
+            row.addText(DictItemUtil.getDictItemName(step.getDossierStatus(), locale));
 			
 			// step duration
 			row.addText(Integer.toString(step.getDaysDuration()));
