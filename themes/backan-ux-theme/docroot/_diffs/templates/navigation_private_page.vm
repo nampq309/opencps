@@ -25,13 +25,15 @@
                    #set ($newNavItems = $navItemClass.fromLayouts($requestVars, $newMainLayouts))
                    #set ($nav_items= $newNavItems)
           #end
-
+<div class="container">
+    <div class="container-inner">
+        <div class="nav-header">
 <nav class="$nav_css_class top-menu private" id="navigation" role="navigation">
 
-    <ul>
+    <ul class="topnav">
         #foreach ($nav_item in $nav_items)
             #if ($nav_item.isSelected())
-                <li class="selected">
+                <li class="active">
             #else
                 <li>
             #end
@@ -52,3 +54,6 @@
 		<span class="logout"><a href="$sign_out_url" class="btn-dn">#language ("logout-key")</a></span>
 	</span>
 </nav>
+        </div>
+    </div>
+</div>

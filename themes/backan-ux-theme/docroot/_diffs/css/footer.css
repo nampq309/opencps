@@ -1,13 +1,13 @@
-.opencps-theme.ux footer {
+/* .opencps-theme.ux footer {
     background: rgba(0, 0, 0, 0) url("../images/custom/bg_footer.png") no-repeat scroll center center / cover ;
     min-height: 228px;
     padding-top: 25px;
-}
+} */
 
-.opencps-theme.ux footer .content{
+/* .opencps-theme.ux footer .content{
 	margin: auto;
 	width: 1170px;
-}
+} */
 
 @media (max-width: 1000px) {
 	.opencps-theme.ux footer .content{
