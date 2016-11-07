@@ -47,16 +47,16 @@
 
 <div class="featured">
     <div class="title-featured col-xs-12 col-sm-12 col-lg-12 span12">
-        <div class="color-ogange"><span><liferay-ui:message key="beautiful-life"/></span></div>
+        <div class="color-ogange"><liferay-ui:message key="beautiful-life"/></div>
         <div class="color-white">
             <span><liferay-ui:message key="slogan-key"/></span>
         </div>
     </div>
     <div class="login-register col-xs-12 col-sm-12 col-lg-12 span12">
-        <div class="btn button-primary">
+        <div class="sct-btn button-primary">
             <a href="/login" title="<liferay-ui:message key="login-key"/>"><i class="btn-login"></i><liferay-ui:message key="login-key"/></a>
         </div>
-        <div class="btn btn-register">
+        <div class="sct-btn btn-register">
             <a href="/register" title="register-key"><i class="btn-register"></i><liferay-ui:message key="register-key"/></a>
         </div>
     </div>
