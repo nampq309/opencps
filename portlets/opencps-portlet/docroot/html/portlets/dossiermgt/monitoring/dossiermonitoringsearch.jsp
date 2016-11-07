@@ -46,11 +46,6 @@
 <%@ include file="../init.jsp"%>
 
 <div class="featured">
-    <div class="home-search-sologan">
-    	<h2><liferay-ui:message key="beautiful-life"/></h2>
-    	
-    	<p><liferay-ui:message key="slogan-key"/></p>
-    </div>
     <div class="title-featured col-xs-12 col-sm-12 col-lg-12 span12">
         <div class="color-ogange"><span><liferay-ui:message key="beautiful-life"/></span></div>
         <div class="color-white">
@@ -59,10 +54,10 @@
     </div>
     <div class="login-register col-xs-12 col-sm-12 col-lg-12 span12">
         <div class="btn btn-primary">
-            <a href="#" title="<liferay-ui:message key="login-key"/>"><i class="icon-login"></i><liferay-ui:message key="login-key"/></a>
+            <a href="/login" title="<liferay-ui:message key="login-key"/>"><i class="icon-login"></i><liferay-ui:message key="login-key"/></a>
         </div>
         <div class="btn btn-register">
-            <a href="#" title="register-key"><i class="icon-register"></i><liferay-ui:message key="register-key"/></a>
+            <a href="/register" title="register-key"><i class="icon-register"></i><liferay-ui:message key="register-key"/></a>
         </div>
     </div>
     <div class="search col-xs-12 col-sm-6 col-lg-6 span6">
