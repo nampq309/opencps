@@ -45,15 +45,38 @@
 
 <%@ include file="../init.jsp"%>
 
-<div class="home-search-sologan">
-	<h2><liferay-ui:message key="beautiful-life"/></h2>
-	
-	<p><liferay-ui:message key="slogan-key"/></p>
-</div>
-
-<div class = "home-search">
-	<liferay-util:include page="/html/portlets/dossiermgt/monitoring/toolbar.jsp" servletContext="<%=application %>" />
-</div>
+<div class="featured">
+    <div class="home-search-sologan">
+    	<h2><liferay-ui:message key="beautiful-life"/></h2>
+    	
+    	<p><liferay-ui:message key="slogan-key"/></p>
+    </div>
+    <div class="title-featured col-xs-12 col-sm-12 col-lg-12 span12">
+        <div class="color-ogange"><span><liferay-ui:message key="beautiful-life"/></span></div>
+        <div class="color-white">
+            <span><liferay-ui:message key="slogan-key"/></span>
+        </div>
+    </div>
+    <div class="login-register col-xs-12 col-sm-12 col-lg-12 span12">
+        <div class="btn btn-primary">
+            <a href="#" title="<liferay-ui:message key="login-key"/>"><i class="icon-login"></i><liferay-ui:message key="login-key"/></a>
+        </div>
+        <div class="btn btn-register">
+            <a href="#" title="register-key"><i class="icon-register"></i><liferay-ui:message key="register-key"/></a>
+        </div>
+    </div>
+    <div class="search col-xs-12 col-sm-6 col-lg-6 span6">
+        <div class="search-inner">
+            <div class="input-group">
+                <div class = "home-search">
+                    <liferay-util:include page="/html/portlets/dossiermgt/monitoring/toolbar.jsp" servletContext="<%=application %>" />
+                </div>
+            </div>
+        </div>
+    </div>
+   <%--  <div class = "home-search">
+    	<liferay-util:include page="/html/portlets/dossiermgt/monitoring/toolbar.jsp" servletContext="<%=application %>" />
+    </div> --%>
 
 <%
 	Format dateFormatDate = FastDateFormatFactoryUtil.getDate(locale, timeZone);
@@ -154,6 +177,7 @@
 	</aui:row>
 
 </c:if>
+</div>
 <%!
 	private Log _log = LogFactoryUtil.getLog("html.portlets.dossiermgt.monitoring.search.jsp");
 %>
