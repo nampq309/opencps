@@ -46,8 +46,8 @@
 <%@ include file="../init.jsp"%>
 
 <div class="featured">
-    <div class="title-featured col-xs-12 col-sm-12 col-lg-12 span12">
-        <div class="color-ogange"><liferay-ui:message key="beautiful-life"/></div>
+    <div class="title-featured col-xs-12 col-sm-12 col-lg-12 span12" style="">
+        <div class="color-ogange"><span><liferay-ui:message key="beautiful-life"/></span></div>
         <div class="color-white">
             <span><liferay-ui:message key="slogan-key"/></span>
         </div>
