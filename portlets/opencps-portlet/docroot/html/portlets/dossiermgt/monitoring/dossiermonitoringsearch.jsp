@@ -57,7 +57,7 @@
             <a href="/login" title="<liferay-ui:message key="login-key"/>"><i class="btn-login"></i><liferay-ui:message key="login-key"/></a>
         </div>
         <div class="sct-btn btn-register">
-            <a href="/register" title="register-key"><i class="btn-register"></i><liferay-ui:message key="register-key"/></a>
+            <a href="/register" title="register-key"><i class="btn-ico-register"></i><liferay-ui:message key="register-key"/></a>
         </div>
     </div>
     <div class="search col-xs-12 col-sm-6 col-lg-6 span6">
