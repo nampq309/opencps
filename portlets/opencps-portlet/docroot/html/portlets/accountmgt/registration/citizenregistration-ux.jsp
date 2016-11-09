@@ -351,7 +351,7 @@
 				
 				var register = A.one('#<portlet:namespace />register');
 				
-				if(termsOfUse.val() == 'true'){
+				if(termsOfUse && termsOfUse.val() == 'true'){
 					register.removeClass('disabled');
 					register.removeAttribute('disabled');
 				}else{
@@ -368,9 +368,9 @@
 	Liferay.provide(window, '<portlet:namespace />registerAccount', function() {
 		A = AUI();
 		var register = A.one('#<portlet:namespace />register');
-		var termsOfUse = A.one('#<portlet:namespace />termsOfUse');
+		//var termsOfUse = A.one('#<portlet:namespace />termsOfUse');
 		var checkTel = telephoneCheck();
-		if(termsOfUse.val() == 'true' && checkTel == true){
+		if(checkTel == true){//termsOfUse.val() == 'true'
 			submitForm(document.<portlet:namespace />fm);
 		}else{
 			return;

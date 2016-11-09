@@ -177,7 +177,7 @@
 		name="fm"	
 		method="post"
 		enctype="multipart/form-data"
-		onSubmit='<%= "event.preventDefault(); " + renderResponse.getNamespace() + "registerAccount();" %>'
+		onSubmit='<%= "event.preventDefault();"%>'
 	>
 		<aui:model-context bean="<%=businessValidate%>" model="<%=Business.class%>" />
 		

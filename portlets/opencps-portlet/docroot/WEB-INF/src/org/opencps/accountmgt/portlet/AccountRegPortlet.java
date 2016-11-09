@@ -503,14 +503,10 @@ public class AccountRegPortlet extends MVCPortlet {
 					//check reg cfg
 					int step = ParamUtil.getInteger(actionRequest, "citizenRegStep_cfg");
 					if(step == 2){
-						CitizenLocalServiceUtil
-					    .updateStatus(citizen.getCitizenId(), serviceContext
-					        .getUserId(), 2);
+						CitizenLocalServiceUtil.updateStatus(citizen.getCitizenId(), serviceContext.getUserId(), 2);
 					}
 				}
-				SessionMessages.add(
-				    actionRequest,
-				    MessageKeys.ACCOUNT_UPDATE_CUCCESS);
+				SessionMessages.add(actionRequest, MessageKeys.ACCOUNT_UPDATE_CUCCESS);
 			}
 			else {
 
