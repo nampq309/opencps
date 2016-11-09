@@ -25,6 +25,8 @@ import com.liferay.portal.kernel.dao.orm.SQLQuery;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.dao.orm.Type;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
@@ -157,6 +159,7 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 			    sql += " AND opencps_serviceinfo.activeStatus = 1 ";
 			}
 			
+			_log.info("Search ActiveServiceInfo query: " + sql);
 
 			SQLQuery q = session.createSQLQuery(sql);
 
@@ -313,4 +316,5 @@ public class ServiceInfoFinderImpl extends BasePersistenceImpl<ServiceInfo>
 		return 0;
 	}
 
+	 private Log _log = LogFactoryUtil.getLog(ServiceInfoFinderImpl.class.getName());
 }
