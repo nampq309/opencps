@@ -18,6 +18,9 @@
 				#end
 			#end
 		</ul>
+        <ul class="navbar-right">
+            <li><a href="#" title=""><img alt=""></a></li>
+        </ul>
 	#else
 		#if($layout.isPublicLayout())
 			<ul class="topnav header-top navbar-right">
@@ -27,7 +30,7 @@
 			</ul>
 		#else
 			<ul aria-label="#language ("site-pages")" role="menubar" class="topnav header-top navbar-right" id="myTopnav">
-			    #foreach ($nav_item in $publicLayouts)
+		      #foreach ($nav_item in $publicLayouts)
 
 				
 				#if (!$nav_item.isHidden())
@@ -40,8 +43,16 @@
 		
 					</li>
 				#end
-			#end
-		</ul>
+			   #end
+		     </ul>
+             <ul class="navbar-right after-login">
+                <li>
+                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i><span>#language ("welcome-key")</span><span class="user-account"> $user_name</span></a>
+                </li>
+                <li>
+                    <a href="$sign_out_url" title="#language ("logout-key")"><i class="btn-login"></i>#language ("logout-key")</a>
+                </li>
+             </ul>
 		#end
 	#end
 <!-- End nav -->

@@ -27,7 +27,7 @@
           #end
 <div class="container">
     <div class="container-inner">
-        <div class="nav-header">
+        <!-- <div class="nav-header"> -->
 <nav class="$nav_css_class top-menu private" id="navigation" role="navigation">
 
     <ul class="topnav">
@@ -44,16 +44,22 @@
            </li>
         #end
     </ul>
+    <!-- Hotline BK -->
+    #if(!$permissionChecker.isOmniadmin())
+        <ul class="navbar-right">
+            <li><a href="#" title=""><img alt=""></a></li>
+        </ul>
+    #end
     
-    <span class="account-info">
+    <!-- <span class="account-info">
     	<span class="account-name">
     		<img id="img1" alt="image user" src= "$images_folder/custom/welcome_new.png"></img>
     		<img id="img2" alt="image user" src= "$images_folder/custom/welcome_h.png"></img>
 			<span class="tooltiptext">#language ("welcome-key") $user_name</span>
 		</span>
 		<span class="logout"><a href="$sign_out_url" class="btn-dn">#language ("logout-key")</a></span>
-	</span>
+	</span> -->
 </nav>
-        </div>
+        <!-- </div> -->
     </div>
 </div>

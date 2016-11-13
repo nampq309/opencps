@@ -958,10 +958,54 @@
 			<role-name>user</role-name>
 		</security-role-ref>
 	</portlet>
+	<portlet>
+	  <portlet-name>99</portlet-name>
+	  <display-name>Site Map DVC</display-name>
+	  <portlet-class>
+	    org.opencps.sitemap.portlet.SiteMapPortlet
+	  </portlet-class>
+	  <init-param>
+	    <name>view-template</name>
+	    <value>/html/portlets/sitemap/view.jsp</value>
+	  </init-param>
+	  <init-param>
+	    <name>edit-template</name>
+	    <value>/html/portlets/sitemap/edit.jsp</value>
+	  </init-param>
+	  <init-param>
+	    <name>config-template</name>
+	    <value>/html/portlets/sitemap/config.jsp</value>
+	  </init-param>
+	  <expiration-cache>0</expiration-cache>
+	  <supports>
+	    <mime-type>text/html</mime-type>
+	    <portlet-mode>view</portlet-mode>
+	    <portlet-mode>edit</portlet-mode>
+	    <portlet-mode>config</portlet-mode>
+	  </supports>
+	  <portlet-info>
+	    <title>Site Map DVC</title>
+	    <short-title>Site Map</short-title>
+	    <keywords></keywords>
+	  </portlet-info>
+	  <security-role-ref>
+	    <role-name>administrator</role-name>
+	  </security-role-ref>
+	  <security-role-ref>
+	    <role-name>guest</role-name>
+	  </security-role-ref>
+	  <security-role-ref>
+	    <role-name>power-user</role-name>
+	  </security-role-ref>
+	  <security-role-ref>
+	    <role-name>user</role-name>
+	  </security-role-ref>
+	</portlet>
 	<public-render-parameter>
     	<identifier>active</identifier>
    		<qname>active</qname>
     </public-render-parameter>
+
 
 
 

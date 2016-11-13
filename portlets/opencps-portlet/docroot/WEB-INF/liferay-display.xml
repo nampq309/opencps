@@ -32,6 +32,7 @@
 		<portlet id="20" />
 		<portlet id="25"></portlet>
 		<portlet id="26"></portlet>
+        <portlet id="99"></portlet>
 	</category>
 	<category name="org.opencps.admin">
 		<portlet id="24"></portlet>
