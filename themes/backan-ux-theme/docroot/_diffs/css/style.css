@@ -368,3 +368,17 @@ ul.topnav li.icon {display: none;}
     margin-right: -15px;
   }
 }
+
+/* Site map*/
+.sitemap-class .sm-tutorial a img {
+  content: url("../images/custom/Step1.png");
+}
+.sitemap-class .sm-login a img {
+  content: url("../images/custom/Step2.png");
+}
+.sitemap-class .sm-uw a img {
+  content: url("../images/custom/Step3.png");
+}
+.sitemap-class sm-result a img {
+  content: url("../images/custom/Step4.png");
+}
