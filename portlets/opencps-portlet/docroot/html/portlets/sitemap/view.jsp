@@ -7,7 +7,9 @@
 <liferay-theme:defineObjects />
 
 <ul class="sitemap-class">
-    <li><a href="/login" class="sm-tutorial"><liferay-ui:message key="dvc.site-map.tutorial" /></a></li>
+    <li><a href="/login" class="sm-tutorial"><liferay-ui:message key="dvc.site-map.tutorial" />
+        <img alt="">
+    </a></li>
     <li><a href="/login" class="sm-login">
             <%-- <liferay-ui:message key="dvc.site-map.register-account" /> --%>
             <img alt=""></a></li>
