@@ -57,34 +57,35 @@
 .opencps-theme.ux .container .home-ux-layout .site-map ul li{
     display: inline-block;
     line-height: 60px;
-    padding: 0 35px;
+    width: 23%;
+    /* padding: 0 35px; */
 }
 
 
 
-.opencps-theme.ux .container .home-ux-layout .site-map ul li:first-child{
+/* .opencps-theme.ux .container .home-ux-layout .site-map ul li:first-child{
 	font-family: 'Roboto-Bold';
 	font-size: 17px;
 	text-transform: uppercase;
 	background: url(../images/custom/icon_helper.png) 16px 19px
 		no-repeat;
 	color: #0090ff;
-}
+} */
 
 .opencps-theme.ux .container .home-ux-layout .site-map ul li:hover {
 	color: #0090ff
 }
 
-.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(2){
+/* .opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(2){
 	background: url(../images/custom/icon_dangky.png) 14px center no-repeat
 }
 
 .opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(2):hover{
 	background: url(../images/custom/icon_dangky_hover.png) 14px center
 		no-repeat
-}
+} */
 
-.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(3){
+/* .opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(3){
 	background: url(../images/custom/icon_dangnhap.png) 11px center
 		no-repeat
 }
@@ -92,9 +93,9 @@
 .opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(3):hover{
 	background: url(../images/custom/icon_dangnhap_hover.png) 11px center
 		no-repeat
-}
+} */
 
-.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(4){
+/* .opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(4){
 	background: url(../images/custom/icon_nophosott.png) 9px center
 		no-repeat
 }
@@ -122,7 +123,7 @@
 .opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(6):hover{
 	background: url(../images/custom/icon_canboxulyhs_hover.png) 10px
 		center no-repeat
-}
+} */
 
 
 .opencps-theme.ux .container .home-ux-layout .other-content > div{
@@ -138,11 +139,11 @@
 }
 
 .opencps-theme.ux .container .home-ux-layout .other-content > div ul{
-    margin: 0;
+    margin: 0px 0px 45px 0px;
     padding: 0;
 }
 
-.opencps-theme.ux .container .home-ux-layout .other-content .portlet-topper .portlet-title{
+/* .opencps-theme.ux .container .home-ux-layout .other-content .portlet-topper .portlet-title{
 	background: rgba(0, 0, 0, 0) url("../images/custom/icon_vanbanphapluat.png") no-repeat scroll 0 center;
     color: #0090ff;
     font-family: "Roboto-Bold";
@@ -150,7 +151,7 @@
     font-weight: normal;
     margin-bottom: 5px;
     padding-left: 20px;
-}
+} */
 
 
 /* ----------------------- Home search ------------------------------  */

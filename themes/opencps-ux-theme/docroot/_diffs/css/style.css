@@ -1,3 +1,10 @@
+.logo-page-bk{
+	background: rgba(0, 0, 0, 0) url("../images/custom/Logo_BK.png") no-repeat scroll left center;
+    height: 46px;
+    padding: 38px 0;
+    /* width: 411px; */
+}
+
 .btn-primary-bp {
     color: #fff;
     background-color: #337ab7;
@@ -9,13 +16,33 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-size: 14px;
 }
-
 .color-ogange {
   color: #faa61a;
 }
-
 .color-white {
   color: #fff !important;
+}
+
+.sct-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
 .btn-register {
@@ -23,56 +50,86 @@ body {
   border: 1px solid #fcb931;
 }
 
+.button-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
-
 ul.topnav li {float: left;}
-
 ul.topnav li a {
   display: inline-block;
   color: #364e63;
   text-align: center;
-  padding: 14px 16px;
+  padding: 9px 16px;
   text-decoration: none;
   transition: 0.3s;
   font-size: 14px;
   font-weight: 700;
 }
-
 ul.topnav li a:hover {background-color: #fcb931;color: #12669b;}
 ul.topnav li.icon {display: none;}
-
-/*Start header*/
-.wrapper-header-top {
+.wrapper-nav .navbar-right {
+  list-style: none;
+  margin-bottom: 0;
 }
+/*Start header*/
+.wrapper-header-top .header-top{
+  padding: 20px 0;
+}
+.wrapper-header-top .header-top ul li{
 
+}
+.wrapper-header-top .header-top li a {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 12px;
+}
+.wrapper-header-top .header-top li a.active {
+  color: #f8941f;
+  border-bottom: 1px solid;
+}
 .logo-page {
   padding: 20px 0;
 }
-
-.land-hotline {
-  padding: 20px 0;
-  text-align: right;
-  margin-top: 10px;
-}
-
-.land-hotline a img {
-  content: url("../images/custom/hotline.png");
-}
-
 .logo-page a {
   text-transform: uppercase;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1.5;
 }
-
 .logo-page a:hover {
   text-decoration: none;
   color: #fff;
+}
+
+.after-login {
+    list-style: none;
+}
+
+.after-login li {
+    float: left;
+    padding: 10px;
+}
+
+.after-login li a {
+    color: #f1f1f1;
+}
+
+.after-login li a:hover {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+.after-login li a i {
+    color: #fff;
+    width: 14px;
+    height: 19px;
+    margin-right: 10px;
 }
 
 /*End header*/
@@ -81,11 +138,25 @@ ul.topnav li.icon {display: none;}
 .wrapper-nav {
   background: #f8941f;
 }
+
+.land-hotline a img {
+  content: url("../images/custom/hotline.png");
+}
+
+.navbar-right a img {
+  content: url("../images/custom/hotline.png");
+}
+
+.navbar-right {
+  float: right!important;
+  margin-right: -15px;
+}
+
 /*End wrapper-nav*/
 
 /*Start featured*/
 .wrapper-featured {
-  background: url(images/featured.png) center no-repeat;
+  background: url(../images/custom/featured.png) center no-repeat;
 }
 .title-featured .color-ogange span {
   font-size: 26px;
@@ -103,18 +174,18 @@ ul.topnav li.icon {display: none;}
 .wrapper-featured .container-inner {
   display: inline-block;
   width: 100%;
-  padding: 50px 0;
+  padding: 50px 0px;
 }
-.icon-login {
-  background: url(images/icon-login.png) no-repeat;
+.btn-login {
+  background: url(../images/custom/icon-login.png) no-repeat;
   display: inline-block;
   width: 14px;
   height: 19px;
   float: left;
   margin-right: 10px;
 }
-.icon-register {
-  background: url(images/icon-register.png) no-repeat;
+.btn-ico-register {
+  background: url(../images/custom/icon-register.png) no-repeat;
   display: inline-block;
   width: 14px;
   height: 19px;
@@ -122,39 +193,51 @@ ul.topnav li.icon {display: none;}
   margin-right: 10px;
 }
 .login-register a {
-  color: #fff;
+  color: #fff !important;
   text-transform: uppercase;
   font-size: 12.5px;
 }
 .login-register a:hover {
   text-decoration: none;
 }
-.login-register .btn-primary {
+.login-register .button-primary {
   margin-right: 10px;
 }
 .btn-register:hover {
   background: #f8941f;
 }
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+.title-featured {
+    margin-bottom: 30px;
+    padding-left: 30px;
+}
+
 /*End featured*/
 
 /*Start wrapper-content*/
 .icon-register-account {
-  background: url(images/icon-lock.png) no-repeat;
+  background: url(../images/custom/icon-lock.png) no-repeat;
   width: 29px;
   height: 39px;
 }
 .icon-login-profile {
-  background: url(images/login-profile.png) no-repeat;
+  background: url(../images/custom/login-profile.png) no-repeat;
   width: 40px;
   height: 33px;
 }
 .icon-pending-profile {
-  background: url(images/icon-datetime.png) no-repeat;
+  background: url(../images/custom/icon-datetime.png) no-repeat;
   width: 39px;
   height: 40px;
 }
 .icon-fees-result {
-  background: url(images/icon-money.png) no-repeat;
+  background: url(../images/custom/icon-money.png) no-repeat;
   width: 49px;
   height: 33px;
 }
@@ -204,7 +287,7 @@ ul.topnav li.icon {display: none;}
   margin-bottom: 10px;
 }
 .icon-place {
-  background: url(images/icon-place.png) no-repeat;
+  background: url(../images/custom/icon-place.png) no-repeat;
   width: 9px;
   height: 15px;
   float: left;
@@ -212,7 +295,7 @@ ul.topnav li.icon {display: none;}
   margin-top: 4px;
 }
 .icon-phone {
-  background: url(images/icon-phone.png) no-repeat;
+  background: url(../images/custom/icon-phone.png) no-repeat;
   width: 13px;
   height: 14px;
   float: left;
@@ -274,6 +357,9 @@ ul.topnav li.icon {display: none;}
     display: block;
     text-align: left;
   }
+  .wrapper-header-top ul.topnav li:not(:first-child) {
+    display: block
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width:1024px) {
@@ -283,7 +369,16 @@ ul.topnav li.icon {display: none;}
   }
 }
 
-/*FIX CONFLICT BOOTSTRAP.MIN.CSS*/
-.collapse {
-  display: block !important;
+/* Site map*/
+a.sm-tutorial img {
+  content: url("../images/custom/Step1.png");
+}
+a.sm-login img {
+  content: url("../images/custom/Step2.png");
+}
+a.sm-uw img {
+  content: url("../images/custom/Step3.png");
+}
+a.sm-result img {
+  content: url("../images/custom/Step4.png");
 }

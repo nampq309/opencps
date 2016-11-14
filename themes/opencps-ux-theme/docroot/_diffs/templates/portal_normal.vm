@@ -36,34 +36,21 @@
 	#if(!$is_signed_in) 
 		<header id="banner" role="banner">
 			<!-- Start header top -->
-			<!--
-			<header id="banner" role="banner" class="opencps-header-wrapper guest">
-			<div class="header container align-middle">
-	            <a href="$site_default_url" title="#language_format ("go-to-x", [$site_name])" class="logo"></a>
-	            <div class="right-panel">
-		            <div class="hotline">
-		                #language ("hotline-key")<br/><span>0651 3870235</span>
-		            </div>
-		            <a href="$sign_in_url" class="signin">#language ("login-key")</a>
-		            <a href="$register_url" class="register">#language ("register-key")</a>
-	            </div>
-			</div>
-			-->
 			<div class="btn-primary-bp wrapper-header-top">
 				<div class="container">
 					<div class="container-inner">
 						<div class="col-xs-12 col-sm-6 col-lg-6 span6">
-							<div class="logo-page">
-								<a href="#" title="Hệ thống dịch vụ công trực tuyến tỉnh bình phước" class="color-white">Hệ thống dịch vụ công trực tuyến tỉnh bình phước</a>
+							<div class="logo-page-bk">
+								<a href="$site_default_url" title="Hệ thống dịch vụ công trực tuyến tỉnh Bình Phước " class="color-white" />
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-lg-6 span5">
+						<!-- <div class="col-xs-12 col-sm-6 col-lg-6 span5">
 							<div class="land-hotline">
 								<a href="#" title="hotline">
 									<img alt="">
 								</a>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -72,28 +59,37 @@
 	<!-- Start nav -->
 	<div class="wrapper-nav">
 		<div class="container">
-			#parse ("$full_templates_path/navigation_public_page.vm")
+            <div class="container-inner">
+                <div ><!-- class="nav-header" -->
+                    <nav class="$nav_css_class top-menu public" id="navigation" role="navigation">
+			             #parse ("$full_templates_path/navigation_public_page.vm")
+                    </nav>
+                </div>
+            </div>
 		</div>
 	</div>
 	<!-- End nav -->
 	#else 
-		<header id="banner" role="banner" class="opencps-header-wrapper member">
-			<div class="header container align-middle">
-	            <a href="" class="logo"></a>
-	            <div class="right-panel">
-		            <div class="hotline">
-		                #language ("hotline-key")<br/><span>0651 3870235</span>
-		            </div>
-				</div>
-				<div class="nav-container-small">
-					#if ($has_navigation || $is_signed_in)
-						#parse ("$full_templates_path/navigation_public_page.vm")
-					#end
-				</div>
+		<header id="banner" role="banner">
+			<div class="btn-primary-bp wrapper-header-top">
+	            <!-- <a href="" class="logo"></a> -->
+                    <div class="container">
+                        <div class="container-inner">
+            	            <div class="col-xs-12 col-sm-6 col-lg-6 span6">
+            		            <div class="logo-page-bk">
+								<a href="$site_default_url" title="Hệ thống dịch vụ công trực tuyến tỉnh Bình Phước " class="color-white" />
+							</div>
+            				</div>            				
+                            <div class="col-xs-12 col-sm-6 col-lg-6 span5">
+                                #if ($has_navigation || $is_signed_in)
+            						#parse ("$full_templates_path/navigation_public_page.vm")
+            					#end
+                            </div>
+                        </div>
+                    </div>
 			</div>
-			
 		</header>
-		<div class="nav-container">
+		<div class="wrapper-nav">
 			#if ($has_navigation || $is_signed_in)
 				#parse ("$full_templates_path/navigation_private_page.vm")
 			#end
