@@ -310,11 +310,11 @@
 							String popupURL = renderResponse.getNamespace() +  "openDialogTermOfUse();";
 							chiTiet =  "<a onclick=\""+popupURL+"\" class=\"detail-terms-links\">"+LanguageUtil.get(pageContext, "term-detail")+"</a>";
 						%>
-						<%-- <aui:input 
+						<aui:input 
 							name="termsOfUse"
 							type="checkbox" 
 							label="<%= LanguageUtil.format(pageContext, \"terms-of-use-x\", chiTiet) %>"
-						/> --%>
+						/>
 					</aui:row>
 				</div>
 			</div>
@@ -368,9 +368,9 @@
 	Liferay.provide(window, '<portlet:namespace />registerAccount', function() {
 		A = AUI();
 		var register = A.one('#<portlet:namespace />register');
-		//var termsOfUse = A.one('#<portlet:namespace />termsOfUse');
+		var termsOfUse = A.one('#<portlet:namespace />termsOfUse');
 		var checkTel = telephoneCheck();
-		if(checkTel == true){//termsOfUse.val() == 'true'
+		if(termsOfUse.val() == 'true' && checkTel == true){//termsOfUse.val() == 'true'
 			submitForm(document.<portlet:namespace />fm);
 		}else{
 			return;

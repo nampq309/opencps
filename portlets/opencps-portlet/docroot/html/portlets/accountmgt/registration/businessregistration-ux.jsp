@@ -177,7 +177,7 @@
 		name="fm"	
 		method="post"
 		enctype="multipart/form-data"
-		onSubmit='<%= "event.preventDefault();  " + renderResponse.getNamespace() + "registerAccount();" %>'
+		onSubmit='<%= "event.preventDefault(); " + renderResponse.getNamespace() + "registerAccount();" %>'
 	>
 		<aui:model-context bean="<%=businessValidate%>" model="<%=Business.class%>" />
 		
@@ -383,11 +383,12 @@
 							String popupURL = renderResponse.getNamespace() +  "openDialogTermOfUse();";
 							chiTiet =  "<a onclick=\""+popupURL+"\" class=\"detail-terms-links\">"+LanguageUtil.get(pageContext, "term-detail")+"</a>";
 						%>
-						<%-- <aui:input 
+						<aui:input 
 							name="termsOfUse"
 							type="checkbox" 
 							label="<%= LanguageUtil.format(pageContext, \"terms-of-use-x\", chiTiet ) %>"
-						/> --%>
+                            value="true"
+						/>
 					</aui:row>
 				</div>
 			</div>
@@ -468,15 +469,14 @@
 	});
 
 	Liferay.provide(window, '<portlet:namespace />registerAccount', function() {
-	    submitForm(document.<portlet:namespace />fm);
-		/* A = AUI();
+		A = AUI();
 		var register = A.one('#<portlet:namespace />register');
 		var termsOfUse = A.one('#<portlet:namespace />termsOfUse');
 		if(termsOfUse.val() == 'true'){
 			submitForm(document.<portlet:namespace />fm);
 		}else{
 			return;
-		} */
+		}
 	});
 	
 	Liferay.provide(window, '<portlet:namespace/>openDialogTermOfUse', function() {
