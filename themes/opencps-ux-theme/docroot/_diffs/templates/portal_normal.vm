@@ -36,21 +36,29 @@
 	#if(!$is_signed_in) 
 		<header id="banner" role="banner">
 			<!-- Start header top -->
-			<div class="btn-primary-bp wrapper-header-top">
+			<div class="bootstrap-primary wrapper-header-top">
 				<div class="container">
 					<div class="container-inner">
-						<div class="col-xs-12 col-sm-6 col-lg-6 span6">
-							<div class="logo-page-bk">
+						<div class="col-xs-12 col-sm-6 col-lg-6 span4 wrap-logo-page">
+							<div class="logo_page">
 								<a href="$site_default_url" title="Hệ thống dịch vụ công trực tuyến tỉnh Bình Phước " class="color-white" />
 							</div>
 						</div>
-						<!-- <div class="col-xs-12 col-sm-6 col-lg-6 span5">
-							<div class="land-hotline">
-								<a href="#" title="hotline">
-									<img alt="">
-								</a>
-							</div>
-						</div> -->
+                        <div class="col-xs-12 col-sm-8 col-lg-8 span8 wrap-rightmenu-inner">
+                            <div class="rightmenu-inner">
+                                <div class="after-username">
+                                    <span>Xin chào: Hoangnd</span>
+                                </div>
+                                <ul class="topnav header-top navbar-right">
+                                    <li><a class="active" href="#" title="Trang chủ">Trang chủ</a></li>
+                                    <li><a href="#" title="Thủ tục hành chính">Thủ tục hành chính</a></li>
+                                    <li><a href="#" title="Hướng dẫn sử dụng">Hướng dẫn sử dụng</a></li>
+                                    <li><a href="#" title="Tiếp nhận hồ sơ">Tiếp nhận hồ sơ</a></li>
+                                    <li class="login"><a href="/login" title="Đăng nhập" class="sct-btn color-default">Đăng nhập</a></li>
+                                    <li class="logout"><a href="/logout" title="Đăng xuất" class="sct-btn color-primary">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -61,7 +69,7 @@
 		<div class="container">
             <div class="container-inner">
                 <div ><!-- class="nav-header" -->
-                    <nav class="$nav_css_class top-menu public" id="navigation" role="navigation">
+                    <nav class="$nav_css_class public" id="navigation" role="navigation">
 			             #parse ("$full_templates_path/navigation_public_page.vm")
                     </nav>
                 </div>
