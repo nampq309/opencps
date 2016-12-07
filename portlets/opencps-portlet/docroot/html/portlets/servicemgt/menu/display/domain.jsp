@@ -42,18 +42,20 @@
 				if(ls.indexOf(di) % 2 == 0){
 					css = "even";
 				}
-		%>
-			<li class="<%=css%>">
-				<i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-				<a href="<%= filter.toString() %>">
-					<%= di.getItemName(locale) %> 
-					<span > <!-- class="badge" -->
-							(<%= ServiceInfoLocalServiceUtil.countServiceInDomain(scopeGroupId,
-							Long.toString(di.getDictItemId()), 1) %>)
-					</span>	
-				</a>
-			</li>
-		<%
+                if (ServiceInfoLocalServiceUtil.countServiceInDomain(scopeGroupId, Long.toString(di.getDictItemId()), 1) > 0) {
+            		%>
+            			<li class="<%=css%>">
+            				<i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+            				<a href="<%= filter.toString() %>">
+            					<%= di.getItemName(locale) %> 
+            					<span >
+            							(<%= ServiceInfoLocalServiceUtil.countServiceInDomain(scopeGroupId,
+            							Long.toString(di.getDictItemId()), 1) %>)
+            					</span>	
+            				</a>
+            			</li>
+            		<%
+                }
 			}
 		%>
 	</ul>
