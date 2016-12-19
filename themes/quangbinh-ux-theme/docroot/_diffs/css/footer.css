@@ -1,0 +1,87 @@
+/* .opencps-theme.ux footer {
+    background: rgba(0, 0, 0, 0) url("../images/custom/bg_footer.png") no-repeat scroll center center / cover ;
+    min-height: 228px;
+    padding-top: 25px;
+} */
+
+/* .opencps-theme.ux footer .content{
+	margin: auto;
+	width: 1170px;
+} */
+
+@media (max-width: 1000px) {
+	.opencps-theme.ux footer .content{
+		margin: auto;
+		width: auto;
+	}
+}
+
+.opencps-theme.ux footer .content ul{
+	margin: 0;
+}
+
+.opencps-theme.ux footer .content ul li{
+	padding: 5px 0;
+	line-height: 20px;
+}
+
+.opencps-theme.ux footer .content a {
+    color: #7d91a0;
+}
+
+.opencps-theme.ux footer .content .logo {
+    background: rgba(0, 0, 0, 0) url("../images/custom/logo_footersct.png") no-repeat scroll 0 0 / 270px 30px;
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: 30px;
+    width: 272px;
+    margin-top: 6px;
+}
+
+.opencps-theme.ux footer .content .logo p {
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 0;
+    opacity: 0.2;
+    margin-left: 16%;
+}
+
+.opencps-theme.ux footer .content p{
+	color: #7d91a0;
+}
+
+.opencps-theme.ux footer .content p.title {
+    color: #0074cd;
+    font-size: 15px;
+    margin-bottom: 20px;
+    padding: 5px 0;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.opencps-theme.ux footer .content p.title::after {
+    background-color: #0074cd;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 35px;
+    width: 14px;
+}
+
+
+.opencps-theme.ux footer .content p.address {
+    background: rgba(0, 0, 0, 0) url("../images/custom/icon_address.png") no-repeat scroll 1px 3px;
+    padding-left: 20px;
+}
+
+
+.opencps-theme.ux footer .content p.mail {
+    background: rgba(0, 0, 0, 0) url("../images/custom/icon_email.png") no-repeat scroll 0 5px;
+    padding-left: 20px;
+}
+
+.opencps-theme.ux footer .content p.phone {
+    background: rgba(0, 0, 0, 0) url("../images/custom/icon_phone.png") no-repeat scroll 0 1px;
+    padding-left: 20px;
+}

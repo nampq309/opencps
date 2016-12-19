@@ -1,0 +1,57 @@
+##set this to the groupID of the menu you wish to copy
+#set ($mainGroupId = $layout.getGroupId())               
+               
+           #if ($page_group.groupId != $mainGroupId) ## The main site's groupId
+                   #set ($layoutService = $serviceLocator.findService('com.liferay.portal.service.LayoutLocalService'))
+                   #set ($mainLayoutPlid = $layoutService.getDefaultPlid($mainGroupId, true)) ##true for private pages and false for public
+                   #set ($mainLayout = $layoutService.getLayout($mainLayoutPlid))
+                   #set ($mainLayouts = $layoutService.getLayouts($mainGroupId, true,0))
+       
+                   ##Need to loop through and only display the the non hidden menu items   
+                   #set($newMainLayouts = [])
+                   #foreach ($newLayout in $mainLayouts)
+                        #if($newLayout.isHidden() == false)
+                            $newMainLayouts.add($newLayout)
+                        #end
+                   #end
+                  
+                   #set ($requestVarsClass = $portal.getClass().forName('com.liferay.portal.theme.RequestVars'))
+                   #set ($requestVarsConstructor = $requestVarsClass.constructors)
+                   #set ($requestVarsConstructor = $requestVarsConstructor.get(0))
+                   #set ($requestVars = $requestVarsConstructor.newInstance($request, $theme_display, $mainLayout.ancestorPlid, $mainLayout.ancestorLayoutId))
+                   #set ($navItemClass = $portal.getClass().forName('com.liferay.portal.theme.NavItem'))
+
+                   ##set ($newNavItems = $navItemClass.fromLayouts($requestVars, $mainLayouts))
+                   #set ($newNavItems = $navItemClass.fromLayouts($requestVars, $newMainLayouts))
+                   #set ($nav_items= $newNavItems)
+          #end
+<div class="container">
+    <div class="container-inner">
+        <div class="nav-header">
+<nav class="$nav_css_class top-menu private" id="navigation" role="navigation">
+
+    <ul class="topnav main-menu" id="myTopnav">
+        #foreach ($nav_item in $nav_items)
+            #if ($nav_item.isSelected())
+                <li class="active">
+            #else
+                <li>
+            #end
+               
+                <a href="$nav_item.getURL()" $nav_item.getTarget()><span>$nav_item.icon() $nav_item.getName()</span></a>
+	
+
+           </li>
+           <li class="pad0"><a href="#" title="">|</a></li>
+        #end
+    </ul>
+    <!-- Hotline BK -->
+    <!-- #if(!$permissionChecker.isOmniadmin())
+        <ul class="navbar-right">
+            <li><a href="#" title=""><img alt=""></a></li>
+        </ul>
+    #end -->
+</nav>
+        </div>
+    </div>
+</div>

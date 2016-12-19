@@ -1,0 +1,201 @@
+.opencps-theme.ux  .portlet-boundary_13_WAR_opencpsportlet_ .opencps-toptabs {
+	background-color: #2ea4ff;
+	height: 39px;
+	color: white;
+	font-family: 'Roboto-Bold';
+	margin-bottom: 30px;
+	margin-top: -25px;
+}
+
+.opencps-theme.ux  .portlet-boundary_13_WAR_opencpsportlet_ .opencps-toptabs ul {
+	margin: 0
+}
+
+.opencps-theme.ux  .portlet-boundary_13_WAR_opencpsportlet_ .opencps-toptabs ul li {
+	float: left
+}
+
+.opencps-theme.ux  .portlet-boundary_13_WAR_opencpsportlet_ .opencps-toptabs ul li a {
+	padding: 0 30px;
+	line-height: 38px;
+	display: block;
+	opacity: 0.9;
+	position: relative
+}
+
+.opencps-theme.ux  .portlet-boundary_13_WAR_opencpsportlet_ .opencps-toptabs ul li a:before {
+	pointer-events: none;
+	position: absolute;
+	z-index: -1;
+	content: '';
+	border-style: solid;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	left: calc(50% - 10px);
+	bottom: 0px;
+	border-width: 10px 10px 0 10px;
+	border-color: #2ea4ff transparent transparent transparent;
+	opacity: 0
+}
+
+.opencps-theme.ux  .portlet-boundary_13_WAR_opencpsportlet_ .nav-tabs .active a:before {
+	-webkit-transform: translateY(10px);
+	transform: translateY(10px);
+	opacity: 1
+}
+
+.opencps-theme.ux  .portlet-boundary_13_WAR_opencpsportlet_ .nav-tabs .tab a:HOVER
+	{
+	color: #fff;
+	background-color: rgba(255, 0, 0, 0);
+	border-color: rgba(255, 0, 0, 0);
+}
+
+.opencps-theme.ux  .portlet-boundary_13_WAR_opencpsportlet_ .nav-tabs .tab a {
+    color: #DAE7E1;
+	text-decoration: none;
+}
+
+.opencps-theme.ux  .portlet-boundary_13_WAR_opencpsportlet_ .nav-tabs .active a {
+	color: #fff;
+	background-color: rgba(255, 0, 0, 0);
+	border-color: rgba(255, 0, 0, 0);
+}
+
+/*portlet 16*/
+
+.opencps-theme.ux  .portlet-boundary_16_WAR_opencpsportlet_ .opencps-toptabs {
+	background-color: #2ea4ff;
+	height: 39px;
+	color: white;
+	font-family: 'Roboto-Bold';
+	margin-bottom: 30px;
+	margin-top: -25px;
+}
+
+.opencps-theme.ux  .portlet-boundary_16_WAR_opencpsportlet_ .opencps-toptabs ul {
+	margin: 0
+}
+
+.opencps-theme.ux  .portlet-boundary_16_WAR_opencpsportlet_ .opencps-toptabs ul li {
+	float: left
+}
+
+.opencps-theme.ux  .portlet-boundary_16_WAR_opencpsportlet_ .opencps-toptabs ul li a {
+	padding: 0 30px;
+	line-height: 38px;
+	display: block;
+	opacity: 0.9;
+	position: relative
+}
+
+.opencps-theme.ux  .portlet-boundary_16_WAR_opencpsportlet_ .opencps-toptabs ul li a:before {
+	pointer-events: none;
+	position: absolute;
+	z-index: -1;
+	content: '';
+	border-style: solid;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	left: calc(50% - 10px);
+	bottom: 0px;
+	border-width: 10px 10px 0 10px;
+	border-color: #2ea4ff transparent transparent transparent;
+	opacity: 0
+}
+
+.opencps-theme.ux  .portlet-boundary_16_WAR_opencpsportlet_ .nav-tabs .active a:before {
+	-webkit-transform: translateY(10px);
+	transform: translateY(10px);
+	opacity: 1
+}
+
+.opencps-theme.ux  .portlet-boundary_16_WAR_opencpsportlet_ .nav-tabs .tab a:HOVER
+	{
+	color: #fff;
+	background-color: rgba(255, 0, 0, 0);
+	border-color: rgba(255, 0, 0, 0);
+}
+
+.opencps-theme.ux  .portlet-boundary_16_WAR_opencpsportlet_ .nav-tabs .tab a {
+    color: #DAE7E1;
+	text-decoration: none;
+}
+
+.opencps-theme.ux  .portlet-boundary_16_WAR_opencpsportlet_ .nav-tabs .active a {
+	color: #fff;
+	background-color: rgba(255, 0, 0, 0);
+	border-color: rgba(255, 0, 0, 0);
+}
+
+/*portlet 18*/
+
+.opencps-theme.ux  .portlet-boundary_18_WAR_opencpsportlet_ .opencps-toptabs {
+	background-color: #2ea4ff;
+	height: 39px;
+	color: white;
+	font-family: 'Roboto-Bold';
+	margin-bottom: 30px;
+	margin-top: -25px;
+}
+
+.opencps-theme.ux  .portlet-boundary_18_WAR_opencpsportlet_ .opencps-toptabs ul {
+	margin: 0
+}
+
+.opencps-theme.ux  .portlet-boundary_18_WAR_opencpsportlet_ .opencps-toptabs ul li {
+	float: left
+}
+
+.opencps-theme.ux  .portlet-boundary_18_WAR_opencpsportlet_ .opencps-toptabs ul li a {
+	padding: 0 30px;
+	line-height: 38px;
+	display: block;
+	opacity: 0.9;
+	position: relative
+}
+
+.opencps-theme.ux  .portlet-boundary_18_WAR_opencpsportlet_ .opencps-toptabs ul li a:before {
+	pointer-events: none;
+	position: absolute;
+	z-index: -1;
+	content: '';
+	border-style: solid;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	left: calc(50% - 10px);
+	bottom: 0px;
+	border-width: 10px 10px 0 10px;
+	border-color: #2ea4ff transparent transparent transparent;
+	opacity: 0
+}
+
+.opencps-theme.ux  .portlet-boundary_18_WAR_opencpsportlet_ .nav-tabs .active a:before {
+	-webkit-transform: translateY(10px);
+	transform: translateY(10px);
+	opacity: 1
+}
+
+.opencps-theme.ux  .portlet-boundary_18_WAR_opencpsportlet_ .nav-tabs .tab a:HOVER
+	{
+	color: #fff;
+	background-color: rgba(255, 0, 0, 0);
+	border-color: rgba(255, 0, 0, 0);
+}
+
+.opencps-theme.ux  .portlet-boundary_18_WAR_opencpsportlet_ .nav-tabs .tab a {
+    color: #DAE7E1;
+	text-decoration: none;
+}
+
+.opencps-theme.ux  .portlet-boundary_18_WAR_opencpsportlet_ .nav-tabs .active a {
+	color: #fff;
+	background-color: rgba(255, 0, 0, 0);
+	border-color: rgba(255, 0, 0, 0);
+}

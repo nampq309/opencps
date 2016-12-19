@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+#parse ($init)
+
+
+<html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
+
+<head>
+	<title>$the_title - $company_name</title>
+
+	#*<meta content="initial-scale=1.0, width=device-width" name="viewport" />*#
+
+	$theme.include($top_head_include)
+	
+	<link rel="shortcut icon" type="image/png" href="$images_folder/custom/favicon.png"/>
+	
+	<script type="text/javascript" src="$javascript_folder/jquery.min.js" ></script>
+	<script type="text/javascript" src="$javascript_folder/bootstrap.min.js" ></script>
+
+	<script type="text/javascript">
+        function handleChange() {
+            var arr = document.getElementById('menu1') ;
+            window.location = arr.value ;
+        } 
+    </script>
+</head>
+
+<body class="$css_class opencps-theme ux">
+
+	$theme.include($body_top_include)
+	
+	#if ($is_signed_in && $permissionChecker.isOmniadmin())
+		#dockbar()
+	#end
+	
+	#if(!$is_signed_in) 
+		<header id="banner" role="banner">
+			<!-- Start header top -->
+			<div class="bootstrap-primary wrapper-header-top">
+				<div class="container">
+					<div class="container-inner">
+						<div class="col-xs-12 col-sm-6 col-lg-6 span5 wrap-logo-page">
+							<div class="logo_page">
+								<a href="$site_default_url" title="Hệ thống dịch vụ công trực tuyến tỉnh Bình Phước " class="color-white" ></a>
+							</div>
+						</div>
+                        <div class="col-xs-12 col-sm-8 col-lg-8 span7 wrap-rightmenu-inner">
+                            <div class="rightmenu-inner" style="margin-top: 27px;">
+                                <div class="after-username">
+                                    <span>&nbsp;</span>
+                                </div>
+                                <ul class="topnav header-top navbar-right" style="padding-right: 90px;">
+                                    <!-- <li class="login"><a href="/login" title="#language ("login-key")" class="sct-btn color-default">#language ("login-key")</a></li> -->
+                                    <!-- <li class="logout"><a href="$sign_out_url" title="#language ("logout-key")" class="sct-btn color-primary">#language ("logout-key")</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+			<!-- End header top -->
+		</header>
+	<!-- Start nav -->
+	<div class="wrapper-nav">
+		<div class="container">
+            <div class="container-inner">
+                <div ><!-- class="nav-header" -->
+                    <nav class="$nav_css_class public" id="navigation" role="navigation">
+			             #parse ("$full_templates_path/navigation_public_page.vm")
+                    </nav>
+                </div>
+            </div>
+		</div>
+	</div>
+	<!-- End nav -->
+	#else 
+		<header id="banner" role="banner">
+			<div class="bootstrap-primary wrapper-header-top">
+                    <div class="container">
+                        <div class="container-inner">
+            	            <div class="col-xs-12 col-sm-6 col-lg-6 span4 wrap-logo-page">
+    							<div class="logo_page">
+    								<a href="$site_default_url" title="Hệ thống dịch vụ công trực tuyến tỉnh Bình Phước " class="color-white" ></a>
+    							</div>
+					        </div>
+                            <div class="col-xs-12 col-sm-8 col-lg-8 span8 wrap-rightmenu-inner">
+                                #if ($has_navigation || $is_signed_in)
+            						<div class="rightmenu-inner" style="margin-top: 28px;">
+                                        #parse ("$full_templates_path/navigation_public_page.vm")
+                                    </div>
+            					#end
+                            </div>
+                        </div>
+                    </div>
+			</div>
+		</header>
+		<div class="wrapper-nav">
+			#if ($has_navigation || $is_signed_in)
+				#parse ("$full_templates_path/navigation_private_page.vm")
+			#end
+		</div>
+	#end
+	
+	<article id="wrapper" class="container">	
+		<div id="content">
+	
+			#if ($selectable)
+				$theme.include($content_include)
+			#else
+				$portletDisplay.recycle()
+	
+				$portletDisplay.setTitle($the_title)
+	
+				$theme.wrapPortlet("portlet.vm", $content_include)
+			#end
+		</div>
+	</article>
+
+<!-- Start footer -->	
+	<footer>	
+        
+	<div class="wrapper-footer">
+		<div class="container">
+			<div class="container-inner">
+				<div class="footer">
+                    <div class="footer-inner">
+    					<div class="col-xs-12 col-sm-6 col-lg-6 span6" style="margin-left: 0px; width: 50%;">
+                            <!-- <div class="logo-footer">
+                                <a href="#"><img src="/opencps-ux-theme/images/custom/logo-footer.png" width="100%"></a>
+                            </div>
+                            <div class="phone-footer contact-us">
+                                <span>Phone:</span>
+                                <span class="number-phone"> 0651.3846.878 </span>
+                            </div>
+                            <div class="email-footer contact-us">
+                                <span>Email:</span>
+                                <span class="number-phone"> contact@ecomviet.vn</span>
+                            </div> -->
+                            <div class="col-xs-12 col-sm-8 col-lg-8 footer-inner-common span4" style="margin-left: 0px;width: 66%;">
+                                <div class="logo-footer">
+                                    <a href="#"><img src="/opencps-ux-theme/images/custom/logo-footer.png" width="100%"></a>
+                                </div>
+                                <div class="phone-footer contact-us">
+                                    <span class="col-xs-6 col-sm-6 col-lg-6 span2" style="margin-left: 0px;width: 50%;">Điện thoại văn phòng:</span>
+                                    <span class="number-phone col-xs-6 col-sm-6 col-lg-6 span2" style="margin-left: 0px;width: 50%;"> (052) 3822.019</span>
+                                </div>
+                                <div class="phone-footer contact-us">
+                                    <span class="col-xs-6 col-sm-6 col-lg-6 span6" style="margin-left: 0px; width: 50%;">Điện thoại bộ phận một cửa:</span>
+                                    <span class="number-phone col-xs-6 col-sm-6 col-lg-6 span6" style="margin-left: 0px;width: 50%;"> (052) 3822.019</span>
+                                </div>
+                                <div class="email-footer contact-us">
+                                    <span class="col-xs-6 col-sm-6 col-lg-6 span6" style="margin-left: 0px; width: 50%;">Email:</span>
+                                    <span class="number-phone col-xs-6 col-sm-6 col-lg-6 span6" style="margin-left: 0px;width: 50%;"> sct@quangbinh.gov.vn</span>
+                                </div>
+                            </div>
+    					</div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2 span2" style="margin-left: 0px; width: 30%;">
+                            <div class="cate-footer">
+                                <div class="title-footer-common">
+                                    <span>#language ("dvc-danhmuc")</span>
+                                </div>
+                                <div class="body-cate-footer">
+                                    <ul>
+                                        <li><a href="/home" title="Trang chu">> #language ("dvc-trangchu")</a></li>
+                                        <li><a href="/thu-tuc-hanh-chinh" title="Thu tuc hanh chinh">> #language ("dvc-thutuchc")</a></li>
+                                        <li><a href="/tiep-nhan-ho-so-qua-mang" title="Tiep nhan ho so">> #language ("dvc-tiepnhanhs")</a></li>
+                                        <li><a href="/huong-dan-su-dung1" title="HDSD">> #language ("dvc-huongdansd")</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-xs-12 col-sm-6 col-lg-4 span4" style="margin-left: 0px;">
+                            <div class="link-footer">
+                                <div class="title-footer-common">
+                                    <span>#language ("dvc-lienket")</span>
+                                </div>
+                                <div class="body-link-footer">
+                                    <div class="intership-local">
+                                        <a href="#"><img src="/opencps-ux-theme/images/custom/lienket.png"></a>
+                                        <a href="#" title="Cổng thông tin tỉnh Bình Phước">Cổng thông tin tỉnh Bình Phước</a>
+                                    </div>
+                                    <div class="intership-local">
+                                        <a href="#"><img src="/opencps-ux-theme/images/custom/lienket.png"></a>
+                                        <a href="#" title="Sở công thương tỉnh Bình Phước">Sở công thương tỉnh Bình Phước</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-xs-12 col-sm-6 col-lg-3 span3" style="margin-left: 0px; width: 20%;">
+                            <div class="contact-footer">
+                                <div class="title-footer-common">
+                                    <span>#language ("dvc-lienhe")</span>
+                                </div>
+                                <div class="body-contact-footer">
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="user" placeholder="Họ và tên:">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="email" placeholder="Email:">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Nội dung:"></textarea>
+                                        </div>
+                                        <div class="submit-send">
+                                            <button type="submit" class="sct-btn color-send">Gửi đi</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+    				</div>
+                </div>
+			</div>
+		</div>
+	</div>
+    <!-- Start footer-bottom -->
+    <div class="wrapper-footer-bottom">
+        <div class="container">
+            <div class="container-inner">
+                <div class="footer-bottom">
+                    <div class="footer-bottom-inner">
+                        <div class="col-xs-12 col-sm-6 col-lg-6 span6" style="margin-left: 0px; width: 50%;">
+                            <div class="copyright text-left">
+                                <span>2016-ecomviet</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-6 span6" style="margin-left: 0px; width: 50%;">
+                            <div class="copyright text-right">
+                                <a href="#" ><img src="/opencps-ux-theme/images/custom/icon-facebook.png" ></a>
+                                <a href="#" ><img src="/opencps-ux-theme/images/custom/icon-google.png" ></a>
+                                <a href="#" ><img src="/opencps-ux-theme/images/custom/icon-twitter.png" ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+	</footer>
+
+	$theme.include($body_bottom_include)
+	
+	$theme.include($bottom_include)
+
+</body>
+
+</html>

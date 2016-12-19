@@ -1,0 +1,69 @@
+#set ($layoutService = $serviceLocator.findService('com.liferay.portal.service.LayoutLocalService'))
+#set ($publicLayoutPlid = $layoutService.getDefaultPlid($layout.getGroupId(), false)) ##true for private pages and false for public
+#set ($publicLayout = $layoutService.getLayout($publicLayoutPlid))
+#set ($publicLayouts = $layoutService.getLayouts($layout.getGroupId(), false, 0))
+	#if (!$is_signed_in)
+		<!-- <div class="after-username">
+                                    <span>Xin chào: Hoangnd</span>
+                                </div>
+                                <ul class="topnav header-top navbar-right">
+                                    <li><a class="active" href="#" title="Trang chủ">Trang chủ</a></li>
+                                    <li><a href="#" title="Thủ tục hành chính">Thủ tục hành chính</a></li>
+                                    <li><a href="#" title="Hướng dẫn sử dụng">Hướng dẫn sử dụng</a></li>
+                                    <li><a href="#" title="Tiếp nhận hồ sơ">Tiếp nhận hồ sơ</a></li>
+                                    <li class="login"><a href="/login" title="Đăng nhập" class="sct-btn color-default">Đăng nhập</a></li>
+                                    <li class="logout"><a href="/logout" title="Đăng xuất" class="sct-btn color-primary">Đăng xuất</a></li>
+                                </ul> -->
+            <ul class="topnav main-menu" id="myTopnav" style="margin-top: 7px;">
+                #foreach ($nav_item in $publicLayouts)
+                    #if (!$nav_item.isHidden())
+                        <li>
+                         #if ($nav_item.isSelected())
+                            <a class="active" aria-labelledby="layout_$nav_item.getLayoutId()" href="/web/guest$nav_item.getFriendlyURL()" $nav_item_attr_has_popup $nav_item.getTarget() role="menuitem">$nav_item.getName()</a>
+                        #else
+                            <a aria-labelledby="layout_$nav_item.getLayoutId()" href="/web/guest$nav_item.getFriendlyURL()" $nav_item_attr_has_popup $nav_item.getTarget() role="menuitem">$nav_item.getName()</a>
+                        #end
+                        </li>
+                        <li class="pad0"><a href="#" title="">|</a></li>
+                    #end
+                #end
+            </ul>
+	#else
+		#if($layout.isPublicLayout())
+            <div class="after-username">
+                <span>#language ("welcome-key"): $user_name</span>
+            </div>
+			<ul class="topnav header-top navbar-right">
+				<li>
+					<a href="/group/guest">#language("back-to-backoffice")</a>
+				</li>
+			</ul>
+		#else
+            <div class="after-username">
+                <span>#language ("welcome-key"): $user_name</span>
+            </div>
+			<ul aria-label="#language ("site-pages")" role="menubar" class="topnav header-top navbar-right" id="myTopnav">
+		      #foreach ($nav_item in $publicLayouts)
+				#if (!$nav_item.isHidden())
+                    <li>
+					 #if ($nav_item.isSelected())
+                        <a class="active" aria-labelledby="layout_$nav_item.getLayoutId()" href="/web/guest$nav_item.getFriendlyURL()" $nav_item_attr_has_popup $nav_item.getTarget() role="menuitem">$nav_item.getName()</a>
+		            #else
+                        <a aria-labelledby="layout_$nav_item.getLayoutId()" href="/web/guest$nav_item.getFriendlyURL()" $nav_item_attr_has_popup $nav_item.getTarget() role="menuitem">$nav_item.getName()</a>
+		            #end
+					</li>
+				#end
+			   #end
+               <li class="logout"><a href="$sign_out_url" title="#language ("logout-key")" class="sct-btn color-primary">#language ("logout-key")</a></li>
+		     </ul>
+             <!-- <ul class="navbar-right after-login">
+                <li>
+                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i><span>#language ("welcome-key")</span><span class="user-account"> $user_name</span></a>
+                </li>
+                <li>
+                    <a href="$sign_out_url" title="#language ("logout-key")"><i class="btn-login"></i>#language ("logout-key")</a>
+                </li>
+             </ul> -->
+		#end
+	#end
+<!-- End nav -->

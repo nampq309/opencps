@@ -1,0 +1,218 @@
+/* ---------------------- Container  ------------*/
+
+.opencps-theme.ux #wrapper {
+    background-color: #fff;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+
+.opencps-theme.ux #wrapper > div {
+	background-color: #f5f5f5;
+    width: 100%;
+}
+
+
+/* ------------------ Special home layout ------------------------ */
+
+.opencps-theme.ux .container .home-ux-layout{
+	padding: 0 !important;
+	width: 100% !important;
+}
+
+.opencps-theme.ux .container .home-ux-layout .screen{
+	background: transparent url("../images/custom/bg_home.jpg") no-repeat scroll center center / cover;
+	display: flex;
+    height: 525px;
+    justify-content: center;
+}	
+
+.opencps-theme.ux .container .home-ux-layout .screen > div{
+	margin: auto;
+	text-align: center;
+}	
+
+
+.opencps-theme.ux .container .home-ux-layout .site-map{
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map > div{
+   margin: auto;
+   width: 1170px;
+}
+
+@media (max-width: 1000px) {
+	.opencps-theme.ux .container .home-ux-layout .site-map > div{
+	   margin: auto;
+	   width: auto;
+	}
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul{
+    margin: 0;
+    padding: 0;
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul li{
+    display: inline-block;
+    line-height: 60px;
+    width: 23%;
+    /* padding: 0 35px; */
+}
+
+
+
+/* .opencps-theme.ux .container .home-ux-layout .site-map ul li:first-child{
+	font-family: 'Roboto-Bold';
+	font-size: 17px;
+	text-transform: uppercase;
+	background: url(../images/custom/icon_helper.png) 16px 19px
+		no-repeat;
+	color: #0090ff;
+} */
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul li:hover {
+	color: #0090ff
+}
+
+/* .opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(2){
+	background: url(../images/custom/icon_dangky.png) 14px center no-repeat
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(2):hover{
+	background: url(../images/custom/icon_dangky_hover.png) 14px center
+		no-repeat
+} */
+
+/* .opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(3){
+	background: url(../images/custom/icon_dangnhap.png) 11px center
+		no-repeat
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(3):hover{
+	background: url(../images/custom/icon_dangnhap_hover.png) 11px center
+		no-repeat
+} */
+
+/* .opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(4){
+	background: url(../images/custom/icon_nophosott.png) 9px center
+		no-repeat
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(4):hover{
+	background: url(../images/custom/icon_nophosott_hover.png) 9px center
+		no-repeat
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(5){
+	background: url(../images/custom/icon_tracuukq.png) 10px center
+		no-repeat
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(5):hover{
+	background: url(../images/custom/icon_tracuukq_hover.png) 10px center
+		no-repeat
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(6){
+	background: url(../images/custom/icon_canboxulyhs.png) 10px center
+		no-repeat
+}
+
+.opencps-theme.ux .container .home-ux-layout .site-map ul li:nth-child(6):hover{
+	background: url(../images/custom/icon_canboxulyhs_hover.png) 10px
+		center no-repeat
+} */
+
+
+.opencps-theme.ux .container .home-ux-layout .other-content > div{
+	margin: auto;
+	width: 1170px;
+}
+
+@media (max-width: 1000px) {
+	.opencps-theme.ux .container .home-ux-layout .other-content > div{
+	   margin: auto;
+	   width: auto;
+	}
+}
+
+.opencps-theme.ux .container .home-ux-layout .other-content > div ul{
+    margin: 0px 0px 45px 0px;
+    padding: 0;
+}
+
+/* .opencps-theme.ux .container .home-ux-layout .other-content .portlet-topper .portlet-title{
+	background: rgba(0, 0, 0, 0) url("../images/custom/icon_vanbanphapluat.png") no-repeat scroll 0 center;
+    color: #0090ff;
+    font-family: "Roboto-Bold";
+    font-size: 17px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    padding-left: 20px;
+} */
+
+
+/* ----------------------- Home search ------------------------------  */
+
+.opencps-theme.ux .container .home-search-sologan {
+	text-align: center;
+}
+
+.opencps-theme.ux .container .home-search-sologan h2{
+	color: #1a8beb;
+    font-family: "Roboto-Black";
+    font-size: 42px;
+    font-weight: normal;
+    text-align: center;
+    /* text-shadow: 2px 2px 10px #000; */
+    padding: 15px;
+}
+
+.opencps-theme.ux .container .home-search-sologan p{
+	color: #1a8beb;
+    font-size: 21px;
+    /* text-shadow: 2px 2px 10px #000; */
+}
+
+.opencps-theme.ux .container .home-search{
+	display: flex;
+	justify-content: center;
+}
+
+.opencps-theme.ux .home-search .input-append > button.btn {
+	text-indent: -9999px;
+	position: relative;
+	height: 60px;
+	background: none #0074cd;
+	box-shadow: none;
+	border-radius: 0 20px 20px 0;
+	text-shadow: none;
+	width: 90px;
+	color: white;
+	border: 1px solid #0074cd;
+	margin-left: 0px;
+}
+
+.opencps-theme.ux .home-search .input-append > button.btn:before {
+	content: "\f002";
+	font-family: FontAwesome;
+	position: absolute;
+	color: white;
+	top: 50%;
+	left: 50%;
+	text-indent: 0;
+	transform: translate(-50%, -50%);
+	font-size: 26px;
+}
+
+.opencps-theme .home-search .input-append input.search-query[type="text"]{
+	border-radius: 20px 0 0 20px;
+	height: 60px;
+	font-size: 15px;
+	width: 487px;
+	border-right: 0;
+	border-left: 1px solid #e1e1e1;
+	border-top: 1px solid #e1e1e1;
+}

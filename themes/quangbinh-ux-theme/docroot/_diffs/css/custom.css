@@ -1,0 +1,238 @@
+/* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
+
+/* Utils  */
+@import url(font_face.css);
+@import url(font-awesome.min.css);
+@import url(util.css);
+
+/* Portlet  */
+@import url(portlets/portlet_5.css);
+@import url(portlets/portlet_6.css);
+@import url(portlets/portlet_13.css);
+@import url(portlets/portlet_16.css);
+@import url(portlets/portlet_26.css);
+@import url(portlets/portlet_11.css);
+@import url(portlets/portlet_10.css);
+@import url(portlets/portlet_login.css);
+@import url(portlets/portlet_hung_custom.css);
+@import url(portlets/portlet_19_20_22.css);
+@import url(portlets/portlet_13_fileinfo.css);
+@import url(button.css);
+@import url(portlets/portlet_10.css);
+@import url(portlets/portlet_18.css);
+
+/* Components  */
+@import url(button.css);
+@import url(input.css);
+@import url(nav_toolbar.css);
+@import url(searchcontainer.css);
+@import url(header.css);
+@import url(nav_menu.css);
+@import url(portlets/portlet_popup.css);
+@import url(page_iterator.css);
+@import url(toptabs.css);
+@import url(content.css);
+/* @import url(footer.css); */
+/* @import url(bootstrap.min.css); */
+@import url(style.css);
+
+body{
+	background-color: #f5f5f5;
+	font-family: roboto;
+}
+
+.opencps-theme.ux #main-content {
+	padding: 25px 0px;
+	margin: auto;
+	width: 1170px;
+}
+
+@media (max-width: 1000px) {
+	.opencps-theme.ux #main-content {
+		padding: 25px 0px;
+		margin: auto;
+		width: auto;
+	}	
+}
+
+.opencps-theme.ux .home-screen .portlet-borderless-container{
+	background-color: transparent;
+}
+
+.opencps-theme.ux #hrefFm{
+	margin: 0!important;
+}
+
+.opencps-theme.ux ul{
+	list-style-type: none;
+}
+
+/* Overwrite page iterator css */
+
+.opencps-theme.ux .taglib-page-iterator{
+	padding: 0 20px;
+}
+
+
+.opencps-theme.ux .taglib-page-iterator .btn{
+	background-color: #fff;
+	border: 1px solid #ddd;
+} 
+
+/* Overwrite Form Navigator  */
+
+.opencps-theme.ux .opencps-form-navigator-container{
+    background-color: #fff;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator{
+    border-radius: 3px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator .tabbable-content{
+	display: flex;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator ul.form-navigator.well{
+	float: none;
+	width: 22%;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator .tabbable-content .form-navigator.nav.nav-list{
+	background: transparent none repeat scroll 0 0;
+    border: medium none;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator .tabbable-content .form-navigator-content{
+	border-left: 1px solid #ddd;
+    flex-grow: 1;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator .tabbable-content .form-navigator-content > div{
+	padding: 20px 30px;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator .tabbable-content .form-navigator.nav.nav-list .form-navigator-topper{
+	display: none;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator .tabbable-content .form-navigator.nav.nav-list .nav-header{
+	display: none;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator .tabbable-content .form-navigator.nav.nav-list > li.active > a{
+	background-color: #0f97ff;
+	color: #fff;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .taglib-form-navigator .tabbable-content .form-navigator.nav.nav-list > li > a{
+	color: #000;
+	padding: 10px 15px;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .nav-content-row {
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 15px;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .nav-content-row .control-group {
+    display: flex;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .nav-content-row .control-group label{
+    font-weight: bold;
+    width: 130px;
+}
+
+.opencps-theme.ux .opencps-form-navigator-container .nav-content-row .control-group input, 
+.opencps-theme.ux .opencps-form-navigator-container .nav-content-row .control-group select, 
+.opencps-theme.ux .opencps-form-navigator-container .nav-content-row .control-group textarea{
+    flex-grow: 1;
+    max-width: 100% !important;
+}
+
+
+.opencps-theme.ux .opencps-form-navigator-container .nav-content-row-2 {
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 15px;
+}
+
+
+.opencps-theme.ux .opencps-form-navigator-container .nav-content-row-2 .control-group label{
+    font-weight: bold;
+}
+
+
+.opencps-theme.ux .opencps-form-navigator-container .nav-content-row-2 .fake_textarea {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+
+/* Overwrite Taglib Header  */
+.opencps-theme.ux .taglib-header{
+	background-color: #f5f5f5;
+    border-bottom: 0 none;
+    padding-bottom: 1em;
+    margin-bottom: 0;
+}
+
+.opencps-theme.ux .taglib-header .header-back-to a{
+	color: #888;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 15px 0;
+}
+
+.opencps-theme.ux .taglib-header .header-back-to span{
+	clip: auto !important;
+	position: relative !important;
+	font-family: roboto-regular;
+}
+
+.opencps-theme.ux .taglib-header .header-title{
+	font-family: roboto-bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Overwrite portlet header  */
+
+.opencps-theme.ux .portlet-topper{
+	padding: 0 10px;
+	
+}
+
+.opencps-theme.ux .portlet-topper .portlet-title-text{
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+/* Overwrite portlet alert  */
+
+.opencps-theme.ux .alert {
+    margin: 10px !important;
+}
+
+#navigation ul li.selected {
+	background-color: #0074cd;
+}
+
+.aui a {
+	color: #000;
+}
+
+
+.pager.lfr-pagination-buttons {
+    margin-top: 8px;
+}
+
+.opencps-theme.ux .home_bg #column-1 .portlet-borderless-container{
+  background: transparent !important;
+}
+
