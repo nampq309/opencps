@@ -238,7 +238,6 @@ public class AccountRegPortlet extends MVCPortlet {
 			} 
 			
 			if (businessId == 0) {
-
 				Business business =
 				    BusinessLocalServiceUtil.addBusiness(
 				        name, enName, shortName, businessTypeCode, idNumber,
@@ -259,13 +258,17 @@ public class AccountRegPortlet extends MVCPortlet {
 					    business.getUuid(), mappingUser, email,
 					    PortletPropsValues.USERMGT_USERGROUP_NAME_BUSINESS,
 					    serviceContext);
+					int groupId = ParamUtil.getInteger(actionRequest, "siteConfig_cfg");
+	        _log.info("Site Config ID = " + groupId);
+	        //add membership to site config
+	        UserLocalServiceUtil.addGroupUser(groupId, mappingUser.getUserId());
 					//check reg cfg
-					int step = ParamUtil.getInteger(actionRequest, "businessRegStep_cfg");
-					if(step == 2){
+//					int step = ParamUtil.getInteger(actionRequest, "businessRegStep_cfg");
+//					if(step == 2){
 						BusinessLocalServiceUtil
 					    .updateStatus(business.getBusinessId(), serviceContext
 					        .getUserId(), 2);
-					}
+//					}
 					SessionMessages.add(
 					    actionRequest,
 					    MessageKeys.ACCOUNT_UPDATE_CUCCESS);
