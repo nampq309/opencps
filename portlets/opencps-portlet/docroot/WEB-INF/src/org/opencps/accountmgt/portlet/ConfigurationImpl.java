@@ -24,6 +24,8 @@ import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.ConfigurationAction;
 import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
@@ -35,6 +37,8 @@ import com.liferay.portlet.PortletPreferencesFactoryUtil;
  *
  */
 public class ConfigurationImpl implements ConfigurationAction{
+    
+    private Log _log = LogFactoryUtil.getLog(ConfigurationImpl.class);
 
 	/* (non-Javadoc)
      * @see com.liferay.portal.kernel.portlet.ConfigurationAction#processAction(javax.portlet.PortletConfig, javax.portlet.ActionRequest, javax.portlet.ActionResponse)
@@ -55,6 +59,7 @@ public class ConfigurationImpl implements ConfigurationAction{
 		preferences.setValue("businessRegStep", businessRegStep);
 		preferences.setValue("citizenRegStep", citizenRegStep);
 		preferences.setValue("siteConfig", siteConfig);
+		_log.info("Set siteConfig = " + siteConfig);
 		preferences.store();
 		
 		SessionMessages.add(actionRequest, "config-stored");
