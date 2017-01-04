@@ -45,6 +45,7 @@ public class ConfigurationImpl implements ConfigurationAction{
 		throws Exception {
 		String businessRegStep = ParamUtil.getString(actionRequest, "businessRegStep");
 		String citizenRegStep = ParamUtil.getString(actionRequest, "citizenRegStep");
+		String siteConfig = ParamUtil.getString(actionRequest, "siteConfig");
 		String portletResource =
 					    ParamUtil.getString(actionRequest, "portletResource");
 		
@@ -53,6 +54,7 @@ public class ConfigurationImpl implements ConfigurationAction{
 					        actionRequest, portletResource);
 		preferences.setValue("businessRegStep", businessRegStep);
 		preferences.setValue("citizenRegStep", citizenRegStep);
+		preferences.setValue("siteConfig", siteConfig);
 		preferences.store();
 		
 		SessionMessages.add(actionRequest, "config-stored");
