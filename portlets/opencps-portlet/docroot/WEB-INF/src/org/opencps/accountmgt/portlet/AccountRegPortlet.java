@@ -28,6 +28,7 @@ import java.util.Map;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
+import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
@@ -67,6 +68,8 @@ import org.opencps.util.PortletPropsValues;
 import org.opencps.util.PortletUtil;
 import org.opencps.util.WebKeys;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
@@ -82,6 +85,7 @@ import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextFactory;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.util.PortalUtil;
+import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
 /**
@@ -128,6 +132,19 @@ public class AccountRegPortlet extends MVCPortlet {
 
 		UploadPortletRequest uploadPortletRequest =
 		    PortalUtil.getUploadPortletRequest(actionRequest);
+		String portletResource =
+            ParamUtil.getString(actionRequest, "portletResource");
+		int groupId = 0;
+		try {
+		    PortletPreferences preferences =
+		            PortletPreferencesFactoryUtil.getPortletSetup(
+		                    actionRequest, portletResource);
+		    groupId = Integer.parseInt(preferences.getValue("siteConfig", "true"));
+		} catch (PortalException e1) {
+		    e1.printStackTrace();
+		} catch (SystemException e1) {
+		    e1.printStackTrace();
+		}
 
 		long businessId =
 		    ParamUtil.getLong(
