@@ -18,8 +18,19 @@
 %>
 
 <%@ include file="/init.jsp" %>
+<%@page import="com.liferay.portal.service.GroupLocalServiceUtil" %>
+<%@page import="com.liferay.portal.model.Group" %>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 
 <%  
 	String businessRegStep_cfg = GetterUtil.getString(portletPreferences.getValue("businessRegStep", StringPool.BLANK));
 	String citizenRegStep_cfg = GetterUtil.getString(portletPreferences.getValue("citizenRegStep", StringPool.BLANK));
+	List<Group> groupList=GroupLocalServiceUtil.getGroups(0, GroupLocalServiceUtil.getGroupsCount());
+	List<Group> sites = new ArrayList<Group>();
+	for(Group group : groupList){
+	    if (group.getType() == 1 && group.isSite()) {
+	        sites.add(group);
+        }
+	}
 %>

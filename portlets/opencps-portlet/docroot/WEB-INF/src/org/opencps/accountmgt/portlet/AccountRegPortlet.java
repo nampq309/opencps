@@ -260,8 +260,6 @@ public class AccountRegPortlet extends MVCPortlet {
 					    serviceContext);
 					int groupId = ParamUtil.getInteger(actionRequest, "siteConfig_cfg");
 	        _log.info("Site Config ID = " + groupId);
-	        //add membership to site config
-	        UserLocalServiceUtil.addGroupUser(groupId, mappingUser.getUserId());
 					//check reg cfg
 //					int step = ParamUtil.getInteger(actionRequest, "businessRegStep_cfg");
 //					if(step == 2){
@@ -269,6 +267,10 @@ public class AccountRegPortlet extends MVCPortlet {
 					    .updateStatus(business.getBusinessId(), serviceContext
 					        .getUserId(), 2);
 //					}
+					//add membership to site config
+					if (groupId > 0) {
+					    UserLocalServiceUtil.addGroupUser(groupId, mappingUser.getUserId());
+					}
 					SessionMessages.add(
 					    actionRequest,
 					    MessageKeys.ACCOUNT_UPDATE_CUCCESS);

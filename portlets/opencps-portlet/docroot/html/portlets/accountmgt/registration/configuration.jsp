@@ -46,7 +46,17 @@
 				
 			</aui:select>
 		</aui:col>
-		<aui:col width="40"></aui:col>
+		<aui:col width="40">
+            <aui:select name="siteConfig" label="Site config">
+                <%
+                    for(Group site : sites) {
+                %>
+                        <aui:option value="<%=site.getGroupId()%>"><%=site.getName()%></aui:option>
+                <%
+                    }
+                %>
+            </aui:select>
+        </aui:col>
 	</aui:row>
 	
 	
