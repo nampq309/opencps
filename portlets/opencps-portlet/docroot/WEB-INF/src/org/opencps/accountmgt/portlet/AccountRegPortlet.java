@@ -274,9 +274,9 @@ public class AccountRegPortlet extends MVCPortlet {
 					//check reg cfg
 //					int step = ParamUtil.getInteger(actionRequest, "businessRegStep_cfg");
 //					if(step == 2){
-						BusinessLocalServiceUtil
+						/*BusinessLocalServiceUtil
 					    .updateStatus(business.getBusinessId(), serviceContext
-					        .getUserId(), 2);
+					        .getUserId(), 2);*/
 //					}
 					//add membership to site config
 					if (groupId > 0) {
@@ -519,7 +519,7 @@ public class AccountRegPortlet extends MVCPortlet {
 					//check reg cfg
 					int step = ParamUtil.getInteger(actionRequest, "citizenRegStep_cfg");
 					if(step == 2){
-						CitizenLocalServiceUtil.updateStatus(citizen.getCitizenId(), serviceContext.getUserId(), 2);
+						//CitizenLocalServiceUtil.updateStatus(citizen.getCitizenId(), serviceContext.getUserId(), 2);
 					}
 				}
 				SessionMessages.add(actionRequest, MessageKeys.ACCOUNT_UPDATE_CUCCESS);

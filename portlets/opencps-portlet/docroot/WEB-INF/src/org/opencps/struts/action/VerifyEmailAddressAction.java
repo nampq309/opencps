@@ -80,7 +80,7 @@ public class VerifyEmailAddressAction extends Action {
 
 					citizen
 					    .setAccountStatus(
-					        PortletConstants.ACCOUNT_STATUS_CONFIRMED);
+					            PortletConstants.ACCOUNT_STATUS_APPROVED);//OLD: ACCOUNT_STATUS_CONFIRMED
 					citizen
 					    .setModifiedDate(new Date());
 					CitizenLocalServiceUtil
@@ -107,7 +107,7 @@ public class VerifyEmailAddressAction extends Action {
 					        .getMappingUserId(), password, password, false);
 					business
 					    .setAccountStatus(
-					        PortletConstants.ACCOUNT_STATUS_CONFIRMED);
+					        PortletConstants.ACCOUNT_STATUS_APPROVED);//OLD: ACCOUNT_STATUS_CONFIRMED
 					business
 					    .setModifiedDate(new Date());
 					BusinessLocalServiceUtil
