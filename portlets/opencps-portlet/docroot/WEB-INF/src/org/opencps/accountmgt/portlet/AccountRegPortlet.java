@@ -275,7 +275,7 @@ public class AccountRegPortlet extends MVCPortlet {
 					    business.getUuid(), mappingUser, email,
 					    PortletPropsValues.USERMGT_USERGROUP_NAME_BUSINESS,
 					    serviceContext);
-					int groupId = ParamUtil.getInteger(actionRequest, "siteConfig_cfg");
+					//int groupId = ParamUtil.getInteger(actionRequest, "siteConfig_cfg");
 	        _log.info("Site Config ID = " + groupId);
 					//check reg cfg
 //					int step = ParamUtil.getInteger(actionRequest, "businessRegStep_cfg");
