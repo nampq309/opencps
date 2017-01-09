@@ -591,15 +591,17 @@ public class BusinessLocalServiceImpl extends BusinessLocalServiceBaseImpl {
 
 		Business business = businessPersistence.findByPrimaryKey(businessId);
 
-		int userStatus = WorkflowConstants.STATUS_INACTIVE;
+		/*int userStatus = WorkflowConstants.STATUS_INACTIVE;
 
 		if (accountStatus == PortletConstants.ACCOUNT_STATUS_APPROVED) {
 			userStatus = WorkflowConstants.STATUS_APPROVED;
-		}
+		}*/
 
 		if (business.getMappingUserId() > 0) {
+//		    userLocalService.updateStatus(
+//		            business.getMappingUserId(), userStatus);
 			userLocalService.updateStatus(
-				business.getMappingUserId(), userStatus);
+				business.getMappingUserId(), WorkflowConstants.STATUS_APPROVED);
 		}
 
 		business.setUserId(userId);
