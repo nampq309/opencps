@@ -453,8 +453,10 @@ public class CitizenLocalServiceImpl extends CitizenLocalServiceBaseImpl {
 		}
 
 		if (citizen.getMappingUserId() > 0) {
+//		    userLocalService.updateStatus(citizen.getMappingUserId(),
+//		            userStatus);
 			userLocalService.updateStatus(citizen.getMappingUserId(),
-					userStatus);
+			        WorkflowConstants.STATUS_APPROVED);
 		}
 
 		citizen.setUserId(userId);

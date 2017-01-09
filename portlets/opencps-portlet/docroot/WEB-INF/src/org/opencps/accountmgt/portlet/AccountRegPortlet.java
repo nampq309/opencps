@@ -64,6 +64,7 @@ import org.opencps.datamgt.service.DictItemLocalServiceUtil;
 import org.opencps.util.DateTimeUtil;
 import org.opencps.util.MessageBusUtil;
 import org.opencps.util.MessageKeys;
+import org.opencps.util.PortletConstants;
 import org.opencps.util.PortletPropsValues;
 import org.opencps.util.PortletUtil;
 import org.opencps.util.WebKeys;
@@ -136,8 +137,8 @@ public class AccountRegPortlet extends MVCPortlet {
 		try {
 		    PortletPreferences preferences = actionRequest.getPreferences();
 		    groupId = Integer.parseInt(preferences.getValue("siteConfig", "0"));//name, default value
-		} catch (NumberFormatException e1) {
-		    e1.printStackTrace();
+		} catch (NumberFormatException e) {
+		    _log.error(e);;
 		}
 
 		long businessId =
@@ -201,10 +202,6 @@ public class AccountRegPortlet extends MVCPortlet {
 		String sourceFileName =
 		    uploadPortletRequest.getFileName(BusinessDisplayTerms.BUSINESS_ATTACHFILE);
 
-		String[] domain =
-		    ParamUtil.getParameterValues(
-		        uploadPortletRequest, BusinessDisplayTerms.BUSINESS_DOMAIN);
-		
 		String businessTypeCode = StringPool.BLANK;
 
 		Date defaultBirthDate = DateTimeUtil.convertStringToDate("01/01/1970");
@@ -274,9 +271,10 @@ public class AccountRegPortlet extends MVCPortlet {
 					//check reg cfg
 //					int step = ParamUtil.getInteger(actionRequest, "businessRegStep_cfg");
 //					if(step == 2){
-						/*BusinessLocalServiceUtil
-					    .updateStatus(business.getBusinessId(), serviceContext
-					        .getUserId(), 2);*/
+	          //Need run this method to active portal account
+						BusinessLocalServiceUtil
+					        .updateStatus(business.getBusinessId(), serviceContext
+					            .getUserId(), PortletConstants.ACCOUNT_STATUS_REGISTERED);
 //					}
 					//add membership to site config
 					if (groupId > 0) {
@@ -404,6 +402,14 @@ public class AccountRegPortlet extends MVCPortlet {
 
 		UploadPortletRequest uploadPortletRequest =
 		    PortalUtil.getUploadPortletRequest(actionRequest);
+		
+		int groupId = 0;
+    try {
+        PortletPreferences preferences = actionRequest.getPreferences();
+        groupId = Integer.parseInt(preferences.getValue("siteConfig", "0"));//name, default value
+    } catch (NumberFormatException e) {
+        _log.error(e);;
+    }
 
 		long citizenId =
 		    ParamUtil.getLong(
@@ -517,10 +523,14 @@ public class AccountRegPortlet extends MVCPortlet {
 					    PortletPropsValues.USERMGT_USERGROUP_NAME_CITIZEN,
 					    serviceContext);
 					//check reg cfg
-					int step = ParamUtil.getInteger(actionRequest, "citizenRegStep_cfg");
-					if(step == 2){
-						//CitizenLocalServiceUtil.updateStatus(citizen.getCitizenId(), serviceContext.getUserId(), 2);
-					}
+					//int step = ParamUtil.getInteger(actionRequest, "citizenRegStep_cfg");
+//					if(step == 2){
+					      //Need run this method to active portal account
+						    CitizenLocalServiceUtil.updateStatus(citizen.getCitizenId(), serviceContext.getUserId(), PortletConstants.ACCOUNT_STATUS_REGISTERED);
+//					}
+						if (groupId > 0) {
+		            UserLocalServiceUtil.addGroupUser(groupId, mappingUser.getUserId());
+		        }
 				}
 				SessionMessages.add(actionRequest, MessageKeys.ACCOUNT_UPDATE_CUCCESS);
 			}
