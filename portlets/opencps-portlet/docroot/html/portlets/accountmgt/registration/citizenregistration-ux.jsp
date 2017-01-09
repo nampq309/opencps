@@ -308,8 +308,7 @@
 						<%
 							String chiTiet = StringPool.BLANK;
 							String popupURL = renderResponse.getNamespace() +  "openDialogTermOfUse();";
-							//chiTiet =  "<a onclick=\""+popupURL+"\" class=\"detail-terms-links\">"+LanguageUtil.get(pageContext, "term-detail")+"</a>";
-							chiTiet =  "<a href=\"#\" class=\"detail-terms-links\">"+LanguageUtil.get(pageContext, "term-detail")+"</a>";
+							chiTiet =  "<a onclick=\""+popupURL+"\" class=\"detail-terms-links\">"+LanguageUtil.get(pageContext, "term-detail")+"</a>";
 						%>
 						<aui:input 
 							name="termsOfUse"
@@ -320,7 +319,7 @@
 				</div>
 			</div>
 			<aui:row>
-				<aui:button name="register" type="submit" value="register" />
+				<aui:button name="register" type="submit" value="register" disabled="true" />
 			</aui:row>
 		</div>
 		
@@ -352,7 +351,7 @@
 				
 				var register = A.one('#<portlet:namespace />register');
 				
-				if(termsOfUse && termsOfUse.val() == 'true'){
+				if(termsOfUse.val() == 'true'){
 					register.removeClass('disabled');
 					register.removeAttribute('disabled');
 				}else{
@@ -371,7 +370,7 @@
 		var register = A.one('#<portlet:namespace />register');
 		var termsOfUse = A.one('#<portlet:namespace />termsOfUse');
 		var checkTel = telephoneCheck();
-		if(termsOfUse.val() == 'true' && checkTel == true){//termsOfUse.val() == 'true'
+		if(termsOfUse.val() == 'true' && checkTel == true){
 			submitForm(document.<portlet:namespace />fm);
 		}else{
 			return;
