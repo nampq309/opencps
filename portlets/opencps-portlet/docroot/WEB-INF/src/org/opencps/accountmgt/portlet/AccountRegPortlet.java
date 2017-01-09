@@ -132,17 +132,11 @@ public class AccountRegPortlet extends MVCPortlet {
 
 		UploadPortletRequest uploadPortletRequest =
 		    PortalUtil.getUploadPortletRequest(actionRequest);
-		String portletResource =
-            ParamUtil.getString(actionRequest, "portletResource");
 		int groupId = 0;
 		try {
-		    PortletPreferences preferences =
-		            PortletPreferencesFactoryUtil.getPortletSetup(
-		                    actionRequest, portletResource);
-		    groupId = Integer.parseInt(preferences.getValue("siteConfig", "true"));
-		} catch (PortalException e1) {
-		    e1.printStackTrace();
-		} catch (SystemException e1) {
+		    PortletPreferences preferences = actionRequest.getPreferences();
+		    groupId = Integer.parseInt(preferences.getValue("siteConfig", "0"));//name, default value
+		} catch (NumberFormatException e1) {
 		    e1.printStackTrace();
 		}
 
