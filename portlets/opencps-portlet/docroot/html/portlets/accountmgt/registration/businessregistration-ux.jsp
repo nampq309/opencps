@@ -1,5 +1,4 @@
 
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%
 /**
  * OpenCPS is the open source Core Public Services software
@@ -88,8 +87,6 @@
 		typeID = businessValidate.getBusinessType();
 	}
 	
-	String busDomains = ParamUtil.getString(request, "busDomains");
-	String[] listDomains = busDomains.split(StringPool.COMMA);
 %>
 
 <div class="opencps-register-wrapper">
@@ -277,11 +274,10 @@
 					<div class="fake_textarea">
 					<%
 						for(DictItem dictItemDomain : dictItemDomains) {
+							String businessDomain = ParamUtil.getString(request, dictItemDomain.getItemCode());
 							boolean checked = false;
-							for (String domain : listDomains){
-								if (dictItemDomain.getItemCode().equals(domain)){
-									checked = true;
-								}
+							if (Validator.isNotNull(businessDomain)){
+								checked = true;
 							}
 							%>
 								<aui:input 
@@ -381,20 +377,18 @@
 						<%
 							String chiTiet = StringPool.BLANK;
 							String popupURL = renderResponse.getNamespace() +  "openDialogTermOfUse();";
-							//chiTiet =  "<a onclick=\""+popupURL+"\" class=\"detail-terms-links\">"+LanguageUtil.get(pageContext, "term-detail")+"</a>";
-							chiTiet =  "<a href=\"#\" class=\"detail-terms-links\">"+LanguageUtil.get(pageContext, "term-detail")+"</a>";
+							chiTiet =  "<a onclick=\""+popupURL+"\" class=\"detail-terms-links\">"+LanguageUtil.get(pageContext, "term-detail")+"</a>";
 						%>
 						<aui:input 
 							name="termsOfUse"
 							type="checkbox" 
 							label="<%= LanguageUtil.format(pageContext, \"terms-of-use-x\", chiTiet ) %>"
-                            value="true"
 						/>
 					</aui:row>
 				</div>
 			</div>
 			<aui:row>
-				<aui:button name="register" type="submit" value="register" />
+				<aui:button name="register" type="submit" value="register" disabled="true"/>
 			</aui:row>
 		</div>
 			
