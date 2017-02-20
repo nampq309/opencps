@@ -112,7 +112,7 @@
 			<liferay-ui:message key="estimate-date"/>
 		</td>
 		<td >
-			<%=StringPool.BLANK %>
+			<%=dossier != null ? DateTimeUtil.convertDateToString(dossier.getEstimateDatetime(), DateTimeUtil._VN_DATE_FORMAT) :  StringPool.BLANK %>
 		</td>
 	</tr>
 	<tr>
@@ -120,7 +120,7 @@
 			<liferay-ui:message key="complate-date"/>
 		</td>
 		<td >
-			<%=StringPool.BLANK %>
+			<%=dossier != null ? DateTimeUtil.convertDateToString(dossier.getFinishDatetime(), DateTimeUtil._VN_DATE_FORMAT) :  StringPool.BLANK %>
 		</td>
 	</tr>
 	<tr>

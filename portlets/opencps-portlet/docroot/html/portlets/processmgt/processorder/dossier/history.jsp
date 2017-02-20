@@ -134,7 +134,9 @@
 							</span>
 							
 							<span class="span8">
-								<%=actionHistory.getStepName()%>
+								<%= Validator.isBlank(actionHistory.getStepName()) ? 
+                                        "System" : 
+                                            actionHistory.getStepName()%>
 							</span>
 						</aui:row>
 						
